@@ -1,47 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>login</title>
+    <meta charset="utf-8">
 
-    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    {% load bootstrap3 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 
-
-
+{#    <meta http-equiv="X-UA-Compatible" content="IE=edge">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <meta name="description" content="">#}
+{#    <meta name="author" content="">#}
+{#    <link rel="icon" href="../../favicon.ico">#}
+{#    <title>Django Page</title>     <!-- Bootstrap core CSS -->#}
+{#    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->#}
+{#    <link href="https://v3.bootcss.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">     <!-- Custom styles for this template -->#}
+    <link href="https://v3.bootcss.com/examples/signin/signin.css" rel="stylesheet">
+{#    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->#}
+{#    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->#}
+{#    <script src="https://v3.bootcss.com/assets/js/ie-emulation-modes-warning.js"></script>#}
+{#    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->    <!--[if lt IE 9]>#}
+{#      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>#}
+{#       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>    <![endif]--> #}
 </head>
 <body>
-    <div class="container">
-        <div class="form row">
-            <div class="form-horizontal col-md-offset-3" id="login_form">
-                <h3 class="form-title">LOGIN</h3>
-                <div class="col-md-9">
-                    <div class="form-group">
-                        <i class="fa fa-user fa-lg"></i>
-                        <input class="form-control required" type="text" placeholder="Username" id="username" name="username" autofocus="autofocus" maxlength="20"/>
-                    </div>
-                    <div class="form-group">
-                            <i class="fa fa-lock fa-lg"></i>
-                            <input class="form-control required" type="password" placeholder="Password" id="password" name="password" maxlength="8"/>
-                    </div>
-                    <div class="form-group">
-                        <label class="checkbox">
-                            <input type="checkbox" name="remember" value="1"/>记住我
-                        </label>
-                    </div>
-                    <div class="form-group col-md-offset-9">
-                        <button type="submit" class="btn btn-success pull-right" name="submit">登录</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container">
+    <form class="form-signin" action="/login_action/" method="post">
+        <h2 class="form-signin-heading">测试平台</h2>
+        <label for="inputUsername" class="sr-only">username</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="username" required autofocus>
+        <label for="inputPassword" class="sr-only">password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="btn">登录</button>
+        <br>{{error}}</br>
+        {% csrf_token %}
+    </form>
+</div> <!-- /container -->      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+{#<script src="https://v3.bootcss.com/assets/js/ie10-viewport-bug-workaround.js"></script>#}
 </body>
 </html>
-
 
 <!--<!DOCTYPE html>-->
 <!--<html lang="en">-->
@@ -59,6 +55,3 @@
 
 <!--</head>-->
 <!--<body>-->
-
-</body>
-</html>
