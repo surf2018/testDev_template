@@ -20,10 +20,12 @@ def login_action(request):
             user=authenticate(username=name,password=passwd)
             if(user is not None):
                 login(request,user)
-                context = {"content": "Login successfully"}
-                return render(request, "successful.html", context)
+                context = {"username": name}
+                return render(request, "broadcast.html", context)
                 #check userame or password is null
             else:
-                context={"content": "username or password is not invalid"}
-                return render(request,"fail.html",context)
+                context={"error": "username or password is not invalid"}
+                return render(request,"index.html",context)
+def logout_action(request):
+
 

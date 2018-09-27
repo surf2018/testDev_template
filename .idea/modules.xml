@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../myPoll/.idea/myPoll.iml" filepath="$PROJECT_DIR$/../myPoll/.idea/myPoll.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/testDev_template.iml" filepath="$PROJECT_DIR$/.idea/testDev_template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../testDjango/.idea/testDjango.iml" filepath="$PROJECT_DIR$/../testDjango/.idea/testDjango.iml" />
     </modules>
   </component>
 </project>
