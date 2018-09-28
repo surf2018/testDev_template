@@ -9,8 +9,6 @@ def index(request):
 #handle login request
 
 
-
-# @login_required
 def login_action(request):
     if(request.method=="POST"):
         print("request post:"+str(request.POST))
@@ -22,15 +20,24 @@ def login_action(request):
         else:
             user=authenticate(username=name,password=passwd)
             if(user is not None):
-                login(request,user)
-                context = {"username": name}
-                return render(request, "broadcast.html", context)
+                login(request,user)#记录用户登陆状态
+                request.session['username']=name
+                return HttpResponseRedirect('/broadcast/')
+                # response=HttpResponseRedirect('/broadcast/')
+                # response.set_cookie('username',name,3600)
+                # return response
                 #check userame or password is null
             else:
                 context={"error": "username or password is not invalid"}
                 return render(request,"index.html",context)
+@login_required
+def broadcast(request):
+    # username=request.COOKIES.get('username','')
+    username=request.session.get('username','')
+    context={'username':username}
+    return render(request,'broadcast.html',context)
 def logout_action(request):
     logout(request)
-    return render(request,"index.html")
+    return HttpResponseRedirect("/login")
 
 
