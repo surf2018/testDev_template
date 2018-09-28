@@ -6,52 +6,54 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 
-{#    <meta http-equiv="X-UA-Compatible" content="IE=edge">#}
-{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
-{#    <meta name="description" content="">#}
-{#    <meta name="author" content="">#}
-{#    <link rel="icon" href="../../favicon.ico">#}
-{#    <title>Django Page</title>     <!-- Bootstrap core CSS -->#}
-{#    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->#}
-{#    <link href="https://v3.bootcss.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">     <!-- Custom styles for this template -->#}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Django Page</title>     <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="https://v3.bootcss.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">     <!-- Custom styles for this template -->
     <link href="https://v3.bootcss.com/examples/signin/signin.css" rel="stylesheet">
-{#    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->#}
-{#    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->#}
-{#    <script src="https://v3.bootcss.com/assets/js/ie-emulation-modes-warning.js"></script>#}
-{#    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->    <!--[if lt IE 9]>#}
-{#      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>#}
-{#       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>    <![endif]--> #}
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="https://v3.bootcss.com/assets/js/ie-emulation-modes-warning.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>    <![endif]-->
 </head>
 <body>
 <div class="container">
     <form class="form-signin" action="/login_action/" method="post">
         <h2 class="form-signin-heading">测试平台</h2>
-        <label for="inputUsername" class="sr-only">username</label>
+        <p></p>
+        <label for="inputUserName" class="sr-only">username</label>
         <input type="text" id="username" name="username" class="form-control" placeholder="username" required autofocus>
+        <p></p>
         <label for="inputPassword" class="sr-only">password</label>
         <input type="password" id="password" name="password" class="form-control" placeholder="password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit" id="btn">登录</button>
-        <br>{{error}}</br>
+        <br><font color="red" size="3">{{error}}</font></br>
         {% csrf_token %}
     </form>
 </div> <!-- /container -->      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-{#<script src="https://v3.bootcss.com/assets/js/ie10-viewport-bug-workaround.js"></script>#}
+<script src="https://v3.bootcss.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
 
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-    <!--<meta charset="UTF-8">-->
-    <!--<title>Log in </title>-->
-    <!--<p>Test platform</p>-->
-    <!--<form action="/login_action/" method="post">-->
-        <!--{% csrf_token %}-->
-        <!--<br>{{ error }}<br>-->
-    <!--username:<input type="text" name="username" id="username" />-->
-    <!--password:<input type="password" name="password" id="password"/>-->
-    <!--<button type="submit">Submit</button>-->
-    <!--</form>-->
-
-<!--</head>-->
-<!--<body>-->
+<!--{#<!DOCTYPE html>#}-->
+<!--{#<html lang="en">#}-->
+<!--{#<head>#}-->
+<!--{#    <meta charset="UTF-8">#}-->
+<!--{#    <title>Log in </title>#}-->
+<!--{#    <p>Test platform</p>#}-->
+<!--{#    <form action="/login_action/" method="post">#}-->
+<!--{#        {% csrf_token %}#}-->
+<!--{#        <br>{{ error }}<br>#}-->
+<!--{#    username:<input type="text" name="username" id="username" />#}-->
+<!--{#    password:<input type="password" name="password" id="password"/>#}-->
+<!--{#    <button type="submit">Submit</button>#}-->
+<!--{#    </form>#}-->
+<!--{##}-->
+<!--{#</head>#}-->
+<!--{#<body>#}-->
