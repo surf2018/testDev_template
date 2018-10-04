@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="utf-8">
+{% load staticfiles  %}
+ <head>
+ <!--网站编码格式，UTF-8 国际编码，GBK或 gb2312 中文编码-->
+ <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="Keywords" content="关键词一，关键词二">
+ <meta name="Description" content="网站描述内容">
+ <meta name="Author" content="Yvette Lau">
+ <meta name = "viewport" content = " width = device-width, initial-scale = 1 ">
+ <title>Create Project</title>
+ <!--css js 文件的引入-->
+ <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+ </head>
+ <body style="padding: 20px;">
+ <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">
+ <form role = "form" action="/editV_acton/?vid={{ versionInfo.id }}" method="post">
+     {% csrf_token %}
+  <div class = "form-group">
+  <label for = "name">版本号:</label>
+  <input type="text" class="form-control" id = "versionId" name="versionId" value="{{ versionInfo.version }}"></input>
+  </div>
+  <div class = "form-group">
+  <label for = "description">版本描述</label>
+  <input type = "text" class="form-contorl" id = "verdesp" name="verdesp" value="{{ versionInfo.description }}"></input>
+  </div>
+     <div class = "form-group">
+  <label for = "description">创建时间</label>
+  <input type = "date" class="form-contorl" id = "starttime" name="starttime" value="{{ versionInfo.createtime  }}"></input>
+  </div>
+     <div class = "form-group">
+  <label for = "description">结束时间</label>
+  <input type = "date" class="form-contorl" id = "endtime" name="endtime" value="{{ versionInfo.endtime }}"></input>
+  </div>
+     <div class = "form-group">
+  <label for = "critical">Critical Bugs</label>
+  <input type = "text" class="form-contorl" id = "critical" name="critical" value="{{ versionInfo.Criticalbugs }}"></input>
+  </div>
+        <div class = "form-group">
+  <label for = "major">Major Bugs</label>
+  <input type = "text" class="form-contorl" id = "major" name="major" value="{{ versionInfo.Majorbugs }}"></input>
+  </div>
+     <div class = "form-group">
+          <label for = "release">是否release</label>
+          <select id = "isrelease" name="isrelease" >
+              {% if versionInfo.release  == "Y" %}
+                <option id="option-y" selected="selected" value="Y">Y</option>
+                <option id="option-n" value="N">N</option>
+              {% else %}
+                <option id="option-y" value="Y">Y</option>
+                <option id="option-n" selected="selected" value="N">N</option>
+              {% endif %}
+          </select>
+  </div>
+  <div class="form-group">
+  <button type = "submit" class="btn-info btn-lg">提交</button>
+  </div>
+     <br><font color="red" size="2">{{ error }}</font> </br>
+ </form>
+ </div>
+ </body>
+</html>

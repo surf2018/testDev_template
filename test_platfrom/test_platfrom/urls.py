@@ -24,5 +24,16 @@ urlpatterns = [
     path('logout/',views.logout_action),
     path('broadcast/',views.broadcast),
     path('accounts/login/',views.index),
+    path('createProject/',views.createProject),
+    path('createP_acton/',views.createP_action),
+    path('createVersion/',views.createVersion),
+    path('createV_acton/',views.createV_acton),
+    path('queryVersion/',views.queryVersion),
+    path('editProject/',views.editProject),
+    path('editP_acton/',views.editP_action),
+    path('delProject/',views.delProject),
+    path('editVersion/',views.editVersion),
+    path('editV_acton/',views.editV_action),
+    path('delVersion/',views.delVersion),
 
 ]

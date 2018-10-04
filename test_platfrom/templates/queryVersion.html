@@ -10,7 +10,6 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-
     <title>测试平台</title>
 
     <!-- Bootstrap core CSS -->
@@ -41,7 +40,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="#">{{ username }}</a></li>
+            <li><a href="#">{{ user }}</a></li>
             <li><a href="/logout">Sign Out</a></li>
           </ul>
           <form class="navbar-form navbar-right">
@@ -55,7 +54,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#" >项目管理 <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/broadcast/">项目管理 <span class="sr-only">(current)</span></a></li>
             <li><a href="#">模块管理</a></li>
             <li><a href="#"></a></li>
             <li><a href="#"></a></li>
@@ -79,39 +78,40 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">项目列表<button id="create-button" type="button" onclick="createPorject()">创建</button>
+            <h1 class="page-header">{{ projectname }}版本列表<button id="create-button" type="button" onclick="createversion('{{projectname}}')">创建</button>
             </h1>
 {#          <h2 class="sub-header">Section title</h2>#}
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>项目名称</th>
-                  <th>项目描述</th>
-                  <th>创建时间</th>
+                    <th>ID</th>
+                    <th>版本号</th>
+                    <th>版本描述</th>
+                    <th>是否发布</th>
+                    <th>创建时间</th>
                     <th>结束时间</th>
-                  <th>历史版本</th>
+                    <th>Critical Bugs</th>
+                    <th>Major Bugs</th>
                     <th>操作</th>
                 </tr>
               </thead>
               <tbody>
-              {% for pro in projects %}
+              {% for ver in versions %}
                 <tr>
-{#                  <td>{{pro.id}}</td>#}
+{#                    <td>{{ver.id}}</td>#}
                     <td>{{ forloop.counter }}</td>
-                  <td>{{pro.name}}</td>
-                  <td>{{pro.description}}</td>
-                  <td>{{pro.createTime}}</td>
-                    <td>{{ pro.endTime }}</td>
-                  <td>
-                      <a href="/createVersion?name={{ pro.name }}">创建</a>
-                      <a href="/queryVersion?user={{ username }}&name={{ pro.name }}&id={{ pro.id }}">查询</a>
-                  </td>
+                    <td>{{ver.version}}</td>
+                    <td>{{ver.description}}</td>
+                    <td>{{ver.release}}</td>
+                    <td>{{ver.createtime }}</td>
+                    <td>{{ver.endtime }}</td>
+                    <td>{{ ver.Criticalbugs }}</td>
+                    <td>{{ ver.Majorbugs }}</td>
                     <td>
-                      <a href="/editProject?name={{ pro.name }}&id={{ pro.id }}">编辑</a>
-                        <a href="/delProject?name={{ pro.name }}&id={{ pro.id }}" onclick="delpop('{{ pro.name }}')">删除</a>
-                  </td>
+                    <a href="/editVersion?vid={{ ver.id }}">编辑</a>
+                    <a href="/delVersion?vid={{ ver.id }}" onclick="delversion('{{ ver.version }}')">删除</a>
+                    </td>
                 </tr>
                 {% endfor %}
               </tbody>

@@ -28,10 +28,10 @@
         <h2 class="form-signin-heading">测试平台</h2>
         <p></p>
         <label for="inputUserName" class="sr-only">username</label>
-        <input type="text" id="username" name="username" class="form-control" placeholder="username" required autofocus>
+        <input type="text" id="username" name='username' class="form-control" placeholder="username" required autofocus>
         <p></p>
         <label for="inputPassword" class="sr-only">password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="password" required>
+        <input type="password" id="password" name='password' class="form-control" placeholder="password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit" id="btn">登录</button>
         <br><font color="red" size="3">{{error}}</font></br>
         {% csrf_token %}
