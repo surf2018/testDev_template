@@ -1,15 +1,15 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect,HttpResponse
 from .models import Project,Version
+from django.db.models import Q
 # Create your views here.
 #代码处理逻辑
 def index(request):
     return render(request,"index.html")
 #handle login request
-
-
 def login_action(request):
     if(request.method=="POST"):
         print("request post:"+str(request.POST))
@@ -36,6 +36,17 @@ def broadcast(request):
     # username=request.COOKIES.get('username','')
     username=request.session.get('username','')
     projects=Project.objects.all()
+    #分页
+    paginator = Paginator(projects, 10)
+    page = request.GET.get('page', 1)
+    curpage = int(page)
+    try:
+        print(page)
+        projects=paginator.page(curpage)
+    except PageNotAnInteger:
+        projects = paginator.page(1)
+    except EmptyPage:
+        projects = paginator.page(paginator.num_pages)
     context={'username':username,'projects':projects}
     #query databases dispaly all projects
     return render(request,'broadcast.html',context)
@@ -88,6 +99,16 @@ def queryVersion(request):
     pid=request.GET['id']
     #查询数据库
     verinfo=Version.objects.filter(project_id=pid)
+    #分页
+    paginator=Paginator(verinfo,10)
+    page=request.GET.get('page',1)
+    curpage=int(page)
+    try:
+        verinfo=paginator.page(curpage)
+    except PageNotAnInteger:
+        verinfo.paginator.page(1)
+    except EmptyPage:
+        verinfo.paginator.page(paginator.num_pages)
     context={'user':user,'projectname':pname,"projectid":pid,"versions":verinfo}
     return render(request,"queryVersion.html",context)
 def editProject(request):
@@ -149,4 +170,36 @@ def delVersion(request):
     Version.objects.filter(id=vid).delete()
     user=request.session.get("username","")
     return HttpResponseRedirect("/queryVersion/?user="+user+"&name="+pname+"&id="+str(pid))
-    #deldatabase
+def searchp(request):
+    query_text=request.GET['search']
+    if(query_text==""):
+        projectInfo=Project.objects.all()
+        # contex={"error":"请输入搜索字符"}
+        return HttpResponseRedirect("/broadcast",projectInfo)
+    else:
+        username = request.session.get('username', '')
+        projectInfo=Project.objects.filter(Q(name__icontains=query_text)|Q(description__icontains=query_text) |Q(createTime__icontains=query_text)|Q(endTime__icontains=query_text))
+        paginator=Paginator(projectInfo,10)
+        page=request.GET.get("page",1)
+        curpage=int(page)
+        try:
+            projectInfo=paginator.page(curpage)
+        except PageNotAnInteger:
+            projectInfo=paginator.page(1)
+        except EmptyPage:
+            projectInfo=paginator.page(paginator.num_pages)
+        contex={'projects':projectInfo,'username':username}
+        return render(request,"broadcast.html",contex)
+def searchv(request):
+    query_text=request.GET['search']
+    pname=request.GET['projectname']
+    username = request.session.get("username", "")
+    pinfo=Project.objects.get(name=pname)
+    pid=pinfo.id
+    versionInfo=Version.objects.filter(project_id=pid)
+    if(query_text==""):
+        context={"projectname":pname,'versions':versionInfo,'user':username}
+        return render(request,"queryVersion.html",context)
+    else:
+        versionInfo=Version.objects.filter(project_id=pid).filter(Q(version__icontains=query_text)|Q(description__icontains=query_text)|Q(release__icontains=query_text)|Q(createtime__icontains=query_text)|Q(endtime__icontains=query_text)|Q(Criticalbugs__icontains=query_text)|Q(Majorbugs__icontains=query_text))
+        return render(request,"queryVersion.html",{'versions':versionInfo,'user':username,'projectname':pname})

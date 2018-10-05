@@ -5,39 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65a8cca0-cca4-4b86-87dd-1015fdc445f5" name="Default Changelist" comment="add readme.txt">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/484729b3-f5b5-4d20-9332-aa1c187f2f54.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/484729b3-f5b5-4d20-9332-aa1c187f2f54/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/923793b3-7097-45ed-9337-da78aabbd28b.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/projectManager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/templates/createProject.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/templates/createVersion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/templates/editProject.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/templates/editVersion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/templates/queryVersion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0002_auto_20181002_0658.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0003_auto_20181002_0749.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0004_auto_20181002_0803.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0005_auto_20181002_0816.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0006_auto_20181002_0838.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0007_auto_20181002_0843.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0008_auto_20181002_0855.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0009_version.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0010_auto_20181002_2005.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0011_version_createtime.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0012_auto_20181003_2055.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0013_auto_20181004_0555.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/migrations/0014_auto_20181004_0558.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/static/bootstrap/css/broadcast.css" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/static/bootstrap/css/broadcast.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/projectManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/projectManager.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_platfrom/templates/broadcast.html" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/templates/broadcast.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/test_platfrom/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/test_platfrom/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_platfrom/templates/queryVersion.html" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/templates/queryVersion.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_platfrom/test_platfrom/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/test_platfrom/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/user_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/user_app/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/user_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/user_app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_platfrom/user_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/user_app/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../test_dev_template/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../test_dev_template/README.md" afterDir="false" />
     </list>
@@ -53,7 +25,7 @@
     <SUITE FILE_PATH="coverage/testDev_template$0001_initial.coverage" NAME="0001_initial Coverage Results" MODIFIED="1538435526133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_platfrom/user_app/migrations" />
     <SUITE FILE_PATH="coverage/testDev_template$manage__2_.coverage" NAME="manage (2) Coverage Results" MODIFIED="1537970282396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../myPoll" />
     <SUITE FILE_PATH="coverage/testDev_template$views.coverage" NAME="views Coverage Results" MODIFIED="1538149551530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_platfrom/user_app" />
-    <SUITE FILE_PATH="coverage/testDev_template$manage.coverage" NAME="manage Coverage Results" MODIFIED="1538614382459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_platfrom" />
+    <SUITE FILE_PATH="coverage/testDev_template$manage.coverage" NAME="manage Coverage Results" MODIFIED="1538721848575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_platfrom" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -82,22 +54,22 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="4" />
-          <entry key="project.open.time.10" value="3" />
+          <entry key="project.open.time.10" value="4" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.14" value="2" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="html" value="31" />
+          <entry key="html" value="35" />
           <entry key="js" value="6" />
           <entry key="md" value="1" />
-          <entry key="py" value="74" />
+          <entry key="py" value="77" />
           <entry key="sql" value="1" />
           <entry key="txt" value="1" />
         </counts>
@@ -105,33 +77,33 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="31" />
+          <entry key="HTML" value="35" />
           <entry key="JavaScript" value="6" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="74" />
+          <entry key="Python" value="77" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="2" />
-          <entry key="html" value="3832" />
-          <entry key="js" value="423" />
+          <entry key="html" value="5421" />
+          <entry key="js" value="433" />
           <entry key="md" value="18" />
-          <entry key="py" value="7704" />
+          <entry key="py" value="9723" />
           <entry key="sql" value="7" />
-          <entry key="txt" value="24" />
+          <entry key="txt" value="80" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="3832" />
-          <entry key="JavaScript" value="423" />
+          <entry key="HTML" value="5421" />
+          <entry key="JavaScript" value="433" />
           <entry key="Markdown" value="18" />
-          <entry key="PLAIN_TEXT" value="24" />
-          <entry key="Python" value="7704" />
+          <entry key="PLAIN_TEXT" value="80" />
+          <entry key="Python" value="9723" />
           <entry key="Scratch" value="7" />
         </counts>
       </usages-collector>
@@ -142,8 +114,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_platfrom/test_platfrom/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+            <state relative-caret-position="240">
+              <caret line="37" column="32" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="32" />
               <folding>
                 <element signature="e#637#669#0" expanded="true" />
               </folding>
@@ -151,91 +123,30 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="78" column="39" lean-forward="true" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
+            <state relative-caret-position="171">
+              <caret line="177" column="61" lean-forward="true" selection-start-line="177" selection-start-column="61" selection-end-line="177" selection-end-column="61" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1538618142153" expanded="true" signature="2506:2507" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="2591:2596" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="2591:3372" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="3442:3447" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="3722:3723" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="3722:3727" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="4041:4042" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="4041:4046" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="4041:4572" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="4596:4601" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="4778:4779" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="4778:4783" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="4983:4988" ph="..." />
-                <marker date="1538618142153" expanded="true" signature="5989:5994" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="463:464" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="2929:2930" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="3014:3019" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="3014:3795" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="3865:3870" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="4432:4433" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="4432:4437" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="4751:4752" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="4751:4756" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="4751:5282" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="5306:5311" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="5488:5489" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="5488:5493" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="5693:5698" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="6699:6704" ph="..." />
+                <marker date="1538743305855" expanded="true" signature="7058:7063" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/editVersion.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="45" column="53" lean-forward="true" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/createVersion.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="50" column="50" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/queryVersion.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="80" column="120" selection-start-line="80" selection-start-column="107" selection-end-line="80" selection-end-column="120" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/broadcast.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="107" column="73" lean-forward="true" selection-start-line="107" selection-start-column="73" selection-end-line="107" selection-end-column="73" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/createProject.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="35" column="72" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/projectManager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/editProject.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -243,11 +154,65 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_platfrom/manage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+            <state relative-caret-position="150">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#22#31#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/queryVersion.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="122" column="22" lean-forward="true" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/broadcast.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1826">
+              <caret line="128" column="51" lean-forward="true" selection-start-line="128" selection-start-column="51" selection-end-line="128" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="36" column="21" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/createProject.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="18" column="18" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/projectManager.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/editProject.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="19" column="18" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -283,7 +248,11 @@
       <find>onclick</find>
       <find>delProject</find>
       <find>queryVersion</find>
+      <find>csrf_token</find>
+      <find>token</find>
       <find>session</find>
+      <find>form</find>
+      <find>query</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -317,10 +286,10 @@
         <option value="$PROJECT_DIR$/test_platfrom/templates/editProject.html" />
         <option value="$PROJECT_DIR$/test_platfrom/templates/createVersion.html" />
         <option value="$PROJECT_DIR$/test_platfrom/user_app/models.py" />
-        <option value="$PROJECT_DIR$/test_platfrom/templates/broadcast.html" />
         <option value="$PROJECT_DIR$/test_platfrom/templates/editVersion.html" />
-        <option value="$PROJECT_DIR$/test_platfrom/test_platfrom/urls.py" />
         <option value="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/projectManager.js" />
+        <option value="$PROJECT_DIR$/test_platfrom/test_platfrom/urls.py" />
+        <option value="$PROJECT_DIR$/test_platfrom/templates/broadcast.html" />
         <option value="$PROJECT_DIR$/test_platfrom/templates/queryVersion.html" />
         <option value="$PROJECT_DIR$/test_platfrom/user_app/views.py" />
       </list>
@@ -332,9 +301,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="18" />
-    <option name="y" value="91" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="51" />
+    <option name="y" value="129" />
     <option name="width" value="1869" />
     <option name="height" value="1023" />
   </component>
@@ -395,15 +364,6 @@
               <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
               <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
               <item name="user_app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myPoll" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myPoll" type="462c0819:PsiDirectoryNode" />
-              <item name="polls" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -611,18 +571,26 @@
       <option name="project" value="LOCAL" />
       <updated>1537370455017</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="完善dashboard页面，添加创建，编辑，删除项目和版本">
+      <created>1538618918294</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1538618918294</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="6" y="199" width="1246" height="682" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22069523" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23400673" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3291815" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49915826" visible="true" weight="0.3558719" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49915826" visible="true" weight="0.39526412" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3992674" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -648,7 +616,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add readme.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="add readme.txt" />
+    <MESSAGE value="完善dashboard页面，添加创建，编辑，删除项目和版本" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善dashboard页面，添加创建，编辑，删除项目和版本" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../Vote/Vote/settings.py">
@@ -693,11 +662,6 @@
         <state relative-caret-position="128">
           <caret line="12" column="41" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="41" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../myPoll/polls/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/testDev_template/test_platfrom/user_app/templates/successful.html">
@@ -786,13 +750,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/migrations/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="24" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/npm.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -884,96 +841,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/editVersion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/createVersion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/createProject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/projectManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test_platfrom/templates/editProject.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+        <state relative-caret-position="418">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_platfrom/manage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        <state relative-caret-position="150">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#22#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/queryVersion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="122" column="22" lean-forward="true" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test_platfrom/test_platfrom/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+        <state relative-caret-position="240">
+          <caret line="37" column="32" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="32" />
           <folding>
             <element signature="e#637#669#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/createProject.html">
+    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="35" column="72" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="72" />
+        <state relative-caret-position="345">
+          <caret line="36" column="21" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/editVersion.html">
+    <entry file="file://$PROJECT_DIR$/../myPoll/polls/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="45" column="53" lean-forward="true" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/queryVersion.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="80" column="120" selection-start-line="80" selection-start-column="107" selection-end-line="80" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/projectManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/createVersion.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="50" column="50" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="78" column="39" lean-forward="true" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
+        <state relative-caret-position="-132">
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1538618142153" expanded="true" signature="2506:2507" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="2591:2596" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="2591:3372" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="3442:3447" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="3722:3723" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="3722:3727" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="4041:4042" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="4041:4046" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="4041:4572" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="4596:4601" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="4778:4779" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="4778:4783" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="4983:4988" ph="..." />
-            <marker date="1538618142153" expanded="true" signature="5989:5994" ph="..." />
+            <marker date="1537966975817" expanded="true" signature="756:758" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_platfrom/templates/broadcast.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="107" column="73" lean-forward="true" selection-start-line="107" selection-start-column="73" selection-end-line="107" selection-end-column="73" />
+        <state relative-caret-position="1826">
+          <caret line="128" column="51" lean-forward="true" selection-start-line="128" selection-start-column="51" selection-end-line="128" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="177" column="61" lean-forward="true" selection-start-line="177" selection-start-column="61" selection-end-line="177" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1538743305855" expanded="true" signature="463:464" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="2929:2930" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="3014:3019" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="3014:3795" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="3865:3870" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="4432:4433" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="4432:4437" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="4751:4752" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="4751:4756" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="4751:5282" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="5306:5311" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="5488:5489" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="5488:5493" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="5693:5698" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="6699:6704" ph="..." />
+            <marker date="1538743305855" expanded="true" signature="7058:7063" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

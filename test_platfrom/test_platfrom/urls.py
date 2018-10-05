@@ -35,5 +35,7 @@ urlpatterns = [
     path('editVersion/',views.editVersion),
     path('editV_acton/',views.editV_action),
     path('delVersion/',views.delVersion),
+    path('search/',views.searchp),
+    path("searchV/",views.searchv),
 
 ]

@@ -43,8 +43,14 @@
             <li><a href="#">{{ user }}</a></li>
             <li><a href="/logout">Sign Out</a></li>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
+          <form class="navbar-form navbar-right" action="/searchV/" method="get">
+              {% csrf_token  %}
+              <label><font color="#f0f8ff">Project Name:</font></label>
+              <input type="text" class="form-control" name="projectname" placeholder="Search Project Name" value="{{ projectname }}">
+            <input type="text" class="form-control" name="search" placeholder="Search...">
+
+              <button type="submit" >搜索</button>
+              <p><font color="red">{{ error }}</font></p>
           </form>
         </div>
       </div>
@@ -116,6 +122,27 @@
                 {% endfor %}
               </tbody>
             </table>
+              <ul class="pagination" id="pager">
+                  {% if versions.has_previous %}
+                    <li class="previous"><a href="?user={{ user }}&name={{ projectname }}&id={{ projectid }}&page={{ versions.previous_page_number }}">上一页</a></li>
+                  {% else %}
+                    <li class="previous disable"><a href="#">上一页</a></li>
+                  {% endif %}
+                    {# 页码 #}
+                  {% for num in versions.paginator.page_range %}
+                    {%  if num == versions.number %}
+                        <li class="item active"><a href="?user={{ user }}&name={{ projectname }}&id={{ projectid }}&page={{ num }}">{{ num }}</a></li>
+                    {% else %}
+                        <li class="item"><a href="?user={{ user }}&name={{ projectname }}&id={{ projectid }}&page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+                   {#  下一页 #}
+                  {% if versions.has_next %}
+                    <li class="next"><a href="?user={{ user }}&name={{ projectname }}&id={{ projectid }}&page={{ versions.next_page_number }}">下一页</a></li>
+                  {% else %}
+                    <li class="next disable"><a href="#">下一页</a></li>
+                  {% endif %}
+              </ul>
           </div>
         </div>
       </div>

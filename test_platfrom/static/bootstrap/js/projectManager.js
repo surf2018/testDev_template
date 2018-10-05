@@ -13,3 +13,7 @@ function delpop(name) {
 function delversion(version) {
   alert("是否需要删除版本号："+version)
 }
+function search() {
+
+
+}
