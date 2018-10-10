@@ -71,7 +71,7 @@
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">MockServer</a></li>
-            <li><a href=""></a></li>
+            <li><a href="">测试工具</a></li>
             <li><a href=""></a></li>
           </ul>
             <ul class="nav nav-sidebar">
@@ -93,6 +93,7 @@
                   <th>项目描述</th>
                   <th>创建时间</th>
                     <th>结束时间</th>
+                    <th>项目状态</th>
                   <th>历史版本</th>
                     <th>操作</th>
                 </tr>
@@ -106,6 +107,7 @@
                   <td>{{pro.description}}</td>
                   <td>{{pro.createTime}}</td>
                     <td>{{ pro.endTime }}</td>
+                    <td>{{ pro.status }}</td>
                   <td>
                       <a href="/createVersion?name={{ pro.name }}">创建</a>
                       <a href="/queryVersion?user={{ username }}&name={{ pro.name }}&id={{ pro.id }}">查询</a>

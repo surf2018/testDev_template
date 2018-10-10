@@ -64,12 +64,13 @@ def createP_action(request):
         desp=request.POST['description']
         stime=request.POST['starttime']
         endtime=request.POST['endtime']
+        status=request.POST['status']
         if(pname=="" or desp=="" or stime==""):
             error={"error":"项目名,项目描述和创建时间不能为空"}
             return render(request,"createProject.html",error)
         else:
             #write to database
-            project=Project(name=pname,description=desp,createTime=stime,endTime=endtime)
+            project=Project(name=pname,description=desp,createTime=stime,endTime=endtime,status=status)
             project.save()
             return HttpResponseRedirect("/broadcast")
 def createVersion(request):
@@ -115,7 +116,8 @@ def editProject(request):
     pname=request.GET['name']
     pid=request.GET['id']
     pro=Project.objects.filter(name=pname,id=pid)
-    context={'pid':pid,'projectname':pname,'description':pro[0].description,'starttime':pro[0].createTime,'endtime':pro[0].endTime}
+    context={'pid':pid,'projectname':pname,'description':pro[0].description,'starttime':pro[0].createTime,'endtime':pro[0].endTime,'status':pro[0].status}
+    print("context:"+str(context))
     return render(request,"editProject.html",context)
 def editP_action(request):
     #数据库中更新数据
@@ -124,8 +126,9 @@ def editP_action(request):
     newdep=request.POST['description']
     newStartTime=request.POST['starttime']
     newendTime=request.POST['endtime']
+    newstatus=request.POST['status']
     if(newname!=''and newdep!='' and newStartTime!=''):
-        Project.objects.filter(id=id).update(name=newname,description=newdep,createTime=newStartTime,endTime=newendTime)
+        Project.objects.filter(id=id).update(name=newname,description=newdep,createTime=newStartTime,endTime=newendTime,status=newstatus)
         return HttpResponseRedirect("/broadcast")
     else:
         context={'error':'项目名，项目描述，项目开始时间不能为空！'}

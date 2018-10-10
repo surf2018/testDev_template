@@ -9,6 +9,7 @@ class Project(models.Model):
     name=models.CharField(max_length=20)
     description=models.TextField(max_length=50)
     createTime=models.CharField(max_length=20)
+    status=models.BooleanField("status:",default=True)
     endTime=models.CharField(max_length=20,default="2099-12-30")
     def __unicode__(self):
         return self.name
