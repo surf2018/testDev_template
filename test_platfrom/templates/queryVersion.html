@@ -102,18 +102,18 @@
                     <th>操作</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="vertable">
               {% for ver in versions %}
-                <tr>
+                <tr id="verinfo">
 {#                    <td>{{ver.id}}</td>#}
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ver.version}}</td>
-                    <td>{{ver.description}}</td>
-                    <td>{{ver.release}}</td>
-                    <td>{{ver.createtime }}</td>
-                    <td>{{ver.endtime }}</td>
-                    <td>{{ ver.Criticalbugs }}</td>
-                    <td>{{ ver.Majorbugs }}</td>
+                    <td id='id'>{{ forloop.counter }}</td>
+                    <td id="ver">{{ver.version}}</td>
+                    <td id="desp">{{ver.description}}</td>
+                    <td id="release">{{ver.release}}</td>
+                    <td id="ctime">{{ver.createtime }}</td>
+                    <td id="endt">{{ver.endtime }}</td>
+                    <td id="cbugs">{{ ver.Criticalbugs }}</td>
+                    <td id="mbugs">{{ ver.Majorbugs }}</td>
                     <td>
                     <a href="/editVersion?vid={{ ver.id }}">编辑</a>
                     <a href="/delVersion?vid={{ ver.id }}" onclick="delversion('{{ ver.version }}')">删除</a>
@@ -151,13 +151,16 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"><\/script>')</script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+    <script src="../static/bootstrap/js/jquery.min.js"></script>
+    <script src="../static/bootstrap/js/versionManager.js"  async="false"></script>
+    <script>window.jQuery || document.write('<script src="../static/bootstrap/js/jquery.min.js"><\/script>')</script>
+    <!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="https://v3.bootcss.com/assets/js/vendor/holder.min.js"></script>
+    <script src="https://v3.bootcss.com/assets/js/vendor/holder.min.js" ></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="https://v3.bootcss.com/assets/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="../static/bootstrap/js/projectManager.js"></script>
+    <script src="https://v3.bootcss.com/assets/js/ie10-viewport-bug-workaround.js" ></script>
+    <script src="../static/bootstrap/js/projectManager.js"  async="false"></script>
   </body>
 </html>
