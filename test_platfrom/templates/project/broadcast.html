@@ -31,7 +31,7 @@
                             <a href="/project/dashboard?type=vlist&pname={{ pro.name }}&pid={{ pro.id }}">查询</a>
                         </td>
                         <td>
-                            <a href="/project/dashboard?type=ep&name={{ pro.name }}&id={{ pro.id }}">编辑</a>
+                            <a href="/project/editProject?name={{ pro.name }}&id={{ pro.id }}">编辑</a>
                             <a href="/project/dashboard?type=delp&name={{ pro.name }}&id={{ pro.id }}" onclick="delpop('{{ pro.name }}')">删除</a>
                         </td>
                     </tr>
@@ -47,19 +47,19 @@
                 <button name="submit">提交</button>
             </div>
         </form>
-    {% elif type='delp' %}
-
-    {% elif type='ep' %}
-        <h1 class="page-header">编辑项目</h1>
+    {% elif type == 'ep' %}
+        <h1 class="page-header">编辑{{ projectname }}项目</h1>
         <form action="/project/editP_action/" method="post">
             {% csrf_token %}
             {% for field in form %}
+                <div class="form-group">
+                    {{ field.label }}:{{ projects.}}
+                </div>
+            {% endfor %}
             <div class="form-group">
                 <button name="submit">提交</button>
             </div>
         </form>
-    {% elif type='vcreate' %}
-    {% elif type='vlist' %}
     {% endif %}
 {% endblock %}
 {% block js %}

@@ -85,11 +85,10 @@ def editProject(request):
     pname=request.GET['name']
     pid=request.GET['id']
     pro=Project.objects.get(id=pid)
-    context = {'pid': pid, 'projectname': pname, 'projects': pro}
-    # context={'pid':pid,'projectname':pname,'description':pro[0].description,'starttime':pro[0].createTime,'endtime':pro[0].endTime,'status':pro[0].status}
-    print("context:"+str(context))
-    print("status:"+str(pro.status))
-    return render(request,"editProject.html",context)
+    form=ProjectForm()
+    type='ep'
+    context = {'pid': pid, 'projectname': pname, 'projects': pro,'form':form,'type':'ep'}
+    return render(request,"project/broadcast.html",context)
 def editP_action(request):
     #数据库中更新数据
     id=request.GET['id']
