@@ -5,6 +5,7 @@
     {% load bootstrap3 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    {% load staticfiles  %}
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,9 +13,9 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
     <title>Django Page</title>     <!-- Bootstrap core CSS -->
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="https://v3.bootcss.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">     <!-- Custom styles for this template -->
-    <link href="https://v3.bootcss.com/examples/signin/signin.css" rel="stylesheet">
+    <!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <link href="https://v3.bootcss.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->   <!-- Custom styles for this template -->
+    <link href="{% static 'bootstrap/css/signin.css'%}" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="https://v3.bootcss.com/assets/js/ie-emulation-modes-warning.js"></script>
@@ -24,7 +25,7 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-signin" action="/login_action/" method="post">
+    <form class="form-signin" action="/user/login_action/" method="post">
         <h2 class="form-signin-heading">测试平台</h2>
         <p></p>
         <label for="inputUserName" class="sr-only">username</label>

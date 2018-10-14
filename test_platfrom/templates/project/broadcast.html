@@ -1,0 +1,93 @@
+{% extends "project/base.html" %}
+{% load staticfiles  %}
+{% block content %}
+    {% if type == 'plist' %}
+        <h1 class="page-header">项目列表<button id="create-button" type="button" onclick="createPorject('pcreate')">创建</button></h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                      <th>项目名称</th>
+                      <th>项目描述</th>
+                      <th>创建时间</th>
+                      <th>结束时间</th>
+                      <th>项目状态</th>
+                      <th>历史版本</th>
+                      <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pro in projects %}
+                    <tr>
+{#                  <td>{{pro.id}}</td>#}
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{pro.name}}</td>
+                        <td>{{pro.description}}</td>
+                        <td>{{pro.createTime}}</td>
+                        <td>{{ pro.endTime }}</td>
+                        <td>{{ pro.status }}</td>
+                        <td>
+                            <a href="/project/dashboard?type=vcreate&pname={{ pro.name }}">创建</a>
+                            <a href="/project/dashboard?type=vlist&pname={{ pro.name }}&pid={{ pro.id }}">查询</a>
+                        </td>
+                        <td>
+                            <a href="/project/dashboard?type=ep&name={{ pro.name }}&id={{ pro.id }}">编辑</a>
+                            <a href="/project/dashboard?type=delp&name={{ pro.name }}&id={{ pro.id }}" onclick="delpop('{{ pro.name }}')">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% elif type == 'pcreate' %}
+        <h1 class="page-header">新建项目</h1>
+        <form action="/project/createP_action/" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-group">
+                <button name="submit">提交</button>
+            </div>
+        </form>
+    {% elif type='delp' %}
+
+    {% elif type='ep' %}
+        <h1 class="page-header">编辑项目</h1>
+        <form action="/project/editP_action/" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <button name="submit">提交</button>
+            </div>
+        </form>
+    {% elif type='vcreate' %}
+    {% elif type='vlist' %}
+    {% endif %}
+{% endblock %}
+{% block js %}
+  <script src="{% static '/bootstrap/js/projectManager.js' %}"></script>
+{% endblock %}
+
+{% block pagination %}
+    {% if type == 'plist' %}
+        <ul class="pagination" id="pager">
+          {% if projects.has_previous %}
+          <li class="previous"><a href="?page={{ projects.previous_page_number }}">上一页</a></li>
+          {% else %}
+          <li class="previous disabled"><a href="#">上一页</a></li>
+          {% endif %}
+          {#页码 #}
+          {% for num in projects.paginator.page_range %}
+            {% if num == projects.number %}
+                <li class="item active"><a href="?page={{ num }}">{{ num }}</a></li>
+            {% else %}
+                <li class="item"><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% if projects.has_next %}
+            <li class="next"><a href="?page={{ projects.next_page_number }}">下一页</a></li>
+          {% else %}
+             <li class="next disabled"><a href="#">下一页</a></li>
+          {% endif %}
+               {# 下一页按钮结束#}
+          </ul>
+    {% endif %}
+{% endblock %}
