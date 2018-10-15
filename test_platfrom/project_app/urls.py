@@ -21,16 +21,16 @@ from project_app import views
 urlpatterns = [
     path('dashboard/',views.dashboard),
     path('createP_action/',views.createP_action),
-    path('createVersion/',views.createVersion),
-    path('createV_acton/',views.createV_acton),
-    path('queryVersion/',views.queryVersion),
     path('editProject/',views.editProject),
-    path('editP_acton/',views.editP_action),
+    path('editP_action/',views.editP_action),
     path('delProject/',views.delProject),
+    path('createVersion/', views.createVersion),
+    path('createV_acton/', views.createV_acton),
+    # path('queryVersion/', views.queryVersion),
     path('editVersion/',views.editVersion),
     path('editV_acton/',views.editV_action),
     path('delVersion/',views.delVersion),
-    path('search/',views.searchp),
-    path("searchV/",views.searchv),
+    path('searchp/',views.searchp),
+    path("searchv/",views.searchv),
 
 ]

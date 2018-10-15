@@ -27,12 +27,12 @@
                         <td>{{ pro.endTime }}</td>
                         <td>{{ pro.status }}</td>
                         <td>
-                            <a href="/project/dashboard?type=vcreate&pname={{ pro.name }}">创建</a>
+                            <a href="/project/createVersion?type=vcreate&pname={{ pro.name }}&pid={{pro.id}}">创建</a>
                             <a href="/project/dashboard?type=vlist&pname={{ pro.name }}&pid={{ pro.id }}">查询</a>
                         </td>
                         <td>
                             <a href="/project/editProject?name={{ pro.name }}&id={{ pro.id }}">编辑</a>
-                            <a href="/project/dashboard?type=delp&name={{ pro.name }}&id={{ pro.id }}" onclick="delpop('{{ pro.name }}')">删除</a>
+                            <a href="/project/delProject?name={{ pro.name }}&id={{ pro.id }}" onclick="delpop('{{ pro.name }}')">删除</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -44,26 +44,93 @@
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-group">
-                <button name="submit">提交</button>
+                <button type='submit' name="submit">提交</button>
             </div>
         </form>
-    {% elif type == 'ep' %}
+    {% elif type == 'editp' %}
         <h1 class="page-header">编辑{{ projectname }}项目</h1>
-        <form action="/project/editP_action/" method="post">
+        <form action="/project/editP_action/?pid={{pid}}" method="post">
             {% csrf_token %}
-            {% for field in form %}
-                <div class="form-group">
-                    {{ field.label }}:{{ field}} {{ field.error }}
-                </div>
-            {% endfor %}
+            {{form.as_p}}
+            <!--{% for field in form %}-->
+                <!--<div class="form-group">-->
+                    <!--{{ field.label }}:{{ field}} {{ field.error }}-->
+                <!--</div>-->
+            <!--{% endfor %}-->
             <div class="form-group">
-                <button name="submit">提交</button>
+                <button type="submit" name="submit">保存</button>
             </div>
         </form>
+    {% elif type == 'editv' %}
+        <h1 class="page-header">编辑版本{{ versionInfo.version }}</h1>
+        <form action="/project/editV_acton/?vid={{versionInfo.id}}" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <!--{% for field in form %}-->
+                <!--<div class="form-group">-->
+                    <!--{{ field.label }}:{{ field}} {{ field.error }}-->
+                <!--</div>-->
+            <!--{% endfor %}-->
+            <div class="form-group">
+                <button type="submit" name="submit">保存</button>
+            </div>
+        </form>
+    {% elif type == 'vcreate' %}
+        <h1 class="page-header">创建{{ projectname }}项目版本</h1>
+        <form action="/project/createV_acton/?pid={{pid}}" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <!--{% for field in form %}-->
+                <!--<div class="form-group">-->
+                    <!--{{ field.label }}:{{ field}} {{ field.error }}-->
+                <!--</div>-->
+            <!--{% endfor %}-->
+            <div class="form-group">
+                <button type="submit" name="submit">提交</button>
+            </div>
+        </form>
+    {% elif type == 'vlist' %}
+        <h1 class="page-header">{{pname}}版本列表<button id="create-button" type="button" onclick="createVersion('{{ pname }}','{{pid}}')">创建</button></h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                      <th>版本号</th>
+                      <th>版本描述</th>
+                      <th>创建时间</th>
+                      <th>结束时间</th>
+                      <th>release状态</th>
+                      <th>Critical bugs</th>
+                      <th>Major bugs</th>
+                      <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="vertable">
+                {% for ver in verinfos %}
+                    <tr>
+                        <!--<td>{{ver.id}}</td>-->
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ ver.version }}</td>
+                        <td>{{ ver.description }}</td>
+                        <td>{{ ver.createtime}}</td>
+                        <td>{{ ver.endtime }}</td>
+                        <td>{{ ver.release }}</td>
+                        <td>{{ ver.Criticalbugs }}</td>
+                        <td>{{ ver.Majorbugs }}</td>
+                        <td>
+                            <a href="/project/editVersion?vid={{ ver.id }}">编辑</a>
+                            <a href="/project/delVersion?vname={{ ver.version }}&vid={{ ver.id }}" onclick="delVpop('{{ ver.version }}')">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% endif %}
 {% endblock %}
+
 {% block js %}
   <script src="{% static '/bootstrap/js/projectManager.js' %}"></script>
+  <script src="{% static '/bootstrap/js/versionManager.js' %}"></script>
 {% endblock %}
 
 {% block pagination %}
@@ -89,5 +156,44 @@
           {% endif %}
                {# 下一页按钮结束#}
           </ul>
+    {% elif type == 'vlist' %}
+        <ul class="pagination" id="pager">
+          {% if verinfos.has_previous %}
+          <li class="previous"><a href="?page={{ verinfos.previous_page_number }}">上一页</a></li>
+          {% else %}
+          <li class="previous disabled"><a href="#">上一页</a></li>
+          {% endif %}
+          {#页码 #}
+          {% for num in verinfos.paginator.page_range %}
+            {% if num == verinfos.number %}
+                <li class="item active"><a href="?page={{ num }}">{{ num }}</a></li>
+            {% else %}
+                <li class="item"><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% if verinfos.has_next %}
+            <li class="next"><a href="?page={{ verinfos.next_page_number }}">下一页</a></li>
+          {% else %}
+             <li class="next disabled"><a href="#">下一页</a></li>
+          {% endif %}
+               {# 下一页按钮结束#}
+          </ul>
     {% endif %}
 {% endblock %}
+{% block search %}
+    {% if type == 'plist' %}
+        <form class="navbar-form navbar-right" action="/project/searchp/" method="get">
+          {%  csrf_token %}
+        <input type="text" class="form-control" name="search" placeholder="project Name,descripiton...">
+          <button type="submit" id="search" >搜索</button>
+          <p><font color="red" >{{ error }}</font></p>
+      </form>
+    {% elif type == 'vlist' %}
+         <form class="navbar-form navbar-right" action="/project/searchv" method="get">
+          {%  csrf_token %}
+        <input type="text" class="form-control" name="search" placeholder="version">
+          <button type="submit" id="search" >搜索</button>
+          <p><font color="red" >{{ error }}</font></p>
+      </form>
+    {% endif %}
+{%endblock %}

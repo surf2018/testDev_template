@@ -6,6 +6,7 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model=Project
         fields=['name','description','createTime','status','endTime']
+
 class VerForm(forms.ModelForm):
     class Meta:
         model=Version

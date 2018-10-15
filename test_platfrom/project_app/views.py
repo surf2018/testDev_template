@@ -27,10 +27,30 @@ def dashboard(request):
         projects = paginator.page(1)
     except EmptyPage:
         projects = paginator.page(paginator.num_pages)
-    context={'username':username,'projects':projects,'type':type}
+    context = {'username': username, 'projects': projects, 'type': type}
     if(type=='pcreate'):
         form=ProjectForm()
-        context['form']=form
+        context = {'username': username, 'projects': projects, 'type': type,'form':form}
+    elif(type=='vlist'):
+        pid=request.GET['pid']
+        request.session['pid'] = pid
+        project=Project.objects.get(id=pid)
+        pname=project.name
+        request.session['pname']=pname
+        verinfos = Version.objects.filter(project_id=pid)
+        # versions =Version.objects.get_queryset().order_by('id')
+        # 分页
+        paginator = Paginator(verinfos, 10)
+        page = request.GET.get('page', 1)
+        curpage = int(page)
+        try:
+            print(page)
+            verinfos = paginator.page(curpage)
+        except PageNotAnInteger:
+            verinfos = paginator.page(1)
+        except EmptyPage:
+            verinfos = paginator.page(paginator.num_pages)
+        context = {'verinfos': verinfos,'type':type,'pname':pname,'pid':pid,'username': username}
     #query databases dispaly all projects
     return render(request,'project/broadcast.html',context)
 
@@ -43,58 +63,60 @@ def createP_action(request):
             form.save()
             return HttpResponseRedirect("/project/dashboard?type=plist")
 def createVersion(request):
-    pname=request.GET['name']
-    context={'projectname':pname}
-    return render(request,"createVersion.html",context)
+    pname=request.GET['pname']
+    pid=request.GET['pid']
+    form=VerForm()
+    type='vcreate'
+    usename=request.session.get('username','')
+    context={'projectname':pname,'form':form,'type':type,'pid':pid,'username':usename}
+    return render(request,"project/broadcast.html",context)
 
 def createV_acton(request):
     #写入数据
-    if(request.method=='POST'):
-        username=request.session.get("username","")
-        projectname=request.GET['name']
-        pinfo=Project.objects.get(name=projectname)
-        version=request.POST['version']
-        desp=request.POST['description']
-        starttime=request.POST['starttime']
-        release=request.POST['isrelease']
-        endtime=request.POST['endtime']
-        criticals=request.POST['critical']
-        majors=request.POST['major']
-        pversion=Version(version=version,description=desp,release=release,project_id=pinfo.id,createtime=starttime,endtime=endtime,Criticalbugs=criticals,Majorbugs=majors)
-        pversion.save()
-        return HttpResponseRedirect("/queryVersion/?user="+username+"&name="+projectname+"&id="+str(pinfo.id))
-def queryVersion(request):
-    user=request.session.get('username',"")
-    pname=request.GET['name']
-    pid=request.GET['id']
-    #查询数据库
-    verinfo=Version.objects.filter(project_id=pid)
-    #分页
-    paginator=Paginator(verinfo,10)
-    page=request.GET.get('page',1)
-    curpage=int(page)
-    try:
-        verinfo=paginator.page(curpage)
-    except PageNotAnInteger:
-        verinfo.paginator.page(1)
-    except EmptyPage:
-        verinfo.paginator.page(paginator.num_pages)
-    context={'user':user,'projectname':pname,"projectid":pid,"versions":verinfo}
-    return render(request,"queryVersion.html",context)
+    pid=request.GET['pid']
+    if(request.method!='POST'):
+        form=VerForm()
+    else:
+        form=VerForm(request.POST)
+        if(form.is_valid()):
+            form.instance.project_id=pid
+            form.save()
+            return HttpResponseRedirect("/project/dashboard?type=vlist&pid="+pid)
+# def queryVersion(request):
+#     user=request.session.get('username',"")
+#     pname=request.GET['name']
+#     pid=request.GET['id']
+#     #查询数据库
+#     verinfo=Version.objects.filter(project_id=pid)
+#     #分页
+#     paginator=Paginator(verinfo,10)
+#     page=request.GET.get('page',1)
+#     curpage=int(page)
+#     try:
+#         verinfo=paginator.page(curpage)
+#     except PageNotAnInteger:
+#         verinfo.paginator.page(1)
+#     except EmptyPage:
+#         verinfo.paginator.page(paginator.num_pages)
+#     context={'user':user,'projectname':pname,"projectid":pid,"versions":verinfo}
+#     return render(request,"queryVersion.html",context)
 def editProject(request):
     pname=request.GET['name']
     pid=request.GET['id']
     pro=Project.objects.get(id=pid)
-    form=ProjectForm()
-    type='ep'
-    context = {'pid': pid, 'projectname': pname, 'projects': pro,'form':form,'type':'ep'}
+    form=ProjectForm(instance=pro)
+    type='editp'
+    username=request.session.get('username','')
+    context = {'pid': pid, 'projectname': pname,'form':form,'type':type,'username':username}
     return render(request,"project/broadcast.html",context)
 def editP_action(request):
     #数据库中更新数据
     if (request.method != 'POST'):
         form = ProjectForm()
     else:
-        form = ProjectForm(request.POST)
+        pid=request.GET['pid']
+        pro=Project.objects.get(id=pid)
+        form = ProjectForm(request.POST,instance=pro)
         if (form.is_valid()):
             form.save()
             return HttpResponseRedirect("/project/dashboard?type=plist")
@@ -103,32 +125,29 @@ def delProject(request):
     id=request.GET['id']
     #删除数据库
     Project.objects.filter(id=id).delete()
-    return HttpResponseRedirect("/broadcast")
+    return HttpResponseRedirect("/project/dashboard?type=plist")
 def editVersion(request):
     vid=request.GET['vid']
     #query数据库
     verInfo=Version.objects.get(id=vid)
-    return render(request,"editVersion.html",{'versionInfo':verInfo})
+    form=VerForm(instance=verInfo)
+    type='editv'
+    username=request.session.get('username','')
+    context={'versionInfo':verInfo,'form':form,'type':type,'username':username}
+    return render(request,"project/broadcast.html",context)
 def editV_action(request):
-    vid=request.GET['vid']
-    newVer=request.POST['versionId']
-    newdesp=request.POST['verdesp']
-    newstarttime=request.POST['starttime']
-    newendtime=request.POST['endtime']
-    newcritical=request.POST['critical']
-    newmajor=request.POST['major']
-    newrelease=request.POST['isrelease']
-    if(newVer!=''and newdesp!=''and newstarttime!=''and newendtime!=''and newcritical!=''and newmajor!=''and newrelease!=''):
-        Version.objects.filter(id=vid).update(version=newVer,description=newdesp,createtime=newstarttime,endtime=newendtime,Criticalbugs=newcritical,Majorbugs=newmajor,release=newrelease)
-        vinfo=Version.objects.get(id=vid)
-        pid=vinfo.project_id
-        pinfo=Project.objects.get(id=pid)
-        pname=pinfo.name
-        username=request.session.get("username","")
-        return HttpResponseRedirect("/queryVersion/?user="+username+"&name="+pname+"&id="+str(pid))
+    if (request.method != 'POST'):
+        form = ProjectForm()
     else:
-        context={'error':"所有选项不能为空！"}
-        return render(request,"editVersion.hml",context)
+        vid = request.GET['vid']
+        verinfo=Version.objects.get(id=vid)
+        pid=verinfo.project_id
+        pro=Project.objects.get(id=pid)
+        pname=pro.name
+        form = VerForm(request.POST,instance=verinfo)
+        if (form.is_valid()):
+            form.save()
+            return HttpResponseRedirect("/project/dashboard?type=vlist&pname="+pname+"&pid="+str(pid))
 def delVersion(request):
     vid=request.GET['vid']
     vinfo = Version.objects.get(id=vid)
@@ -137,16 +156,16 @@ def delVersion(request):
     pname = pinfo.name
     Version.objects.filter(id=vid).delete()
     user=request.session.get("username","")
-    return HttpResponseRedirect("/queryVersion/?user="+user+"&name="+pname+"&id="+str(pid))
+    return HttpResponseRedirect("/project/dashboard?type=vlist&pname="+pname+"&pid="+str(pid))
 def searchp(request):
     query_text=request.GET['search']
     if(query_text==""):
         projectInfo=Project.objects.all()
         # contex={"error":"请输入搜索字符"}
-        return HttpResponseRedirect("/broadcast",projectInfo)
+        return HttpResponseRedirect("/project/dashboard/?type=plist",projectInfo)
     else:
         username = request.session.get('username', '')
-        projectInfo=Project.objects.filter(Q(name__icontains=query_text)|Q(description__icontains=query_text) |Q(createTime__icontains=query_text)|Q(endTime__icontains=query_text))
+        projectInfo=Project.objects.filter(Q(name__icontains=query_text)|Q(description__icontains=query_text) )
         paginator=Paginator(projectInfo,10)
         page=request.GET.get("page",1)
         curpage=int(page)
@@ -156,19 +175,22 @@ def searchp(request):
             projectInfo=paginator.page(1)
         except EmptyPage:
             projectInfo=paginator.page(paginator.num_pages)
-        contex={'projects':projectInfo,'username':username}
-        return render(request,"broadcast.html",contex)
+        context={'projects':projectInfo,'username':username,'type':'plist'}
+        return render(request,"project/broadcast.html",context)
 def searchv(request):
     query_text=request.GET['search']
-    pname=request.GET['projectname']
+    # url=request.get_full_path()
+    pname=request.session.get('pname','')
+    pid=request.session.get('pid','')
     username = request.session.get("username", "")
-    pinfo=Project.objects.get(name=pname)
-    pid=pinfo.id
+    type='vlist'
     versionInfo=Version.objects.filter(project_id=pid)
     if(query_text==""):
-        context={"projectname":pname,'versions':versionInfo,'user':username}
-        return render(request,"queryVersion.html",context)
+        context={'versions':versionInfo,'user':username}
+        return HttpResponseRedirect("/project/dashboard/?type=vlist&pname="+pname+"&pid="+str(pid),context)
     else:
-        versionInfo=Version.objects.filter(project_id=pid).filter(Q(version__icontains=query_text)|Q(description__icontains=query_text)|Q(release__icontains=query_text)|Q(createtime__icontains=query_text)|Q(endtime__icontains=query_text)|Q(Criticalbugs__icontains=query_text)|Q(Majorbugs__icontains=query_text))
-        return render(request,"queryVersion.html",{'versions':versionInfo,'user':username,'projectname':pname})
+        versionInfo=Version.objects.filter(project_id=pid).filter(Q(version__icontains=query_text)|Q(description__icontains=query_text))
+        print("versionInfo:"+str(versionInfo))
+        context={'verinfos':versionInfo,'user':username,'pname':pname,'type':type,"pid":pid,'type':'vlist'}
+        return render(request,"project/broadcast.html",context)
 # Create your views here.

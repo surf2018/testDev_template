@@ -13,7 +13,7 @@
   <!--  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
     <link href="{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="https://v3.bootcss.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!--<link href="https://v3.bootcss.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
     <link href="{% static 'bootstrap/css/broadcast.css'%}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -39,12 +39,8 @@
             <li><a href="#">{{ username }}</a></li>
             <li><a href="/user/logout">Sign Out</a></li>
           </ul>
-          <form class="navbar-form navbar-right" action="/search/" method="get">
-              {%  csrf_token %}
-            <input type="text" class="form-control" name="search" placeholder="Name,description,starttime">
-              <button type="submit" id="search" >搜索</button>
-              <p><font color="red" >{{ error }}</font></p>
-          </form>
+          {% block search %}
+          {% endblock %}
         </div>
       </div>
     </nav>
@@ -87,11 +83,11 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{% static '/bootstrap/js/jquery.min.js' %}"></script>
     <script>window.jQuery || document.write('<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"><\/script>')</script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="https://v3.bootcss.com/assets/js/vendor/holder.min.js"></script>
+    <script src="{% static '/bootstrap/js/holder.min.js' %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="https://v3.bootcss.com/assets/js/ie10-viewport-bug-workaround.js"></script>
     {% block js %}

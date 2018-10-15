@@ -1,9 +1,10 @@
 var verList=$('#vertable').children('tr')
 for (var i=0;i<verList.length;i++){
   var tr=verList.eq(i)
-  var tdobject=verList.eq(i).find('td')
-  var release=tdobject.eq(3).text()
-    if(release=='Y') {
+  var tdobject=tr.find('td')
+  var release=tdobject.eq(5).text()
+    if(release=='True') {
+      console.log(release)
         tr.css("background", "yellow")
     }
 }
