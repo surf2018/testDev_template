@@ -91,18 +91,13 @@ def editProject(request):
     return render(request,"project/broadcast.html",context)
 def editP_action(request):
     #数据库中更新数据
-    id=request.GET['id']
-    newname=request.POST['name']
-    newdep=request.POST['description']
-    newStartTime=request.POST['starttime']
-    newendTime=request.POST['endtime']
-    newstatus=request.POST['status']
-    if(newname!=''and newdep!='' and newStartTime!=''):
-        Project.objects.filter(id=id).update(name=newname,description=newdep,createTime=newStartTime,endTime=newendTime,status=newstatus)
-        return HttpResponseRedirect("/broadcast")
+    if (request.method != 'POST'):
+        form = ProjectForm()
     else:
-        context={'error':'项目名，项目描述，项目开始时间不能为空！'}
-        render(request,"editProject.html",context)
+        form = ProjectForm(request.POST)
+        if (form.is_valid()):
+            form.save()
+            return HttpResponseRedirect("/project/dashboard?type=plist")
 def delProject(request):
     # name=request.GET['name']
     id=request.GET['id']
