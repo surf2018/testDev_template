@@ -2,7 +2,7 @@ function createPorject(pn){
   window.location.href="/project/dashboard?type="+pn
 }
 function createVersion(pname,pid){
-  window.location.href="/project/createVersion?type=vcreate&pname="+pname+"&pid="+pid
+  window.location.href="/project/createVersion/"+pid+"/"+pname+"/vcreate"
 }
 // function broadcast() {
 //   window.location.href="/broadcast"

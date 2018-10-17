@@ -29,13 +29,12 @@
                     <td>{{ pro.endTime }}</td>
                     <td>{{ pro.status }}</td>
                     <td>
-                        <a href="/project/createVersion?type=vcreate&pname={{ pro.name }}&pid={{ pro.id }}">创建</a>
+                        <a href="/project/createVersion/{{ pro.id }}/{{ pro.name }}/vcreate">创建</a>
                         <a href="/project/dashboard?type=vlist&pname={{ pro.name }}&pid={{ pro.id }}">查询</a>
                     </td>
                     <td>
-                        <a href="/project/editProject?name={{ pro.name }}&id={{ pro.id }}">编辑</a>
-                        <a href="/project/delProject?name={{ pro.name }}&id={{ pro.id }}"
-                           onclick="delpop('{{ pro.name }}')">删除</a>
+                        <a href="/project/editProject/{{ pro.id }}">编辑</a>
+                        <a href="/project/delProject/{{ pro.id }}" onclick="delpop('{{ pro.name }}')">删除</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -52,7 +51,7 @@
         </form>
     {% elif type == 'editp' %}
         <h1 class="page-header">编辑{{ projectname }}项目</h1>
-        <form action="/project/editP_action/?pid={{ pid }}" method="post">
+        <form action="/project/editP_action/{{ pid }}/" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <!--{% for field in form %}-->
@@ -66,7 +65,7 @@
         </form>
     {% elif type == 'editv' %}
         <h1 class="page-header">编辑版本{{ versionInfo.version }}</h1>
-        <form action="/project/editV_acton/?vid={{ versionInfo.id }}" method="post">
+        <form action="/project/editV_acton/{{ versionInfo.id }}/" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <!--{% for field in form %}-->
@@ -80,7 +79,7 @@
         </form>
     {% elif type == 'vcreate' %}
         <h1 class="page-header">创建{{ projectname }}项目版本</h1>
-        <form action="/project/createV_acton/?pid={{ pid }}" method="post">
+        <form action="/project/createV_acton/{{ pid }}/" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <!--{% for field in form %}-->
@@ -123,9 +122,8 @@
                     <td>{{ ver.Criticalbugs }}</td>
                     <td>{{ ver.Majorbugs }}</td>
                     <td>
-                        <a href="/project/editVersion?vid={{ ver.id }}">编辑</a>
-                        <a href="/project/delVersion?vname={{ ver.version }}&vid={{ ver.id }}"
-                           onclick="delVpop('{{ ver.version }}')">删除</a>
+                        <a href="/project/editVersion/{{ ver.id }}">编辑</a>
+                        <a href="/project/delVersion/{{ ver.id }}" onclick="delVpop('{{ ver.version }}')">删除</a>
                     </td>
                 </tr>
             {% endfor %}

@@ -67,9 +67,9 @@ def createP_action(request):
             return HttpResponseRedirect("/project/dashboard?type=plist")
 
 
-def createVersion(request):
-    pname = request.GET['pname']
-    pid = request.GET['pid']
+def createVersion(request,pid,pname):
+    # pname = request.GET['pname']
+    # pid = request.GET['pid']
     form = VerForm()
     type = 'vcreate'
     usename = request.session.get('username', '')
@@ -77,9 +77,8 @@ def createVersion(request):
     return render(request, "project/broadcast.html", context)
 
 
-def createV_acton(request):
+def createV_acton(request,pid):
     # 写入数据
-    pid = request.GET['pid']
     if (request.method != 'POST'):
         form = VerForm()
     else:
@@ -87,13 +86,14 @@ def createV_acton(request):
         if (form.is_valid()):
             form.instance.project_id = pid
             form.save()
-            return HttpResponseRedirect("/project/dashboard?type=vlist&pid=" + pid)
+            return HttpResponseRedirect("/project/dashboard?type=vlist&pid=" + str(pid))
 
 
-def editProject(request):
-    pname = request.GET['name']
-    pid = request.GET['id']
+def editProject(request,pid):
+    # pname = request.GET['name']
+    # pid = request.GET['id']
     pro = Project.objects.get(id=pid)
+    pname=pro.name
     form = ProjectForm(instance=pro)
     type = 'editp'
     username = request.session.get('username', '')
@@ -101,12 +101,12 @@ def editProject(request):
     return render(request, "project/broadcast.html", context)
 
 
-def editP_action(request):
+def editP_action(request,pid):
     # 数据库中更新数据
     if (request.method != 'POST'):
         form = ProjectForm()
     else:
-        pid = request.GET['pid']
+        # pid = request.GET['pid']
         pro = Project.objects.get(id=pid)
         form = ProjectForm(request.POST, instance=pro)
         if (form.is_valid()):
@@ -114,16 +114,13 @@ def editP_action(request):
             return HttpResponseRedirect("/project/dashboard?type=plist")
 
 
-def delProject(request):
-    # name=request.GET['name']
-    id = request.GET['id']
+def delProject(request,pid):
     # 删除数据库
-    Project.objects.filter(id=id).delete()
+    Project.objects.filter(id=pid).delete()
     return HttpResponseRedirect("/project/dashboard?type=plist")
 
 
-def editVersion(request):
-    vid = request.GET['vid']
+def editVersion(request,vid):
     # query数据库
     verInfo = Version.objects.get(id=vid)
     form = VerForm(instance=verInfo)
@@ -133,11 +130,10 @@ def editVersion(request):
     return render(request, "project/broadcast.html", context)
 
 
-def editV_action(request):
+def editV_action(request,vid):
     if (request.method != 'POST'):
         form = ProjectForm()
     else:
-        vid = request.GET['vid']
         verinfo = Version.objects.get(id=vid)
         pid = verinfo.project_id
         pro = Project.objects.get(id=pid)
@@ -148,8 +144,7 @@ def editV_action(request):
             return HttpResponseRedirect("/project/dashboard?type=vlist&pname=" + pname + "&pid=" + str(pid))
 
 
-def delVersion(request):
-    vid = request.GET['vid']
+def delVersion(request,vid):
     vinfo = Version.objects.get(id=vid)
     pid = vinfo.project_id
     pinfo = Project.objects.get(id=pid)
