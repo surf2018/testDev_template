@@ -9,7 +9,7 @@ class Project(models.Model):
     createTime=models.DateField(max_length=20)
     status=models.BooleanField("status",default=True)
     endTime=models.DateField(max_length=20)
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 class Version(models.Model):
@@ -21,5 +21,5 @@ class Version(models.Model):
     Criticalbugs=models.CharField(max_length=20,default='0')
     Majorbugs=models.CharField(max_length=20,default='0')
     project=models.ForeignKey(Project,on_delete=models.CASCADE)
-    def __unicode__(self):
+    def __str__(self):
         return self.version

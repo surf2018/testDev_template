@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project,Version
+from .models.project_models import Project,Version
 # Register your models here.
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ["name","status","createTime","endTime"]

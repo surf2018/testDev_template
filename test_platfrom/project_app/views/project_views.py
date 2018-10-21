@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponse
-from .models import Project, Version
-from .forms import ProjectForm, VerForm
+from django.http import HttpResponseRedirect
+from ..models.project_models import Project,Version
+from ..forms.project_forms import ProjectForm, VerForm
 from django.db.models import Q
 
 

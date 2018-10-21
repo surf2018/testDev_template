@@ -1,6 +1,7 @@
-from .models import Project,Version
+from ..models.project_models import Project,Version
 from django import forms
-from django.utils import timezone
+
+
 # Create your models here.
 class ProjectForm(forms.ModelForm):
     class Meta:

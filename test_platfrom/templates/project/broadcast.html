@@ -34,7 +34,7 @@
                     </td>
                     <td>
                         <a href="/project/editProject/{{ pro.id }}">编辑</a>
-                        <a href="/project/delProject/{{ pro.id }}" onclick="delpop('{{ pro.name }}')">删除</a>
+                        <a  onclick="delpop('{{ pro.name }}','{{ pro.id }}')">删除</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -123,7 +123,7 @@
                     <td>{{ ver.Majorbugs }}</td>
                     <td>
                         <a href="/project/editVersion/{{ ver.id }}">编辑</a>
-                        <a href="/project/delVersion/{{ ver.id }}" onclick="delVpop('{{ ver.version }}')">删除</a>
+                        <a onclick="delVpop('{{ ver.version }}','{{ pid }}','{{ ver.id }}')">删除</a>
                     </td>
                 </tr>
             {% endfor %}

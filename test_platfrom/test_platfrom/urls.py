@@ -22,5 +22,6 @@ urlpatterns = [
     # path('login_action/',views.login_action),
     # path('logout/',views.logout_action),
     path('project/',include('project_app.urls')),
+    path('module/',include('project_app.urls')),
 
 ]

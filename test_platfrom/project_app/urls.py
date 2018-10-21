@@ -15,21 +15,34 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from project_app import views
+from project_app.views import project_views
+from project_app.views import module_views
 # from project_app import views
 
 urlpatterns = [
-    path('dashboard/',views.dashboard),
-    path('createP_action/',views.createP_action),
-    path('editProject/<int:pid>/',views.editProject),
-    path('editP_action/<int:pid>/',views.editP_action),
-    path('delProject/<int:pid>/',views.delProject),
-    path('createVersion/<int:pid>/<str:pname>/vcreate/', views.createVersion),
-    path('createV_acton/<int:pid>/', views.createV_acton),
-    path('editVersion/<int:vid>/',views.editVersion),
-    path('editV_acton/<int:vid>/',views.editV_action),
-    path('delVersion/<int:vid>/',views.delVersion),
-    path('searchp/',views.searchp),
-    path("searchv/",views.searchv),
+    path('dashboard/',project_views.dashboard),
+    path('modulelist/',module_views.dashboard),
+
+    path('createP_action/',project_views.createP_action),
+    path('createM_action/', module_views.createM_action),
+
+    path('editProject/<int:pid>/',project_views.editProject),
+    path('editModule/<int:mid>/',module_views.editModule),
+
+    path('editP_action/<int:pid>/',project_views.editP_action),
+    path('editM_action/<int:mid>/',module_views.editM_action),
+
+    path('delProject/<int:pid>/',project_views.delProject),
+    path('delModule/<int:mid>/',module_views.delModule),
+
+    path('createVersion/<int:pid>/<str:pname>/vcreate/', project_views.createVersion),
+    path('createV_acton/<int:pid>/', project_views.createV_acton),
+    path('editVersion/<int:vid>/',project_views.editVersion),
+    path('editV_acton/<int:vid>/',project_views.editV_action),
+    path('delVersion/<int:vid>/',project_views.delVersion),
+    path('searchp/',project_views.searchp),
+    path("searchv/",project_views.searchv),
+    path("searchm/",module_views.searchm),
+
 
 ]
