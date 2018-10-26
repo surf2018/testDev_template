@@ -6,31 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65a8cca0-cca4-4b86-87dd-1015fdc445f5" name="Default Changelist" comment="add readme.txt">
-      <change afterPath="$PROJECT_DIR$/test_platfrom/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/project_app/forms/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/project_app/forms/module_forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/project_app/migrations/0003_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/project_app/migrations/0004_module_pname.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/project_app/migrations/0005_remove_module_pname.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/project_app/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/project_app/models/module_models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/project_app/views/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/project_app/views/module_views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/dashboard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_platfrom/templates/project/module.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_platfrom/user_app/tests/tests_user_template.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/project_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/project_app/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/project_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/project_app/forms/project_forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/project_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/project_app/models/project_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/project_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/project_app/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/project_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/project_app/views/project_views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/static/bootstrap/css/broadcast.css" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/static/bootstrap/css/broadcast.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/projectManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/projectManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/templates/project/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/templates/project/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/templates/project/broadcast.html" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/templates/project/broadcast.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/test_platfrom/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/test_platfrom/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../test_dev_template/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../test_dev_template/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_platfrom/user_app/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/user_app/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_platfrom/user_app/tests/tests_user_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/user_app/tests/tests_user_views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,12 +18,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/testDev_template$Unittests_for_tests_user_views_UserViewsTest_test_01index.coverage" NAME="Unittests for tests_user_views.UserViewsTest.test_01index Coverage Results" MODIFIED="1540470581100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_platfrom/user_app/tests" />
     <SUITE FILE_PATH="coverage/testDev_template$admin.coverage" NAME="admin Coverage Results" MODIFIED="1537540445573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/testDev_template/test_platfrom/user_app" />
     <SUITE FILE_PATH="coverage/testDev_template$manage__1_.coverage" NAME="manage (1) Coverage Results" MODIFIED="1537628883684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../testDjango" />
     <SUITE FILE_PATH="coverage/testDev_template$0001_initial.coverage" NAME="0001_initial Coverage Results" MODIFIED="1538435526133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_platfrom/user_app/migrations" />
     <SUITE FILE_PATH="coverage/testDev_template$manage__2_.coverage" NAME="manage (2) Coverage Results" MODIFIED="1537970282396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../myPoll" />
     <SUITE FILE_PATH="coverage/testDev_template$views.coverage" NAME="views Coverage Results" MODIFIED="1538149551530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_platfrom/user_app" />
-    <SUITE FILE_PATH="coverage/testDev_template$manage.coverage" NAME="manage Coverage Results" MODIFIED="1540113399949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_platfrom" />
+    <SUITE FILE_PATH="coverage/testDev_template$manage.coverage" NAME="manage Coverage Results" MODIFIED="1540526476435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_platfrom" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -87,10 +67,10 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="11" />
-          <entry key="html" value="75" />
+          <entry key="html" value="76" />
           <entry key="js" value="26" />
           <entry key="md" value="1" />
-          <entry key="py" value="185" />
+          <entry key="py" value="195" />
           <entry key="sql" value="1" />
           <entry key="txt" value="1" />
         </counts>
@@ -98,11 +78,11 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="11" />
-          <entry key="HTML" value="75" />
+          <entry key="HTML" value="76" />
           <entry key="JavaScript" value="26" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="185" />
+          <entry key="Python" value="195" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
@@ -113,7 +93,7 @@
           <entry key="html" value="7987" />
           <entry key="js" value="1361" />
           <entry key="md" value="18" />
-          <entry key="py" value="13550" />
+          <entry key="py" value="14573" />
           <entry key="sql" value="7" />
           <entry key="txt" value="193" />
         </counts>
@@ -125,7 +105,7 @@
           <entry key="JavaScript" value="1361" />
           <entry key="Markdown" value="18" />
           <entry key="PLAIN_TEXT" value="220" />
-          <entry key="Python" value="13550" />
+          <entry key="Python" value="14573" />
           <entry key="Scratch" value="7" />
         </counts>
       </usages-collector>
@@ -145,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_platfrom/manage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+            <state relative-caret-position="286">
+              <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
               <folding>
                 <element signature="e#22#31#0" expanded="true" />
               </folding>
@@ -155,10 +135,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/tests/tests_user_template.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#71#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_platfrom/project_app/views/module_views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
+            <state relative-caret-position="391">
+              <caret line="99" column="62" selection-start-line="99" selection-start-column="62" selection-end-line="99" selection-end-column="62" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -169,8 +161,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="31" column="27" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+            <state relative-caret-position="149">
+              <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -179,28 +171,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/project/broadcast.html">
+        <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/project/module.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="30" column="70" lean-forward="true" selection-start-line="30" selection-start-column="70" selection-end-line="30" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/project_app/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="44" column="17" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="17" />
+            <state relative-caret-position="177">
+              <caret line="22" column="22" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="22" />
               <folding>
                 <element signature="e#637#669#0" expanded="true" />
               </folding>
@@ -209,31 +183,40 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/projectManager.js">
+        <entry file="file://$PROJECT_DIR$/test_platfrom/templates/user/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="41" column="10" lean-forward="true" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
+            <state relative-caret-position="198">
+              <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/project_app/views/project_views.py">
+        <entry file="file://D:/Python36/Lib/site-packages/django/contrib/auth/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-88">
-              <caret line="86" column="42" lean-forward="true" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
+            <state relative-caret-position="181">
+              <caret line="362" column="34" selection-start-line="362" selection-start-column="34" selection-end-line="362" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/Python36/Lib/site-packages/django/conf/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="49">
+              <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/tests/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#0#43#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/module.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="10" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -252,9 +235,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>session</find>
-      <find>form</find>
-      <find>query</find>
       <find>logout</find>
       <find>index</find>
       <find>projectM</find>
@@ -282,6 +262,9 @@
       <find>pro</find>
       <find>searchm</find>
       <find>delmod</find>
+      <find>测试平台</find>
+      <find>create</find>
+      <find>User</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -292,9 +275,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/testDev_template/test_platfrom/test_platfrom/urls.py" />
-        <option value="$PROJECT_DIR$/../testDjango/testDjango/urls.py" />
-        <option value="$PROJECT_DIR$/../testDjango/templates/post.html" />
         <option value="$PROJECT_DIR$/../testDjango/testDjango/views.py" />
         <option value="$USER_HOME$/testDev_template/test_platfrom/test_platfrom/settings.py" />
         <option value="$PROJECT_DIR$/../myPoll/polls/models.py" />
@@ -317,7 +297,6 @@
         <option value="$PROJECT_DIR$/test_platfrom/test_platfrom/settings.py" />
         <option value="$PROJECT_DIR$/test_platfrom/static/bootstrap/css/signin.css" />
         <option value="$PROJECT_DIR$/test_platfrom/user_app/urls.py" />
-        <option value="$PROJECT_DIR$/test_platfrom/templates/user/index.html" />
         <option value="$PROJECT_DIR$/test_platfrom/static/bootstrap/css/dashboard.css" />
         <option value="$PROJECT_DIR$/test_platfrom/project_app/forms.py" />
         <option value="$PROJECT_DIR$/test_platfrom/project_app/models.py" />
@@ -343,6 +322,10 @@
         <option value="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/projectManager.js" />
         <option value="$PROJECT_DIR$/test_platfrom/templates/project/module.html" />
         <option value="$PROJECT_DIR$/test_platfrom/project_app/views/module_views.py" />
+        <option value="$PROJECT_DIR$/test_platfrom/templates/user/index.html" />
+        <option value="$PROJECT_DIR$/test_platfrom/user_app/tests/tests_user_views.py" />
+        <option value="$PROJECT_DIR$/test_platfrom/user_app/tests/__init__.py" />
+        <option value="$PROJECT_DIR$/test_platfrom/user_app/tests/tests_user_template.py" />
       </list>
     </option>
   </component>
@@ -352,9 +335,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="49" />
-    <option name="y" value="73" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="57" />
+    <option name="y" value="76" />
     <option name="width" value="1779" />
     <option name="height" value="960" />
   </component>
@@ -380,62 +363,6 @@
               <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
               <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
               <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
-              <item name="project_app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
-              <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
-              <item name="project_app" type="462c0819:PsiDirectoryNode" />
-              <item name="forms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
-              <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
-              <item name="project_app" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
-              <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
-              <item name="project_app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
-              <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
-              <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="bootstrap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
-              <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="bootstrap" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
-              <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="bootstrap" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
-              <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -443,13 +370,20 @@
               <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
               <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
               <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
               <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
+              <item name="user_app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="testDev_template" type="b2602c69:ProjectViewProjectNode" />
+              <item name="testDev_template" type="462c0819:PsiDirectoryNode" />
               <item name="test_platfrom" type="462c0819:PsiDirectoryNode" />
+              <item name="user_app" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -459,6 +393,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="ChangesTree.GroupingKeys" value="repository&#10;directory" />
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -469,19 +404,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\pycharmProjects\testDev_template\test_platfrom\user_app\tests" />
+      <recent name="D:\pycharmProjects\testDev_template\test_platfrom\static\bootstrap\js" />
+      <recent name="D:\pycharmProjects\testDev_template\test_platfrom\templates\project" />
+      <recent name="D:\pycharmProjects\testDev_template\test_platfrom\project_app\forms" />
+      <recent name="D:\pycharmProjects\testDev_template\test_platfrom\project_app\models" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\pycharmProjects\testDev_template\test_platfrom\project_app\forms" />
       <recent name="D:\pycharmProjects\testDev_template\test_platfrom\project_app\models" />
       <recent name="D:\pycharmProjects\testDev_template\test_platfrom\project_app\views" />
       <recent name="D:\pycharmProjects\testDev_template\test_platfrom\templates\project" />
       <recent name="D:\pycharmProjects\testDev_template\test_platfrom\templates\user" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\pycharmProjects\testDev_template\test_platfrom\static\bootstrap\js" />
-      <recent name="D:\pycharmProjects\testDev_template\test_platfrom\templates\project" />
-      <recent name="D:\pycharmProjects\testDev_template\test_platfrom\project_app\forms" />
-      <recent name="D:\pycharmProjects\testDev_template\test_platfrom\project_app\models" />
-      <recent name="D:\pycharmProjects\testDev_template\test_platfrom\project_app\views" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -512,28 +447,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_platfrom/user_app/migrations/0001_initial.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="manage (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="testDjango" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../testDjango" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../testDjango/manage.py" />
-      <option name="PARAMETERS" value="runserver 0.0.0.0:8000" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -577,7 +490,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_platfrom/manage.py" />
-      <option name="PARAMETERS" value="runserver 0.0.0.0:8000" />
+      <option name="PARAMETERS" value="test user_app.tests.UserTemplateTest" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -630,21 +543,36 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests for tests_user_views.UserViewsTest.test_01index" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="testDev_template" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_platfrom/user_app/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests_user_views.UserViewsTest.test_01index&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Django server.testDjango" />
-      <item itemvalue="Python.manage (1)" />
       <item itemvalue="Python.manage (2)" />
       <item itemvalue="Python.manage" />
       <item itemvalue="Python.views" />
       <item itemvalue="Python.0001_initial" />
+      <item itemvalue="Python tests.Unittests for tests_user_views.UserViewsTest.test_01index" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.manage" />
+        <item itemvalue="Python tests.Unittests for tests_user_views.UserViewsTest.test_01index" />
         <item itemvalue="Python.0001_initial" />
         <item itemvalue="Python.views" />
         <item itemvalue="Python.manage (2)" />
-        <item itemvalue="Python.manage (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -725,23 +653,36 @@
     <option name="localTasksCounter" value="10" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Unittests_for_tests_user_views_UserViewsTest_test_01index - 2018.10.25 at 20h 20m 47s.xml">
+      <configuration name="Unittests for tests_user_views.UserViewsTest.test_01index" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_tests_user_views_UserViewsTest_test_01index - 2018.10.25 at 20h 29m 32s.xml">
+      <configuration name="Unittests for tests_user_views.UserViewsTest.test_01index" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_tests_user_views_UserViewsTest_test_01index - 2018.10.25 at 20h 29m 42s.xml">
+      <configuration name="Unittests for tests_user_views.UserViewsTest.test_01index" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="38" y="51" width="1186" height="640" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2279709" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25443262" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.2917505" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49915826" visible="true" weight="0.31672597" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3985765" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.28994083" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49915826" visible="true" weight="0.3806706" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.469428" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.22953737" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49911347" weight="0.2938856" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5016835" side_tool="true" weight="0.29577464" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5008865" side_tool="true" weight="0.47140038" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -766,51 +707,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="add readme.txt" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/migrations/0002_auto_20181002_0658.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/migrations/0003_auto_20181002_0749.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/migrations/0005_auto_20181002_0816.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/migrations/0006_auto_20181002_0838.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="15" column="50" lean-forward="true" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/migrations/0008_auto_20181002_0855.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/migrations/0001_initial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-351" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../myPoll/polls/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../myPoll/myPoll/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="83" column="27" selection-start-line="83" selection-start-column="27" selection-end-line="83" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../myPoll/polls/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-132" />
@@ -877,10 +773,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="29" selection-start-column="29" selection-end-column="29" />
-          <folding>
-            <marker date="1539989983420" expanded="true" signature="157:184" ph="..." />
-            <marker date="1539989983420" expanded="true" signature="282:287" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -888,9 +780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -908,26 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="1" column="28" lean-forward="true" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/user/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
-          <folding>
-            <element signature="e#637#669#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1006,7 +875,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_platfrom/test_platfrom/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
+        <state relative-caret-position="316">
           <caret line="23" column="49" lean-forward="true" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
           <folding>
             <element signature="e#637#669#0" expanded="true" />
@@ -1041,16 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="31" column="27" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_platfrom/project_app/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -1075,16 +934,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-          <folding>
-            <element signature="e#22#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_platfrom/project_app/models/module_models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -1102,12 +951,129 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/project_app/views/module_views.py">
+    <entry file="file://$PROJECT_DIR$/test_platfrom/project_app/tests/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/tests/test_user_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
+        <state relative-caret-position="22">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/project_app/tests/test_project_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+            <marker date="1540469458519" expanded="true" signature="157:158" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python36/Lib/site-packages/django/conf/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/tests/tests_user_modle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python36/Lib/site-packages/django/contrib/auth/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="362" column="34" selection-start-line="362" selection-start-column="34" selection-end-line="362" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/user/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/tests/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/tests/tests_user_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <marker date="1540506771976" expanded="true" signature="1562:1567" ph="..." />
+            <marker date="1540506771976" expanded="true" signature="1604:1613" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="22" />
+          <folding>
+            <element signature="e#637#669#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/project_app/views/module_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="99" column="62" selection-start-line="99" selection-start-column="62" selection-end-line="99" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/user_app/tests/tests_user_template.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
           </folding>
         </state>
       </provider>
