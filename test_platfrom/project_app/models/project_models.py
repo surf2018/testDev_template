@@ -1,6 +1,4 @@
 from django.db import models
-from django import forms
-from django.utils import timezone
 # Create your models here.
 class Project(models.Model):
     # pid=models.IntegerField(default=)
@@ -14,7 +12,7 @@ class Project(models.Model):
 
 class Version(models.Model):
     version=models.CharField(max_length=20)
-    description=models.CharField(max_length=20)
+    description = models.CharField(max_length=20)
     release=models.BooleanField("release",default=False)
     createtime = models.DateField(max_length=20)
     endtime=models.DateField(max_length=20)

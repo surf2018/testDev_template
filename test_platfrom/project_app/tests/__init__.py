@@ -1,0 +1,3 @@
+from .test_project_models import ProjectTestCase,moduleTestCase,VersionTestCase
+from .tests_pro_mtemplate import modTemplateTest
+from .tests_pro_ptemplate import proTemplateTest

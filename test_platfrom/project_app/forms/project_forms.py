@@ -6,9 +6,20 @@ from django import forms
 class ProjectForm(forms.ModelForm):
     class Meta:
         model=Project
-        fields=['name','description','createTime','status','endTime']
+        fields="__all__"
+        # fields=['name','description','createTime','status','endTime']
+    # def clean_name(self):
+    #     name=self.cleaned_data['name']
+    #     print("name:"+name)
+    #     if(name==""):
+    #         raise forms.ValidationError('project name is required', code='proName error')
 
 class VerForm(forms.ModelForm):
     class Meta:
         model=Version
-        fields=['version','description','release','createtime','endtime','Criticalbugs','Majorbugs']
+        fields="__all__"
+        # fields=['version','description','release','createtime','endtime','Criticalbugs','Majorbugs']
+    # def clean_version(self):
+    #     version=self.cleaned_data['version']
+    #     if(version==""):
+    #         raise forms.ValidationError("version is required",code="version error")

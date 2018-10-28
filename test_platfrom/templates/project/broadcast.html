@@ -18,23 +18,23 @@
                 <th>操作</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="prolist">
             {% for pro in projects %}
                 <tr>
                     {#                  <td>{{pro.id}}</td>#}
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ pro.name }}</td>
-                    <td>{{ pro.description }}</td>
-                    <td>{{ pro.createTime }}</td>
-                    <td>{{ pro.endTime }}</td>
-                    <td>{{ pro.status }}</td>
+                    <td id="num">{{ forloop.counter }}</td>
+                    <td id="pname">{{ pro.name }}</td>
+                    <td id="pdesp">{{ pro.description }}</td>
+                    <td id="pctime">{{ pro.createTime | date:"Y-m-d" }}</td>
+                    <td id="pendtime">{{ pro.endTime | date:"Y-m-d" }}</td>
+                    <td id="pstat">{{ pro.status }}</td>
                     <td>
-                        <a href="/project/createVersion/{{ pro.id }}/{{ pro.name }}/vcreate">创建</a>
-                        <a href="/project/dashboard?type=vlist&pname={{ pro.name }}&pid={{ pro.id }}">查询</a>
+                        <a id="pcreatel" href="/project/createVersion/{{ pro.id }}/{{ pro.name }}/vcreate">创建</a>
+                        <a id="pquery" href="/project/dashboard?type=vlist&pname={{ pro.name }}&pid={{ pro.id }}">查询</a>
                     </td>
                     <td>
-                        <a href="/project/editProject/{{ pro.id }}">编辑</a>
-                        <a  onclick="delpop('{{ pro.name }}','{{ pro.id }}')">删除</a>
+                        <a id="editp" href="/project/editProject/{{ pro.id }}">编辑</a>
+                        <a  id="delp" onclick="delpop('{{ pro.name }}','{{ pro.id }}')">删除</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -42,7 +42,7 @@
         </table>
     {% elif type == 'pcreate' %}
         <h1 class="page-header">新建项目</h1>
-        <form action="/project/createP_action/" method="post">
+        <form id='cpro' action="/project/createP_action/" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-group">
@@ -51,7 +51,7 @@
         </form>
     {% elif type == 'editp' %}
         <h1 class="page-header">编辑{{ projectname }}项目</h1>
-        <form action="/project/editP_action/{{ pid }}/" method="post">
+        <form id="editPro" action="/project/editP_action/{{ pid }}/" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <!--{% for field in form %}-->
@@ -186,9 +186,9 @@
 {% endblock %}
 {% block search %}
     {% if type == 'plist' %}
-        <form class="navbar-form navbar-right" action="/project/searchp/" method="get">
+        <form id='pro_formsearch' class="navbar-form navbar-right" action="/project/searchp/" method="get">
             {% csrf_token %}
-            <input type="text" class="form-control" name="search" placeholder="project Name,descripiton...">
+            <input type="text" class="form-control" id='pro_searchtext' name="search" placeholder="project Name,descripiton...">
             <button type="submit" id="search">搜索</button>
             <p><font color="red">{{ error }}</font></p>
         </form>

@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from ..models.project_models import Project,Version
 from ..forms.project_forms import ProjectForm, VerForm
 from django.db.models import Q
-
+import json
 
 # Create your views here.
 #
@@ -60,12 +60,14 @@ def dashboard(request):
 def createP_action(request):
     if (request.method != 'POST'):
         form = ProjectForm()
+        return HttpResponseRedirect("/project/dashboard?type=plist")
     else:
         form = ProjectForm(request.POST)
+        print("valid:"+str(form.is_valid()))
         if (form.is_valid()):
+            # print(form.cleaned_data)
             form.save()
             return HttpResponseRedirect("/project/dashboard?type=plist")
-
 
 def createVersion(request, pid, pname):
     # pname = request.GET['pname']
