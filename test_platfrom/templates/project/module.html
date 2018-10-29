@@ -2,9 +2,8 @@
 {% load staticfiles %}
 {% block content %}
     {% if type == 'mlist' %}
-        <h1 class="page-header">模块列表
-            <button id="create-button" type="button" onclick="createModule('mcreate')">创建</button>
-        </h1>
+        <h1 class="page-header">模块列表</h1>
+        <button id="create-button" type="button" onclick="createModule('mcreate')">创建</button>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -17,19 +16,18 @@
                 <th>操作</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="modlist">
             {% for m in modules %}
                 <tr>
-                    {#                  <td>{{pro.id}}</td>#}
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ m.name }}</td>
-                    <td>{{ m.description }}</td>
-                    <td>{{ m.createTime | date:"Y-m-d H:i:s" }}</td>
-                    <td>{{ m.endTime | date:"Y-m-d H:i:s"}}</td>
-                    <td>{{ m.project }}</td>
+                    <td id="num">{{ forloop.counter }}</td>
+                    <td id="modname">{{ m.name }}</td>
+                    <td id="moddesp">{{ m.description }}</td>
+                    <td id="modctime">{{ m.createTime | date:"Y-m-d H:i:s" }}</td>
+                    <td id="modetime">{{ m.endTime | date:"Y-m-d H:i:s"}}</td>
+                    <td id="modpro">{{ m.project }}</td>
                     <td>
-                        <a href="/module/editModule/{{ m.id }}">编辑</a>
-                        <a onclick="delmod('{{ m.name }}','{{ m.id }}')">删除</a>
+                        <a id='modedit' href="/module/editModule/{{ m.id }}">编辑</a>
+                        <a id='moddel' onclick="delmod('{{ m.name }}','{{ m.id }}')">删除</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -37,7 +35,7 @@
         </table>
     {% elif type == 'mcreate' %}
         <h1 class="page-header">新建模块</h1>
-        <form action="/module/createM_action/" method="post">
+        <form id="modform" action="/module/createM_action/" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-group">
@@ -46,7 +44,7 @@
         </form>
     {% elif type == 'editm' %}
         <h1 class="page-header">编辑模块</h1>
-        <form action="/module/editM_action/{{ mid }}/" method="post">
+        <form id="modeditform" action="/module/editM_action/{{ mid }}/" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <!--{% for field in form %}-->
@@ -92,9 +90,9 @@
 {% endblock %}
 {% block search %}
     {% if type == 'mlist' %}
-        <form class="navbar-form navbar-right" action="/module/searchm/" method="get">
+        <form id="module_search" class="navbar-form navbar-right" action="/module/searchm/" method="get">
             {% csrf_token %}
-            <input type="text" class="form-control" name="search" placeholder="project Name,descripiton...">
+            <input id="modsearchText" type="text" class="form-control" name="search" placeholder="project Name,descripiton...">
             <button type="submit" id="search">搜索</button>
             <p><font color="red">{{ error }}</font></p>
         </form>

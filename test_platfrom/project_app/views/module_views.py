@@ -20,9 +20,9 @@ def dashboard(request):
     pNameList={}
     # projects=Project.objects.all()
     modules = Module.objects.all()
-    projects=Module.objects.select_related("project").all()
-    for p in projects:
-        pNameList[p.id] = p.project.name
+    # projects=Module.objects.select_related("project").all()
+    # for m in modules:
+    #     pNameList[p.id] = p.project.name
     # print(projects[0].project.name)
     # 分页
     paginator = Paginator(modules, 10)
@@ -35,18 +35,21 @@ def dashboard(request):
         modules = paginator.page(1)
     except EmptyPage:
         modules = paginator.page(paginator.num_pages)
-    context = {'username': username, 'modules': modules, 'type': type,"pName": pNameList}
-    if (type == 'mcreate'):
+    context = {'username': username, 'modules': modules, 'type': type}
+    #"pName": pNameList
+    if(type == 'mcreate'):
         form = ModuleForm()
-        context = {'username': username, 'modules': modules, 'type': type, 'form': form}
+        context = {'username': username,'type': type, 'form': form}
     return render(request, 'project/module.html', context)
 
 
 def createM_action(request):
     if (request.method != 'POST'):
         form = ModuleForm()
+        return HttpResponseRedirect("/module/modulelist?type=mlist")
     else:
         form = ModuleForm(request.POST)
+        print("moduel valid:"+str(form.is_valid()))
         if (form.is_valid()):
             form.save()
             return HttpResponseRedirect("/module/modulelist?type=mlist")

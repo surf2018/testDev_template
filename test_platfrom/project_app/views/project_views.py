@@ -63,7 +63,7 @@ def createP_action(request):
         return HttpResponseRedirect("/project/dashboard?type=plist")
     else:
         form = ProjectForm(request.POST)
-        print("valid:"+str(form.is_valid()))
+        # print("valid:"+str(form.is_valid()))
         if (form.is_valid()):
             # print(form.cleaned_data)
             form.save()

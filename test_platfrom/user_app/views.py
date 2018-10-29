@@ -21,7 +21,7 @@ def login_action(request):
                 request.session['username']=name
                 # context={'type':'list'}
                 # return render(request,'project/broadcast.html',context)
-                return HttpResponseRedirect('/project/dashboard?type=plist')
+                return HttpResponseRedirect('/project/dashboard/?type=plist')
                 # response.set_cookie('username',name,3600)
                 # return response
                 #check userame or password is null

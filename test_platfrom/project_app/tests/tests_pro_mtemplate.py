@@ -25,7 +25,7 @@ def get_data(file_name):
         rows.append(row)
     return rows
 @ddt
-class modTemplateTest(StaticLiveServerTestCase):
+class modTemplateTestCase(StaticLiveServerTestCase):
     @classmethod
     # def setUpClass(cls):
     #     super().setUpClass()
@@ -36,7 +36,8 @@ class modTemplateTest(StaticLiveServerTestCase):
         User.objects.create_user(username='test01', email='test01@1.com', password='123456')
         Project.objects.create(id=1, name='pt', description='pt_test project', createTime='2018-10-26', status=1,
                                endTime='2018-10-31')
-        Module.objects.create(id=1,name="mode_test")
+        Project.objects.create(id=2, name='pt2', description='pt2_test project', createTime='2018-10-29',status=1,endTime='2018-11-30')
+        Module.objects.create(id=1,name="mod_test",description='mod_test description', createTime='2018-10-29 02:29:24', endTime='2018-10-30 02:25:37',project_id=1)
         self.selenium = Chrome()
         self.selenium.implicitly_wait(10)
         self.selenium.get('%s%s' % (self.live_server_url, '/user/'))
@@ -46,44 +47,50 @@ class modTemplateTest(StaticLiveServerTestCase):
         password_input.send_keys('123456')
         self.selenium.find_element_by_id('btn').click()
         time.sleep(3)
-    def test_00ProjectHomePate(self):
-        projectList = self.selenium.find_elements_by_css_selector('tbody#prolist tr')
-        proInfo=[]
+        self.selenium.find_element_by_css_selector('li#module a').click()
+        time.sleep(1)
+    def test_00ModleHomePage(self):
+        #click mod manager
+        pageTitle=self.selenium.find_element_by_css_selector("h1.page-header").text
+        print("pageTitle:"+pageTitle)
+        exp_title="模块列表"
+        modtList = self.selenium.find_elements_by_css_selector('tbody#modlist tr')
+        modInfo=[]
         result=0
-        for pro in projectList:
-            pron = pro.find_element_by_id('pname').text
-            prodesp = pro.find_element_by_id('pdesp').text
-            pctime = pro.find_element_by_id('pctime').text
-            petime = pro.find_element_by_id('pendtime').text
-            pstat = pro.find_element_by_id('pstat').text
-            if (pron == 'pt'):
-                proInfo=[pron, prodesp, pctime, petime, pstat]
+        for mod in modtList:
+            modname = mod.find_element_by_id('modname').text
+            modesp = mod.find_element_by_id('moddesp').text
+            modctime = mod.find_element_by_id('modctime').text
+            modetime = mod.find_element_by_id('modetime').text
+            modpro = mod.find_element_by_id('modpro').text
+            if (modname == 'mod_test'):
+                modInfo=[modname, modesp, modctime, modetime, modpro]
                 break
-        print("proinfo:"+str(proInfo))
-        if (proInfo[0] == 'pt' and proInfo[1] == "pt_test project" and proInfo[2] == "2018-10-26" and proInfo[3] == "2018-10-31" and proInfo[4] == "True"):
+        print("modInfo:"+str(modInfo))
+        if (pageTitle == exp_title and modInfo[0] == 'mod_test' and modInfo[1] == "mod_test description" and modInfo[2] == "2018-10-29 02:29:24" and modInfo[3] == "2018-10-30 02:25:37" and modInfo[4] == "pt"):
             result = 1
-        self.assertEqual(result, 1), "test_02test_01addProject fail"
-    def test_01addProjectPage(self):
+        self.assertEqual(result, 1), "test_00ModleHomePage fail"
+    def test_01addModlePage(self):
         # click create button
         self.selenium.find_element_by_id('create-button').click()
         time.sleep(1)
         title = self.selenium.find_element_by_css_selector('h1.page-header').text
-        exp_title = "新建项目"
+        exp_title = "新建模块"
         username = self.selenium.find_element_by_css_selector('li#navbar_user a').text
         exp_user = 'test01'
         flag = 0
         try:
-            self.selenium.find_element_by_css_selector('form#cpro')
+            self.selenium.find_element_by_css_selector('form#modform')
             flag = 1
         except:
             pass
         if (title == exp_title and username == exp_user and flag == 1):
             result = 1
-        self.assertEqual(result, 1), "test_01addProjectPage fail"
-    @data(*get_data("D:\\pycharmProjects\\testDev_template\\test_platfrom\project_app\\tests\\pro_data.csv"))
+        self.assertEqual(result, 1), "test_01addModlePage fail"
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\project_app\\tests\\mod_data.csv"))
     @unpack
-    def test_02addProject(self,name,des,ctime,stat,etime):
-        proInfo=[]
+    def test_02addModule(self,name,des,ctime,etime,proid,proname):
+        modInfo=[]
         result=0
         self.selenium.find_element_by_id('create-button').click()
         # create form
@@ -97,72 +104,70 @@ class modTemplateTest(StaticLiveServerTestCase):
         self.selenium.find_element_by_id('id_createTime').clear()
         self.selenium.find_element_by_id('id_createTime').send_keys(ctime)
         time.sleep(1)
-        if (stat=="False"):
-            js = "$('#id_status').attr('checked',false)"
-            self.selenium.execute_script(js)
-        elif(stat=='True'):
-            js="$('#id_status').attr('checked',true)"
-            self.selenium.execute_script(js)
-        time.sleep(1)
         self.selenium.find_element_by_id('id_endTime').clear()
         self.selenium.find_element_by_id('id_endTime').send_keys(etime)
+        #select project
+        js="$(\"#id_project\").val('"+proid+"');"
+        self.selenium.execute_script(js)
+        time.sleep(1)
         # click submit button
         self.selenium.find_element_by_name('submit').click()
         time.sleep(1)
-        projectList = self.selenium.find_elements_by_css_selector('tbody#prolist tr')
-        for pro in projectList:
-            pron = pro.find_element_by_id('pname').text
-            prodesp = pro.find_element_by_id('pdesp').text
-            pctime = pro.find_element_by_id('pctime').text
-            petime = pro.find_element_by_id('pendtime').text
-            pstat = pro.find_element_by_id('pstat').text
-            if (pron == name):
-                proInfo=[pron, prodesp, pctime, pstat, petime]
+        modList = self.selenium.find_elements_by_css_selector('tbody#modlist tr')
+        for mod in modList:
+            modname = mod.find_element_by_id('modname').text
+            moddesp = mod.find_element_by_id('moddesp').text
+            modctime = mod.find_element_by_id('modctime').text
+            modetime = mod.find_element_by_id('modetime').text
+            modpro = mod.find_element_by_id('modpro').text
+            if (modname == name):
+                modInfo=[modname, moddesp, modctime, modetime, modpro]
                 break
-        print("proInfo:"+str(proInfo))
-        if (proInfo[0] == name and proInfo[1] == des and proInfo[2] == ctime and proInfo[3] == stat and proInfo[4] == etime):
+        print("proInfo:"+str(modInfo))
+        print(name,des,ctime,etime,proname)
+        if (modInfo[0] == name and modInfo[1] == des and modInfo[2] == ctime and modInfo[3] == etime and modInfo[4] == proname):
             result = 1
         self.assertEqual(result, 1), "test_02addProject fail"
-    def test_03addProjectNull(self):
+    def test_03addModNull(self):
         proInfo = []
         self.selenium.find_element_by_id('create-button').click()
         # click submit button
         self.selenium.find_element_by_name('submit').click()
         time.sleep(3)
         title=self.selenium.find_element_by_css_selector("h1.page-header").text
-        exp_title="新建项目"
-        self.assertIn(exp_title, title), "test_03addProjectNull fail"
-    def test_04editProPage(self):
+        exp_title="新建模块"
+        self.assertIn(exp_title, title), "test_03addModNull fail"
+    def test_04editModPage(self):
         #click edit
-        pname="pt"
+        modname="mod_test"
         flag=0
-        projectList = self.selenium.find_elements_by_css_selector('tbody#prolist tr')
-        for pro in projectList:
-           pron = pro.find_element_by_id('pname').text
-           if(pron==pname):
-               pro.find_element_by_id('editp').click()
+        modList = self.selenium.find_elements_by_css_selector('tbody#modlist tr')
+        for mod in modList:
+           modn = mod.find_element_by_id('modname').text
+           if(modn==modname):
+               mod.find_element_by_id('modedit').click()
                time.sleep(1)
                break
         #get title
         title=self.selenium.find_element_by_css_selector("h1.page-header").text
-        exp_title="编辑"+pname+"项目"
+        exp_title="编辑模块"
         try:
-            self.selenium.find_element_by_id("editPro")
+            self.selenium.find_element_by_id("modeditform")
             flag=1
         except:
             pass
-        self.assertIn(exp_title, title), "test_04editPro fail"
+        self.assertIn(exp_title, title), "test_04editModPage fail"
         self.assertEqual(flag,1),"test_04editProPage fail"
-    @data(*get_data("D:\\pycharmProjects\\testDev_template\\test_platfrom\project_app\\tests\\pro_editdata.csv"))
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\\project_app\\tests\\mod_data.csv"))
     @unpack
-    def test_05editPro(self,name,des,ctime,stat,etime):
-        pname = "pt"
+    def test_05editMod(self,name,des,ctime,etime,proid,proname):
+        modname = 'mod_test'
         flag = 0
-        projectList = self.selenium.find_elements_by_css_selector('tbody#prolist tr')
-        for pro in projectList:
-            pron = pro.find_element_by_id('pname').text
-            if (pron == pname):
-                pro.find_element_by_id('editp').click()
+        modList = self.selenium.find_elements_by_css_selector('tbody#modlist tr')
+        for mod in modList:
+            modn = mod.find_element_by_id('modname').text
+            if (modn == modname):
+                mod.find_element_by_id('modedit').click()
                 break
         self.selenium.find_element_by_id("id_name").clear()
         time.sleep(0.5)
@@ -174,84 +179,79 @@ class modTemplateTest(StaticLiveServerTestCase):
         self.selenium.find_element_by_id('id_createTime').clear()
         self.selenium.find_element_by_id('id_createTime').send_keys(ctime)
         time.sleep(1)
-        flag = self.selenium.find_element_by_id('id_status').get_attribute('checked')
-        if (flag!=stat.lower()):
-            js = "$('#id_status').attr('checked',"+stat.lower()+")"
-            self.selenium.execute_script(js)
-        time.sleep(1)
         self.selenium.find_element_by_id('id_endTime').clear()
         self.selenium.find_element_by_id('id_endTime').send_keys(etime)
-        time.sleep(0.5)
+        time.sleep(1)
+        #check project name
+        # select project
+        js = "$(\"#id_project\").val('" + proid + "');"
+        self.selenium.execute_script(js)
+        time.sleep(1)
+        # click submit button
         self.selenium.find_element_by_name('submit').click()
         time.sleep(1)
-        proInfo=[]
+        modInfo=[]
         #check project list
-        projectList = self.selenium.find_elements_by_css_selector('tbody#prolist tr')
-        for pro in projectList:
-            pron = pro.find_element_by_id('pname').text
-            if (pron == name):
-                prodesp = pro.find_element_by_id('pdesp').text
-                pctime = pro.find_element_by_id('pctime').text
-                petime = pro.find_element_by_id('pendtime').text
-                pstat = pro.find_element_by_id('pstat').text
-                proInfo=[pron,prodesp,pctime,petime,pstat]
-                break
-        print("proInfo:"+str(proInfo))
-        if (proInfo[0] == name and proInfo[1] == des and proInfo[2] == ctime and proInfo[3] == etime and proInfo[4] == stat):
-            result = 1
-        self.assertEqual(result, 1), "test_05editPro fail"
+        modList = self.selenium.find_elements_by_css_selector('tbody#modlist tr')
+        for mod in modList:
+            modn = mod.find_element_by_id('modname').text
+            if (modn == name):
+                moddesp = mod.find_element_by_id('moddesp').text
+                modctime = mod.find_element_by_id('modctime').text
+                modetime = mod.find_element_by_id('modetime').text
+                modpro=mod.find_element_by_id("modpro").text
+                modInfo=[modn,moddesp,modctime,modetime,modpro]
 
-    def test_06searchPro(self):
+                break
+        print("modInfo:"+str(modInfo))
+        print(name,des,ctime,etime,proname)
+        if (modInfo[0] == name and modInfo[1] == des and modInfo[2] == ctime and modInfo[3] == etime and modInfo[4] == proname):
+            result = 1
+        self.assertEqual(result, 1), "test_05editMod fail"
+
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\\project_app\\tests\\mod_search_data.csv"))
+    @unpack
+    def test_07searchMod(self,searchText):
+        print("running test_07searchMod")
         result=1
-        self.selenium.find_element_by_id("pro_searchtext").clear()
+        self.selenium.find_element_by_id("modsearchText").clear()
         time.sleep(0.5)
-        search_text='pt'
-        self.selenium.find_element_by_id("pro_searchtext").send_keys(search_text)
+        self.selenium.find_element_by_id("modsearchText").send_keys(searchText)
+        time.sleep(1)
         self.selenium.find_element_by_id('search').click()
         time.sleep(1)
-        projectList = self.selenium.find_elements_by_css_selector('tbody#prolist tr')
-        for pro in projectList:
-            pron = pro.find_element_by_id('pname').text
-            prodesp = pro.find_element_by_id('pdesp').text
-            if(search_text in pron and  search_text not in prodesp):
+        modList = self.selenium.find_elements_by_css_selector('tbody#modlist tr')
+        for mod in modList:
+            modn = mod.find_element_by_id('modname').text
+            moddes = mod.find_element_by_id('moddesp').text
+            modp = mod.find_element_by_id('modpro').text
+            if(searchText not in modn and  searchText not in moddes and searchText not in modp):
                 result=0
                 break
-        self.assertEqual(result,1),"test_06searchPro fail"
-    def test_07createVersionPage(self):
-        name='pt'
-        projectList = self.selenium.find_elements_by_css_selector('tbody#prolist tr')
-        for pro in projectList:
-            pron = pro.find_element_by_id('pname').text
-            if (pron == name):
-                pro.find_element_by_id("pcreatel").click()
-                time.sleep(1)
-                break
-        title=self.selenium.find_element_by_css_selector("h1.page-header").text
-        exp_title="创建"+name+"项目版本"
-        self.assertIn(exp_title,title),"test_07createVersionPage fail"
+        self.assertEqual(result,1),"test_06searchMod fail"
 
-    def test_08delPro(self):
-        delpn='pt'
+    def test_08delMod(self):
+        delmn='mod_test'
         result=1
-        projectList = self.selenium.find_elements_by_css_selector('tbody#prolist tr')
-        for pro in projectList:
-            pron = pro.find_element_by_id('pname').text
-            if(pron==delpn):
-                pro.find_element_by_id('delp').click()
+        modList = self.selenium.find_elements_by_css_selector('tbody#modlist tr')
+        for mod in modList:
+            modn = mod.find_element_by_id('modname').text
+            if(modn==delmn):
+                mod.find_element_by_id('moddel').click()
                 alert=self.selenium.switch_to_alert()
                 time.sleep(1)
                 prompt=alert.text
-                if("确定删除"+delpn+"项目" in prompt):
+                if("确定删除"+modn+"模块？" in prompt):
                     alert.accept()
                     time.sleep(1)
                     break
-        projectList = self.selenium.find_elements_by_css_selector('tbody#prolist tr')
-        for pro in projectList:
-            pron = pro.find_element_by_id('pname').text
-            if(pron=="pt"):
+        modList = self.selenium.find_elements_by_css_selector('tbody#modlist tr')
+        for mod in modList:
+            modn = mod.find_element_by_id('modname').text
+            if(modn==delmn):
                 result=0
                 break
-        self.assertEqual(result,1),"test_08delPro fail"
+        self.assertEqual(result,1),"test_08delMod fail"
 
     @classmethod
     def tearDownClass(cls):
