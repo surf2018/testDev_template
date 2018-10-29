@@ -46,13 +46,13 @@ def dashboard(request):
 def createM_action(request):
     if (request.method != 'POST'):
         form = ModuleForm()
-        return HttpResponseRedirect("/module/modulelist?type=mlist")
+        return HttpResponseRedirect("/module/modulelist/?type=mlist")
     else:
         form = ModuleForm(request.POST)
         print("moduel valid:"+str(form.is_valid()))
         if (form.is_valid()):
             form.save()
-            return HttpResponseRedirect("/module/modulelist?type=mlist")
+            return HttpResponseRedirect("/module/modulelist/?type=mlist")
 
 
 def editModule(request, mid):
@@ -73,12 +73,12 @@ def editM_action(request, mid):
         form = ModuleForm(request.POST, instance=m)
         if (form.is_valid()):
             form.save()
-            return HttpResponseRedirect("/module/modulelist?type=mlist")
+            return HttpResponseRedirect("/module/modulelist/?type=mlist")
 
 def delModule(request, mid):
     # 删除数据库
     Module.objects.filter(id=mid).delete()
-    return HttpResponseRedirect("/module/modulelist?type=mlist")
+    return HttpResponseRedirect("/module/modulelist/?type=mlist")
 
 
 def searchm(request):
@@ -86,7 +86,7 @@ def searchm(request):
     if (query_text == ""):
         moduleInfo = Module.objects.all()
         # contex={"error":"请输入搜索字符"}
-        return HttpResponseRedirect("/module/modulelist?type=mlist", moduleInfo)
+        return HttpResponseRedirect("/module/modulelist/?type=mlist", moduleInfo)
     else:
         username = request.session.get('username', '')
         moduleInfo = Module.objects.filter(Q(name__icontains=query_text) | Q(description__icontains=query_text) |Q(project__name__icontains=query_text))

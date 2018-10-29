@@ -26,7 +26,7 @@
                     <td id="modetime">{{ m.endTime | date:"Y-m-d H:i:s"}}</td>
                     <td id="modpro">{{ m.project }}</td>
                     <td>
-                        <a id='modedit' href="/module/editModule/{{ m.id }}">编辑</a>
+                        <a id='modedit' href="/module/editModule/{{ m.id }}/">编辑</a>
                         <a id='moddel' onclick="delmod('{{ m.name }}','{{ m.id }}')">删除</a>
                     </td>
                 </tr>
