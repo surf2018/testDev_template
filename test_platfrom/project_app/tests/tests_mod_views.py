@@ -96,7 +96,7 @@ class ModViewsTestCase(TestCase):
         self.assertEqual(statusConde, 200), "test_06searchModle fail"
         self.assertIn(exp_title, content), "test_06searchModle fail"
     def test_07delModule(self):
-        response = self.client.get('/project/delProject/1/')
+        response = self.client.get('/module/delModule/1/')
         statusConde = response.status_code
         mod=Module.objects.filter(id=1)
         self.assertEqual(statusConde, 302), "test_07delModule fail"
