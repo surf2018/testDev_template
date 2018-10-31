@@ -1,0 +1,101 @@
+{% extends "case/testcase.html" %}
+{% load staticfiles %}
+{% block content %}
+    {% if type == 'caselist' %}
+        <h1 class="page-header">测试用例列表
+        <button id="create-button" type="button" onclick="debug()">调试</button>
+        </h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>用例名称</th>
+                <th>用例描述</th>
+                <th>创建时间</th>
+                <th>结束时间</th>
+{#                <th>项目名</th>#}
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="testcaselist">
+            {% for case in cases %}
+                <tr>
+                    <td id="num">{{ forloop.counter }}</td>
+                    <td id="casename">{{ case.name }}</td>
+                    <td id="casedesp">{{ case.description }}</td>
+                    <td id="casectime">{{ case.createTime | date:"Y-m-d H:i:s" }}</td>
+{#                    <td id="caseetime">{{ m.endTime | date:"Y-m-d H:i:s"}}</td>#}
+{#                    <td id="modpro">{{ m.project }}</td>#}
+                    <td>
+                        <a id='caseedit' href="/interface/editCase/{{case.id }}/">编辑</a>
+                        <a id='casedel' onclick="delcase('{{ case.name }}','{{ case.id }}')">删除</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% elif type == 'mcreate' %}
+        <h1 class="page-header">新建模块</h1>
+        <form id="modform" action="/module/createM_action/" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-group">
+                <button type='submit' name="submit">提交</button>
+            </div>
+        </form>
+    {% elif type == 'editm' %}
+        <h1 class="page-header">编辑模块</h1>
+        <form id="modeditform" action="/module/editM_action/{{ mid }}/" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!--{% for field in form %}-->
+                <!--<div class="form-group">-->
+                <!--{{ field.label }}:{{ field}} {{ field.error }}-->
+                <!--</div>-->
+                <!--{% endfor %}-->
+            <div class="form-group">
+                <button type="submit" name="submit">保存</button>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static '/bootstrap/js/projectManager.js' %}"></script>
+{% endblock %}
+
+{% block pagination %}
+    {% if type == 'mlist' %}
+        <ul class="pagination" id="pager">
+            {% if modules.has_previous %}
+                <li class="previous"><a href="?page={{ modules.previous_page_number }}">上一页</a></li>
+            {% else %}
+                <li class="previous disabled"><a href="#">上一页</a></li>
+            {% endif %}
+            {#页码 #}
+            {% for num in modules.paginator.page_range %}
+                {% if num == modules.number %}
+                    <li class="item active"><a href="?page={{ num }}">{{ num }}</a></li>
+                {% else %}
+                    <li class="item"><a href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if modules.has_next %}
+                <li class="next"><a href="?page={{ modules.next_page_number }}">下一页</a></li>
+            {% else %}
+                <li class="next disabled"><a href="#">下一页</a></li>
+            {% endif %}
+            {# 下一页按钮结束#}
+        </ul>
+    {% endif %}
+{% endblock %}
+{% block search %}
+    {% if type == 'mlist' %}
+        <form id="module_search" class="navbar-form navbar-right" action="/module/searchm/" method="get">
+            {% csrf_token %}
+            <input id="modsearchText" type="text" class="form-control" name="search" placeholder="project Name,descripiton...">
+            <button type="submit" id="search">搜索</button>
+            <p><font color="red">{{ error }}</font></p>
+        </form>
+    {% endif %}
+{% endblock %}
