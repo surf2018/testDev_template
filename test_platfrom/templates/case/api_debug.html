@@ -1,101 +1,77 @@
 {% extends "case/testcase.html" %}
 {% load staticfiles %}
-{% block content %}
-    {% if type == 'caselist' %}
-        <h1 class="page-header">测试用例列表
-        <button id="create-button" type="button" onclick="debug()">调试</button>
-        </h1>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>用例名称</th>
-                <th>用例描述</th>
-                <th>创建时间</th>
-                <th>结束时间</th>
-{#                <th>项目名</th>#}
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody id="testcaselist">
-            {% for case in cases %}
-                <tr>
-                    <td id="num">{{ forloop.counter }}</td>
-                    <td id="casename">{{ case.name }}</td>
-                    <td id="casedesp">{{ case.description }}</td>
-                    <td id="casectime">{{ case.createTime | date:"Y-m-d H:i:s" }}</td>
-{#                    <td id="caseetime">{{ m.endTime | date:"Y-m-d H:i:s"}}</td>#}
-{#                    <td id="modpro">{{ m.project }}</td>#}
-                    <td>
-                        <a id='caseedit' href="/interface/editCase/{{case.id }}/">编辑</a>
-                        <a id='casedel' onclick="delcase('{{ case.name }}','{{ case.id }}')">删除</a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% elif type == 'mcreate' %}
-        <h1 class="page-header">新建模块</h1>
-        <form id="modform" action="/module/createM_action/" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <div class="form-group">
-                <button type='submit' name="submit">提交</button>
-            </div>
-        </form>
-    {% elif type == 'editm' %}
-        <h1 class="page-header">编辑模块</h1>
-        <form id="modeditform" action="/module/editM_action/{{ mid }}/" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <!--{% for field in form %}-->
-                <!--<div class="form-group">-->
-                <!--{{ field.label }}:{{ field}} {{ field.error }}-->
-                <!--</div>-->
-                <!--{% endfor %}-->
-            <div class="form-group">
-                <button type="submit" name="submit">保存</button>
-            </div>
-        </form>
-    {% endif %}
-{% endblock %}
+{% block api_debug %}
+<form class="form-horizontal">
+    <fieldset>
+        <div id="legend" class="">
+            <legend class="">在线postman</legend>
+        </div>
+        <div id="request-process-patent"><p></p></div>
+        <div style="width:80%; margin-left: 20px;">
+        <form action="/debug/" method="get" class="bs-example bs-example-form" role="form" style="margin-top: 30px">
 
-{% block js %}
-    <script src="{% static '/bootstrap/js/projectManager.js' %}"></script>
-{% endblock %}
+            <div class="input-group">
+                <span class="input-group-addon">名称</span>
+                <input id="req_name" type="text" class="form-control" placeholder="name">
+            </div>
+            <br>
 
-{% block pagination %}
-    {% if type == 'mlist' %}
-        <ul class="pagination" id="pager">
-            {% if modules.has_previous %}
-                <li class="previous"><a href="?page={{ modules.previous_page_number }}">上一页</a></li>
-            {% else %}
-                <li class="previous disabled"><a href="#">上一页</a></li>
-            {% endif %}
-            {#页码 #}
-            {% for num in modules.paginator.page_range %}
-                {% if num == modules.number %}
-                    <li class="item active"><a href="?page={{ num }}">{{ num }}</a></li>
-                {% else %}
-                    <li class="item"><a href="?page={{ num }}">{{ num }}</a></li>
-                {% endif %}
-            {% endfor %}
-            {% if modules.has_next %}
-                <li class="next"><a href="?page={{ modules.next_page_number }}">下一页</a></li>
-            {% else %}
-                <li class="next disabled"><a href="#">下一页</a></li>
-            {% endif %}
-            {# 下一页按钮结束#}
-        </ul>
-    {% endif %}
-{% endblock %}
-{% block search %}
-    {% if type == 'mlist' %}
-        <form id="module_search" class="navbar-form navbar-right" action="/module/searchm/" method="get">
-            {% csrf_token %}
-            <input id="modsearchText" type="text" class="form-control" name="search" placeholder="project Name,descripiton...">
-            <button type="submit" id="search">搜索</button>
-            <p><font color="red">{{ error }}</font></p>
+            <div class="input-group">
+                <span class="input-group-addon">URL</span>
+                <input id="req_url" type="text" class="form-control" placeholder="url">
+            </div>
+            <br>
+            <div>
+                <label>请求方法：</label>
+                <label class="radio-inline">
+                    <input type="radio" name="req_method" id="get" value="get" checked> GET
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="req_method" id="post" value="post"> POST
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="req_method" id="pub" value="put"> PUT
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="req_method" id="delete" value="delete"> DELETE
+                </label>
+            </div>
+
+            <div style="margin-top: 10px;">
+                <label>参数类型：</label>
+                <label class="radio-inline">
+                    <input type="radio" name="req_type" id="from" value="from" checked> form-data
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="req_type" id="json" value="json"> JSON
+                </label>
+            </div>
+
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Header</span>
+                <input id="req_header" type="text" class="form-control">
+            </div>
+            <p style="color:#8B8989">说明：以字典的方式设置参数，如：{"content-type": "application/json"}</p>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">参数</span>
+                <input id="req_parameter" type="text" class="form-control">
+            </div>
+            <p style="color:#8B8989">说明：以字典的方式设置参数，如：{"id":1, "name":"名称"}</p>
+            <div style="width: 100%; height: 60px;">
+                <button type="button" class="btn btn-success" id="send" style="float: right;margin-right: 10px;">调试</button>
+            </div>
+
         </form>
-    {% endif %}
+
+        </div>
+
+        <div style="width:80%; margin-left: 20px;">
+            <p>返回结果：</p>
+            <textarea id="result" class="form-control" rows="10" name=textarea></textarea>
+        </div>
+
+    </fieldset>
+</form>
 {% endblock %}

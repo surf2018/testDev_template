@@ -34,11 +34,20 @@
             {% endfor %}
             </tbody>
         </table>
+    {% elif type == 'debug' %}
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                {% block api_debug %}
+
+                {% endblock %}
+            </div>
+        </div>
     {% endif %}
 {% endblock %}
 
 {% block js %}
     <script src="{% static '/bootstrap/js/projectManager.js' %}"></script>
+    <script src="{% static '/bootstrap/js/caseManager.js' %}"></script>
 {% endblock %}
 
 {% block pagination %}
