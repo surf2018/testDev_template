@@ -20,6 +20,6 @@ from interface_app import views
 
 urlpatterns = [
     path('case_manager/',views.caselist),
-    path('/interface/debug_ajax/',views,debug_ajax)
+    path('debug_ajax/',views.debug_ajax),
 
 ]

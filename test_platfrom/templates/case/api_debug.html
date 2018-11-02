@@ -8,8 +8,8 @@
         </div>
         <div id="request-process-patent"><p></p></div>
         <div style="width:80%; margin-left: 20px;">
-        <form action="/debug/" method="get" class="bs-example bs-example-form" role="form" style="margin-top: 30px">
-
+        <form method="post" class="bs-example bs-example-form" role="form" style="margin-top: 30px">
+             {% csrf_token %}
             <div class="input-group">
                 <span class="input-group-addon">名称</span>
                 <input id="req_name" type="text" class="form-control" placeholder="name">
@@ -75,3 +75,4 @@
     </fieldset>
 </form>
 {% endblock %}
+
