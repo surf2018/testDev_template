@@ -26,23 +26,34 @@ def debug_ajax(request):
         url=request.POST['url']
         method=request.POST['method']
         type=request.POST['type']
-        header=request.POST['header']
+        header=json.loads(request.POST['header'])
         data=request.POST['parameter']
-        data=json.loads(data)
+        # data=json.loads(data)
+        data=eval(data)
         if(method=='post'):
             #post 请求
             if(type!='json'):
+                if ('file' in data.keys()):
+                    response = requests.post(url, files=data)
+                    print(response)
+                else:
+                    response=requests.post(url,data=data,headers=header)
+                    print("post"+response.text+"status code:"+str(response.status_code))
+            else:
+                print("post 请求json")
+                data=json.dumps(data)
                 response=requests.post(url,data=data,headers=header)
-                print(response.text)
-            # else:
-                #post 请求json
-
+                print("post" + response.text + "status code:" + str(response.status_code))
         elif(method=='get'):
             #get 请求
+            print("get 请求")
             if(type!='json'):
-                response=requests.get(url,params=data)
-            # else:
-
+                response=requests.get(url,params=data,headers=header)
+                print("get:"+response.text+"status code:"+str(response.status_code))
+            else:
+                data = json.dumps(data)
+                response=requests.get(url,params=data,headers=header)
+                print("get:"+response.text+"statu code:"+str(response.status_code))
         return HttpResponse(response)
     else:
         username = request.session.get('username', '')

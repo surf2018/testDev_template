@@ -1,39 +1,44 @@
-// function getCookie(name) {
-//     var cookieValue = null;
-//     if (document.cookie && document.cookie != '') {
-//         var cookies = document.cookie.split(';');
-//         for (var i = 0; i < cookies.length; i++) {
-//             var cookie = jQuery.trim(cookies[i]);
-//             // Does this cookie string begin with the name we want?
-//             if (cookie.substring(0, name.length + 1) == (name + '=')) {
-//                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-//                 break;
-//             }
-//         }
-//     }
-//     return cookieValue;
-// }
-// function csrfSafeMethod(method) {
-// // these HTTP methods do not require CSRF protection
-//     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-// }
-
 $('#send').click(function () {
         $('#request-process-patent').html("正在提交数据...")
-        var req_name = $('#req_name').val();
-        var req_url = $('#req_url').val();
-        var req_method = $('input[name="req_method"]:checked').val();
-        var req_type = $('input[name="req_type"]:checked').val();
-        var req_header = $('#req_header').val();
-        var req_parameter = $('#req_parameter').val();
+        let req_name = $('#req_name').val();
+        let req_url = $('#req_url').val();
+        let req_method = $('input[name="req_method"]:checked').val();
+        let req_type = $('input[name="req_type"]:checked').val();
+        let req_header = $('#req_header').val();
+        let req_parameter = $('#req_parameter').val();
         if(req_name==''){
             window.alert("name不能为空");
+             $('#request-process-patent').html("")
+            return false
         }
-        else if (req_url == "") {
+        if (req_url == "") {
             window.alert("URL不能为空");
+             $('#request-process-patent').html("")
+            return false
         }
-        else if (req_parameter == "") {
+        //check url
+        else{
+            //判断URL地址的正则表达式为:http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?
+            //下面的代码中应用了转义字符"\"输出一个字符"/"
+            var Expression=/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+            var objExp=new RegExp(Expression);
+
+            if(objExp.test(req_url) != true){
+                alert("网址格式不正确！请重新输入");
+                $('#request-process-patent').html("")
+                return false;
+            }
+        }
+        if (req_parameter == "") {
             req_parameter = "{}";
+        }
+        else {
+            //单引号转换为双引号
+            req_parameter = req_parameter.replace(/\'/g,"\"");
+            // alert(req_parameter)
+        }
+        if(req_header==""){
+            req_header="{}";
         }
         var datas = {
             "name": req_name,
@@ -50,28 +55,24 @@ $('#send').click(function () {
             data:datas,
             success: function(ret){
                     console.log("debug_ajax success")
+                    console.log(ret)
                     $('#result').val(ret)
-                     },
+                    $('#request-process-patent').html("Status:200 OK")
+                    },
             error:function (ret) {
                 console.log("debug_ajax fail")
+                $('#request-process-patent').html("失败")
 
             }
 
         })
     }
-    )
+    );
 
 function debug(){
   window.location.href="/interface/case_manager/?type=debug"
 }
 
-function delmod(m_name,mid) {
-    // alert("是否需要删除项目："+pname)
-    var r = confirm("确定删除" + m_name + "模块？");
-    if (r == true) {
-        window.location.href = "/module/delModule/" + mid+"/";
-    }
-    else {
-        window.location.href = "/module/modulelist/?type=mlist";
-    }
-}
+
+//验证url网址
+

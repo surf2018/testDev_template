@@ -1,7 +1,6 @@
 {% extends "case/testcase.html" %}
 {% load staticfiles %}
 {% block api_debug %}
-<form class="form-horizontal">
     <fieldset>
         <div id="legend" class="">
             <legend class="">在线postman</legend>
@@ -9,13 +8,12 @@
         <div id="request-process-patent"><p></p></div>
         <div style="width:80%; margin-left: 20px;">
         <form method="post" class="bs-example bs-example-form" role="form" style="margin-top: 30px">
-             {% csrf_token %}
+{#             {% csrf_token %}#}
             <div class="input-group">
                 <span class="input-group-addon">名称</span>
                 <input id="req_name" type="text" class="form-control" placeholder="name">
             </div>
             <br>
-
             <div class="input-group">
                 <span class="input-group-addon">URL</span>
                 <input id="req_url" type="text" class="form-control" placeholder="url">
@@ -61,6 +59,7 @@
             <p style="color:#8B8989">说明：以字典的方式设置参数，如：{"id":1, "name":"名称"}</p>
             <div style="width: 100%; height: 60px;">
                 <button type="button" class="btn btn-success" id="send" style="float: right;margin-right: 10px;">调试</button>
+                <button type="button" class="btn btn-success" id="save" style="float: right;margin-right: 10px;">保存</button>
             </div>
 
         </form>
@@ -73,6 +72,6 @@
         </div>
 
     </fieldset>
-</form>
 {% endblock %}
-
+{#<script src="{% static '/bootstrap/js/jquery.cookie.js' %}"></script>#}
+{#<script src="{% static '/bootstrap/js/csrftoken.js' %}"></script>#}
