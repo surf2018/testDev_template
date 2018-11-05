@@ -21,5 +21,6 @@ from interface_app import views
 urlpatterns = [
     path('case_manager/',views.caselist),
     path('debug_ajax/',views.debug_ajax),
+    path('save/',views.saveDate),
 
 ]

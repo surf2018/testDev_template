@@ -9,11 +9,12 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>用例名称</th>
-                <th>用例描述</th>
-                <th>创建时间</th>
-                <th>结束时间</th>
-{#                <th>项目名</th>#}
+                <th>名称</th>
+                <th>URL</th>
+                <th>Method</th>
+                <th>type</th>
+                <th>header</th>
+                <th>data</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -22,13 +23,15 @@
                 <tr>
                     <td id="num">{{ forloop.counter }}</td>
                     <td id="casename">{{ case.name }}</td>
-                    <td id="casedesp">{{ case.description }}</td>
-                    <td id="casectime">{{ case.createTime | date:"Y-m-d H:i:s" }}</td>
-{#                    <td id="caseetime">{{ m.endTime | date:"Y-m-d H:i:s"}}</td>#}
-{#                    <td id="modpro">{{ m.project }}</td>#}
+                    <td id="caseurl">{{ case.url }}</td>
+                    <td id="casemethod">{{ case.method }}</td>
+                    <td id="casetype">{{ case.type }}</td>
+                    <td id="caseheader">{{ case.header }}</td>
+                    <td id="casedata">{{ case.data }}</td>
+<!--{#                    <td id="modpro">{{ m.project }}</td>#}-->
                     <td>
-                        <a id='caseedit' href="/interface/editCase/{{case.id }}/">编辑</a>
-                        <a id='casedel' onclick="delcase('{{ case.name }}','{{ case.id }}')">删除</a>
+                        <a id='caseedit' href="/interface/editCase/{{case.id }}/">Edit</a>
+                        <a id='casedel' onclick="delcase('{{ case.name }}','{{ case.id }}')">Del</a>
                     </td>
                 </tr>
             {% endfor %}

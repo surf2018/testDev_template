@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import requests
 import json
+from .models import Case
 # Create your views here.
 #
 @login_required
@@ -15,7 +16,8 @@ def caselist(request):
     username = request.session.get('username', '')
     type = request.GET['type']
     if (type == '' or type == 'caselist'):
-        context = {'username': username,'type': type}
+        case=Case.objects.all()
+        context = {'username': username,'type': type, 'cases':case}
         return render(request, 'case/testcase.html', context)
     elif(type=='debug'):
         context = {'username': username, 'type': type}
@@ -60,7 +62,15 @@ def debug_ajax(request):
         context = {'username': username, 'type': 'debug'}
         return render(requests,'case/api_debug.html',context)
 
-
-
+def saveDate(request):
+    name=request.POST['name']
+    url=request.POST['url']
+    method=request.POST['method']
+    type=request.POST['type']
+    header=request.POST['header']
+    parameter=request.POST['parameter']
+    case=Case(name=name,url=url,method=method,type=type,header=header,data=parameter)
+    case.save()
+    return HttpResponse('save ok')
 
 # Create your views here.
