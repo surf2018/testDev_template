@@ -9,6 +9,27 @@
         <div style="width:80%; margin-left: 20px;">
         <form method="post" class="bs-example bs-example-form" role="form" style="margin-top: 30px">
 {#             {% csrf_token %}#}
+            <!--<div class="input-group">-->
+                <!--<span class="input-group-addon">-->
+                    <!--<label>选择项目-->
+                        <!--<select id="pro-dropdown">-->
+                            <!--{% for pro in ProList %}-->
+                                <!--<option id="proname" value="{{pro.name}}">{{pro.name}}</option>-->
+                            <!--{% endfor %}-->
+                        <!--</select></label>-->
+                    <!--<label>选择模块-->
+                        <!--<select id="mod-dropdown">-->
+                            <!--{% for mod in ModList %}-->
+                                <!--<option id="modname" value="{{mod.name}}">{{mod.name}}</option>-->
+                            <!--{% endfor %}-->
+                    <!--</select></label>-->
+                <!--</span>-->
+            <!--</div>-->
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">模块</span>
+                <input id="caseMod" type="text" class="form-control" placeholder="name">
+            </div>
             <div class="input-group">
                 <span class="input-group-addon">名称</span>
                 <input id="req_name" type="text" class="form-control" placeholder="name">

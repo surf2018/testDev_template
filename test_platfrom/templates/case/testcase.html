@@ -11,10 +11,9 @@
                 <th>ID</th>
                 <th>名称</th>
                 <th>URL</th>
-                <th>Method</th>
-                <th>type</th>
-                <th>header</th>
-                <th>data</th>
+                <th>方法</th>
+                <th>项目</th>
+                <th>模块</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -25,13 +24,12 @@
                     <td id="casename">{{ case.name }}</td>
                     <td id="caseurl">{{ case.url }}</td>
                     <td id="casemethod">{{ case.method }}</td>
-                    <td id="casetype">{{ case.type }}</td>
-                    <td id="caseheader">{{ case.header }}</td>
-                    <td id="casedata">{{ case.data }}</td>
+                    <td id="createmod">{{case.project.name}}</td>
+                    <td id="createPro">{{case.model.name}}</td>
 <!--{#                    <td id="modpro">{{ m.project }}</td>#}-->
                     <td>
-                        <a id='caseedit' href="/interface/editCase/{{case.id }}/">Edit</a>
-                        <a id='casedel' onclick="delcase('{{ case.name }}','{{ case.id }}')">Del</a>
+                        <a id='caseAdd' href="/interface/debugCase/{{case.id}}">Debug</a>
+                        <a id='casedel' onclick="delcase('{{ case.id }}')">Del</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -45,7 +43,17 @@
                 {% endblock %}
             </div>
         </div>
+    {% elif type == 'add' %}
+           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+           <h3 class="page-header">创建Interface用例</h3>
+            <div class="row">
+                {% block add_interface %}
+
+                {% endblock %}
+            </div>
+        </div>
     {% endif %}
+
 {% endblock %}
 
 {% block js %}

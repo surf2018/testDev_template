@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from interface_app import views
+from interface_app.views import testcase_views
 # from project_app import views
 
 urlpatterns = [
-    path('case_manager/',views.caselist),
-    path('debug_ajax/',views.debug_ajax),
-    path('save/',views.saveDate),
+    path('case_manager/',testcase_views.caselist),
+    path('debug_ajax/',testcase_views.debug_ajax),
+    path('save/',testcase_views.saveDate),
 
 ]
