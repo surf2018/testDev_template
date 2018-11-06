@@ -1,9 +1,9 @@
-from ..interface_app.models import Case
+from .models import Case
 from django import forms
 
 
 # Create your models here.
-class ModuleForm(forms.ModelForm):
+class CaseForm(forms.ModelForm):
     class Meta:
         model=Case
-        fields=["name","name","url","method","type"]
+        exclude=['create_time']

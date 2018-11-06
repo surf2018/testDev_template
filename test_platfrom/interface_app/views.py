@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 import requests
 import json
 from .models import Case
+from .case_forms import CaseForm
 # Create your views here.
 #
 @login_required
