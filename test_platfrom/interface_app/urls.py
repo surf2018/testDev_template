@@ -22,5 +22,7 @@ urlpatterns = [
     path('case_manager/',testcase_views.caselist),
     path('debug_ajax/',testcase_views.debug_ajax),
     path('save/',testcase_views.saveDate),
+    path('seletAjax/',testcase_views.selectAjax),
+    path('debugCase/<int:caseid>/',testcase_views.debugCase),
 
 ]

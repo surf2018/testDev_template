@@ -11,33 +11,31 @@
 {#             {% csrf_token %}#}
             <div class="input-group">
                 <span class="input-group-addon">
-                    <label>选择项目
+                    <label>项目
                         <select id="pro-dropdown">
+                            <option id="proname" value="项目">请选择项目</option>
                             {% for pro in pros %}
-                                <option id="proname" value="{{pro.name}}">{{pro.name}}</option>
+                                <option id="proname" value="{{pro.id}}">{{pro.name}}</option>
                             {% endfor %}
                         </select></label>
-                    <label>选择模块
+                    <label>模块
                         <select id="mod-dropdown">
-                            {% for mod in mods %}
-                                <option id="modname" value="{{mod.name}}">{{mod.name}}</option>
-                            {% endfor %}
+                            <option id="modname" value="项目">请选择模块</option>
+{#                            {% for mod in mods %}#}
+{#                                <option id="modname" value="{{mod.name}}">{{mod.name}}</option>#}
+{#                            {% endfor %}#}
                     </select></label>
                 </span>
             </div>
             <br>
             <div class="input-group">
-                <span class="input-group-addon">模块</span>
-                <input id="caseMod" type="text" class="form-control" placeholder="name">
-            </div>
-            <div class="input-group">
                 <span class="input-group-addon">名称</span>
-                <input id="req_name" type="text" class="form-control" placeholder="name">
+                <input id="req_name" type="text" class="form-control" >{{ case.name }}
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">URL</span>
-                <input id="req_url" type="text" class="form-control" placeholder="url">
+                <input id="req_url" type="text" class="form-control">{{ case.url }}
             </div>
             <br>
             <div>
@@ -69,13 +67,13 @@
             <br>
             <div class="input-group">
                 <span class="input-group-addon">Header</span>
-                <input id="req_header" type="text" class="form-control">
+                <input id="req_header" type="text" class="form-control">{{ case.header }}
             </div>
             <p style="color:#8B8989">说明：以字典的方式设置参数，如：{"content-type": "application/json"}</p>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">参数</span>
-                <input id="req_parameter" type="text" class="form-control">
+                <input id="req_parameter" type="text" class="form-control">{{ case.data }}
             </div>
             <p style="color:#8B8989">说明：以字典的方式设置参数，如：{"id":1, "name":"名称"}</p>
             <div style="width: 100%; height: 60px;">

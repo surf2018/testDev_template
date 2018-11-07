@@ -36,7 +36,6 @@ $('#send').click(function () {
             //单引号转换为双引号
             req_header = req_header.replace(/\'/g,"\"");
         }
-
         if (req_parameter == "") {
             req_parameter = "{}";
         }
@@ -69,7 +68,6 @@ $('#send').click(function () {
                 $('#request-process-patent').html("失败")
 
             }
-
         })
     }
     );
@@ -81,12 +79,20 @@ function createDebug(){
 //save data
 $('#save').click(function () {
         $('#request-process-patent').html("正在保存数据...")
+        let req_username=$("#navbar_user").text()
+        let req_proid=$("#pro-dropdown").val()
+        let req_modid=$('#mod-dropdown').val()
         let req_name = $('#req_name').val();
         let req_url = $('#req_url').val();
+        let req_status=$('input[name="req_status"]:checked').val()
         let req_method = $('input[name="req_method"]:checked').val();
         let req_type = $('input[name="req_type"]:checked').val();
         let req_header = $('#req_header').val();
         let req_parameter = $('#req_parameter').val();
+        if(req_proid=="" || req_modid==""){
+            window.alert("请选择模块和项目");
+            return false
+        }
         if(req_name==''){
             window.alert("name不能为空");
              $('#request-process-patent').html("")
@@ -127,8 +133,12 @@ $('#save').click(function () {
             // alert(req_parameter)
         }
         var datas = {
+            "username":req_username,
+            "proid":req_proid,
+            "modid":req_modid,
             "name": req_name,
             "url": req_url,
+            "status":req_status,
             "method": req_method,
             "type": req_type,
             "header": req_header,
@@ -149,34 +159,27 @@ $('#save').click(function () {
                 $('#request-process-patent').html("Save fail")
 
             }
-
         })
     }
     );
-
 //select的联动
-
 $('#pro-dropdown').change(function (e) {
     var values=$(this).val();
     $.ajax({
-            url: '/interface/seletAjax/?para=' + values,
-            type: 'GET',
-            success: function (result) {
-                if (result.code == 100) {
-                    var _fullinfo = "<option value=\"0\">请选择<\/option>";
-                    $.each(result.data, function (i, thread) {
-                        _fullinfo += '<option value=\"' + thread.id + '\">' + thread.name + '<\/option>';
-                    })
-                    $('#country').html(_fullinfo);
-                    $('#province').html("<option value=\"0\">请选择<\/option>");
-                    $('#city').html("<option value=\"0\">请选择<\/option>");
-                }
-            },
-            error: function () {
-
+        url: '/interface/seletAjax/?para=' + values,
+        type: 'GET',
+        success: function (results) {
+            console.log(results)
+            if (results) {
+                var optionstring="";
+                $.each(results, function (key,value) {
+                    optionstring += "<option value=\""+key+"\">"+value+"</option>"
+                });
+               $("#mod-dropdown").html("<option value=''>请选择模块</option> "+optionstring)
             }
+        },
+        error: function () {
+
         }
-
-    )
-
+    })
 })

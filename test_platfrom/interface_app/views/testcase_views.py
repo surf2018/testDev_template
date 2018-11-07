@@ -11,6 +11,8 @@ import json
 from ..models import Case
 from project_app.models.project_models import Project
 from project_app.models.module_models import Module
+from django.contrib.auth.models import User
+
 from ..case_forms import CaseForm
 # Create your views here.
 #
@@ -20,6 +22,17 @@ def caselist(request):
     type = request.GET['type']
     if (type == '' or type == 'caselist'):
         case=Case.objects.all()
+        # 分页
+        paginator = Paginator(case, 10)
+        page = request.GET.get('page', 1)
+        curpage = int(page)
+        try:
+            print(page)
+            case = paginator.page(curpage)
+        except PageNotAnInteger:
+            case = paginator.page(1)
+        except EmptyPage:
+            case = paginator.page(paginator.num_pages)
         context = {'username': username,'type': type, 'cases':case}
         return render(request, 'case/testcase.html', context)
     if(type == 'create'):
@@ -72,14 +85,36 @@ def debug_ajax(request):
         return render(requests,'case/api_debug.html',context)
 
 def saveDate(request):
+    username=request.POST['username']
+    userid=User.objects.get(username=username).id
+    proid=request.POST['proid']
+    modid=request.POST['modid']
     name=request.POST['name']
     url=request.POST['url']
     method=request.POST['method']
     type=request.POST['type']
     header=request.POST['header']
     parameter=request.POST['parameter']
-    case=Case(name=name,url=url,method=method,type=type,header=header,data=parameter)
+    status=request.POST['status']
+    print(status)
+    case=Case(name=name,url=url,method=method,type=type,header=header,data=parameter,status=status,create_user_id=userid,model_id=modid,project_id=proid)
     case.save()
     return HttpResponse('save ok')
+def selectAjax(request):
+    proName=request.GET['para']
+    modeList={}
+    #select modules
+    mods=Module.objects.filter(project__id=proName)
+    for mod in mods:
+        modeList[mod.id]=mod.name
+    results=json.dumps(modeList)
+    print(results)
+    return HttpResponse(results,content_type='application/json')
+def debugCase(request,caseid):
+    cases=Case.objects.filter(id=caseid)
+    proname=Project.objects.filter()
+    username = request.session.get('username', '')
+    context = {'username': username, 'case':cases}
+    return render(requests, 'case/api_debug.html', context)
 
 # Create your views here.
