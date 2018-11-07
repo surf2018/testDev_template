@@ -1,10 +1,7 @@
 {% extends "case/testcase.html" %}
 {% load staticfiles %}
-{% block api_debug %}
+{% block api_content %}
     <fieldset>
-        <div id="legend" class="">
-            <legend class="">在线postman</legend>
-        </div>
         <div id="request-process-patent"><p></p></div>
         <div style="width:80%; margin-left: 20px;">
         <form method="post" class="bs-example bs-example-form" role="form" style="margin-top: 30px">
@@ -94,5 +91,5 @@
 
     </fieldset>
 {% endblock %}
-{#<script src="{% static '/bootstrap/js/jquery.cookie.js' %}"></script>#}
-{#<script src="{% static '/bootstrap/js/csrftoken.js' %}"></script>#}
+<!--{#<script src="{% static '/bootstrap/js/jquery.cookie.js' %}"></script>#}-->
+<!--{#<script src="{% static '/bootstrap/js/csrftoken.js' %}"></script>#}-->

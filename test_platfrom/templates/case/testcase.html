@@ -3,7 +3,7 @@
 {% block content %}
     {% if type == 'caselist' %}
         <h1 class="page-header">测试用例列表
-        <button id="create-button" type="button" onclick="debug()">调试</button>
+        <button id="create-button" type="button" onclick="createDebug()">创建</button>
         </h1>
         <table class="table table-striped">
             <thead>
@@ -43,11 +43,11 @@
                 {% endblock %}
             </div>
         </div>
-    {% elif type == 'add' %}
+    {% elif type == 'create' %}
            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
            <h3 class="page-header">创建Interface用例</h3>
             <div class="row">
-                {% block add_interface %}
+                {% block api_content %}
 
                 {% endblock %}
             </div>
@@ -63,7 +63,7 @@
 
 
 {% block pagination %}
-    {% if type == 'caseist' %}
+    {% if type == 'caselist' %}
         <ul class="pagination" id="pager">
             {% if modules.has_previous %}
                 <li class="previous"><a href="?page={{ modules.previous_page_number }}">上一页</a></li>

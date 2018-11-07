@@ -9,6 +9,8 @@ from django.views.decorators.csrf import csrf_exempt
 import requests
 import json
 from ..models import Case
+from project_app.models.project_models import Project
+from project_app.models.module_models import Module
 from ..case_forms import CaseForm
 # Create your views here.
 #
@@ -20,6 +22,12 @@ def caselist(request):
         case=Case.objects.all()
         context = {'username': username,'type': type, 'cases':case}
         return render(request, 'case/testcase.html', context)
+    if(type == 'create'):
+        pros=Project.objects.all()
+        mods=Module.objects.all()
+        context= {'username': username,'type': type,'pros':pros,'mods':mods}
+        return render(request, 'case/add_case.html', context)
+
     elif(type=='debug'):
         context = {'username': username, 'type': type}
         return render(request,'case/api_debug.html',context)

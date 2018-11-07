@@ -74,8 +74,8 @@ $('#send').click(function () {
     }
     );
 
-function debug(){
-  window.location.href="/interface/case_manager/?type=debug"
+function createDebug(){
+  window.location.href="/interface/case_manager/?type=create"
 }
 
 //save data
@@ -154,5 +154,29 @@ $('#save').click(function () {
     }
     );
 
-//验证url网址
+//select的联动
 
+$('#pro-dropdown').change(function (e) {
+    var values=$(this).val();
+    $.ajax({
+            url: '/interface/seletAjax/?para=' + values,
+            type: 'GET',
+            success: function (result) {
+                if (result.code == 100) {
+                    var _fullinfo = "<option value=\"0\">请选择<\/option>";
+                    $.each(result.data, function (i, thread) {
+                        _fullinfo += '<option value=\"' + thread.id + '\">' + thread.name + '<\/option>';
+                    })
+                    $('#country').html(_fullinfo);
+                    $('#province').html("<option value=\"0\">请选择<\/option>");
+                    $('#city').html("<option value=\"0\">请选择<\/option>");
+                }
+            },
+            error: function () {
+
+            }
+        }
+
+    )
+
+})
