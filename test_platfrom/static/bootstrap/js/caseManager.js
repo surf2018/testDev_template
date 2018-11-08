@@ -78,13 +78,13 @@ function createDebug(){
 
 //save data
 $('#save').click(function () {
-        $('#request-process-patent').html("正在保存数据...")
-        let req_username=$("#navbar_user").text()
-        let req_proid=$("#pro-dropdown").val()
-        let req_modid=$('#mod-dropdown').val()
+        $('#request-process-patent').html("正在保存数据...");
+        let req_username=$("#navbar_user").text();
+        let req_proid=$("#pro-dropdown").val();
+        let req_modid=$('#mod-dropdown').val();
         let req_name = $('#req_name').val();
         let req_url = $('#req_url').val();
-        let req_status=$('input[name="req_status"]:checked').val()
+        let req_status=$('input[name="req_status"]:checked').val();
         let req_method = $('input[name="req_method"]:checked').val();
         let req_type = $('input[name="req_type"]:checked').val();
         let req_header = $('#req_header').val();
@@ -95,12 +95,12 @@ $('#save').click(function () {
         }
         if(req_name==''){
             window.alert("name不能为空");
-             $('#request-process-patent').html("")
+             $('#request-process-patent').html("");
             return false
         }
         if (req_url == "") {
             window.alert("URL不能为空");
-             $('#request-process-patent').html("")
+             $('#request-process-patent').html("");
             return false
         }
         //check url
@@ -112,7 +112,7 @@ $('#save').click(function () {
 
             if(objExp.test(req_url) != true){
                 alert("网址格式不正确！请重新输入");
-                $('#request-process-patent').html("")
+                $('#request-process-patent').html("");
                 return false;
             }
         }

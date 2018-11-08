@@ -15,15 +15,25 @@
                         <select id="pro-dropdown">
                             <option id="proname" value="项目">请选择项目</option>
                             {% for pro in pros %}
-                                <option id="proname" value="{{pro.id}}">{{pro.name}}</option>
+                                {% if pro.name == proname %}
+                                    <option id="proname" value="{{pro.id}}"   selected = "selected">{{pro.name}}</option>
+                                {% else %}
+                                    <option id="proname" value="{{pro.id}}">{{pro.name}}</option>
+                                {% endif %}
+
                             {% endfor %}
                         </select></label>
                     <label>模块
                         <select id="mod-dropdown">
                             <option id="modname" value="项目">请选择模块</option>
-{#                            {% for mod in mods %}#}
-{#                                <option id="modname" value="{{mod.name}}">{{mod.name}}</option>#}
-{#                            {% endfor %}#}
+                            {% for mod in mods %}
+                                {% if mod.name == modname %}
+                                    <option id="modname" value="{{mod.id}}" selected = "selected">{{mod.name}}</option>
+
+                                {% else %}
+                                    <option id="modname" value="{{mod.id}}">{{mod.name}}</option>
+                                {% endif %}
+                            {% endfor %}
                     </select></label>
                 </span>
             </div>

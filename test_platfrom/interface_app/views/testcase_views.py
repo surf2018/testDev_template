@@ -101,20 +101,21 @@ def saveDate(request):
     case.save()
     return HttpResponse('save ok')
 def selectAjax(request):
-    proName=request.GET['para']
+    proId=request.GET['para']
     modeList={}
     #select modules
-    mods=Module.objects.filter(project__id=proName)
+    mods=Module.objects.filter(project__id=proId)
     for mod in mods:
         modeList[mod.id]=mod.name
     results=json.dumps(modeList)
     print(results)
     return HttpResponse(results,content_type='application/json')
 def debugCase(request,caseid):
-    cases=Case.objects.filter(id=caseid)
-    proname=Project.objects.filter()
+    cases=Case.objects.get(id=caseid)
+    proname=cases.project
+    modname=cases.model
     username = request.session.get('username', '')
-    context = {'username': username, 'case':cases}
-    return render(requests, 'case/api_debug.html', context)
+    context = {'username': username, 'case':cases,'pro':proname,'mod':modname}
+    return render(request, 'case/api_debug.html', context)
 
 # Create your views here.
