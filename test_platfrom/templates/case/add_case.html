@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block api_content %}
     <fieldset>
-        <div id="request-process-patent"><p></p></div>
+        <!--<div id="request-process-patent"><p></p></div>-->
         <div style="width:80%; margin-left: 20px;">
         <form method="post" class="bs-example bs-example-form" role="form" style="margin-top: 30px">
 {#             {% csrf_token %}#}
@@ -85,6 +85,7 @@
             <div style="width: 100%; height: 60px;">
                 <button type="button" class="btn btn-success" id="send" style="float: right;margin-right: 10px;">调试</button>
                 <button type="button" class="btn btn-success" id="save" style="float: right;margin-right: 10px;">保存</button>
+                <button type="button" class="btn btn-success" id="return" style="float: right;margin-right: 10px;">返回</button>
             </div>
 
         </form>
@@ -92,7 +93,7 @@
         </div>
 
         <div style="width:80%; margin-left: 20px;">
-            <p>返回结果：</p>
+            <p>返回结果：</p><div id="request-process-patent"><p></p></div>
             <textarea id="result" class="form-control" rows="10" name=textarea></textarea>
         </div>
 

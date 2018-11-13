@@ -67,20 +67,20 @@
     {% if type == 'mlist' %}
         <ul class="pagination" id="pager">
             {% if modules.has_previous %}
-                <li class="previous"><a href="?page={{ modules.previous_page_number }}">上一页</a></li>
+                <li class="previous"><a href="?type=mlist&page={{ modules.previous_page_number }}">上一页</a></li>
             {% else %}
                 <li class="previous disabled"><a href="#">上一页</a></li>
             {% endif %}
             {#页码 #}
             {% for num in modules.paginator.page_range %}
                 {% if num == modules.number %}
-                    <li class="item active"><a href="?page={{ num }}">{{ num }}</a></li>
+                    <li class="item active"><a href="?type=mlist&page={{ num }}">{{ num }}</a></li>
                 {% else %}
-                    <li class="item"><a href="?page={{ num }}">{{ num }}</a></li>
+                    <li class="item"><a href="?type=mlist&page={{ num }}">{{ num }}</a></li>
                 {% endif %}
             {% endfor %}
             {% if modules.has_next %}
-                <li class="next"><a href="?page={{ modules.next_page_number }}">下一页</a></li>
+                <li class="next"><a href="?type=mlist&page={{ modules.next_page_number }}">下一页</a></li>
             {% else %}
                 <li class="next disabled"><a href="#">下一页</a></li>
             {% endif %}

@@ -141,20 +141,20 @@
     {% if type == 'plist' %}
         <ul class="pagination" id="pager">
             {% if projects.has_previous %}
-                <li class="previous"><a href="?page={{ projects.previous_page_number }}">上一页</a></li>
+                <li class="previous"><a href="?type=plist&page={{ projects.previous_page_number }}">上一页</a></li>
             {% else %}
                 <li class="previous disabled"><a href="#">上一页</a></li>
             {% endif %}
             {#页码 #}
             {% for num in projects.paginator.page_range %}
                 {% if num == projects.number %}
-                    <li class="item active"><a href="?page={{ num }}">{{ num }}</a></li>
+                    <li class="item active"><a href="?type=plist&page={{ num }}">{{ num }}</a></li>
                 {% else %}
-                    <li class="item"><a href="?page={{ num }}">{{ num }}</a></li>
+                    <li class="item"><a href="?type=plist&page={{ num }}">{{ num }}</a></li>
                 {% endif %}
             {% endfor %}
             {% if projects.has_next %}
-                <li class="next"><a href="?page={{ projects.next_page_number }}">下一页</a></li>
+                <li class="next"><a href="?type=plist&page={{ projects.next_page_number }}">下一页</a></li>
             {% else %}
                 <li class="next disabled"><a href="#">下一页</a></li>
             {% endif %}
