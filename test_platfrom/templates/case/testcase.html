@@ -67,20 +67,20 @@
     {% if type == 'caselist' %}
         <ul class="pagination" id="pager">
             {% if cases.has_previous %}
-                <li class="previous"><a href="?type=caselist&page={{ cases.previous_page_number }}">上一页</a></li>
+                <li class="previous"><a href="?type=caselist&search={{search}}&page={{ cases.previous_page_number }}">上一页</a></li>
             {% else %}
                 <li class="previous disabled"><a href="#">上一页</a></li>
             {% endif %}
             {#页码 #}
             {% for num in cases.paginator.page_range %}
                 {% if num == cases.number %}
-                    <li class="item active"><a href="?type=caselist&page={{ num }}">{{ num }}</a></li>
+                    <li class="item active"><a href="?type=caselist&search={{search}}&page={{ num }}">{{ num }}</a></li>
                 {% else %}
-                    <li class="item"><a href="?type=caselist&page={{ num }}">{{ num }}</a></li>
+                    <li class="item"><a href="?type=caselist&search={{search}}&page={{ num }}">{{ num }}</a></li>
                 {% endif %}
             {% endfor %}
             {% if cases.has_next %}
-                <li class="next"><a href="?type=caselist&page={{ cases.next_page_number }}">下一页</a></li>
+                <li class="next"><a href="?type=caselist&search={{search}}&page={{ cases.next_page_number }}">下一页</a></li>
             {% else %}
                 <li class="next disabled"><a href="#">下一页</a></li>
             {% endif %}

@@ -23,7 +23,7 @@ def caselist(request):
     if (type == '' or type == 'caselist'):
         case=Case.objects.all()
         # 分页
-        paginator = Paginator(case, 10)
+        paginator = Paginator(case, 5)
         page = request.GET.get('page', 1)
         curpage = int(page)
         try:
@@ -154,7 +154,7 @@ def searchCase(request):
     else:
         username = request.session.get('username', '')
         caseInfo = Case.objects.filter(Q(name__icontains=query_text)|Q(url__icontains=query_text)|Q(method__icontains=query_text)|Q(status__icontains=query_text)|Q(project__name__icontains=query_text)|Q(model__name__icontains=query_text))
-        paginator = Paginator(caseInfo, 10)
+        paginator = Paginator(caseInfo, 5)
         page = request.GET.get("page", 1)
         curpage = int(page)
         try:
@@ -163,6 +163,6 @@ def searchCase(request):
             caseInfo = paginator.page(1)
         except EmptyPage:
             caseInfo = paginator.page(paginator.num_pages)
-        context = {'cases': caseInfo, 'username': username, 'type': 'caselist'}
+        context = {'cases': caseInfo, 'username': username, 'type': 'caselist', 'search':query_text}
         return render(request, "case/testcase.html", context)
 # Create your views here.
