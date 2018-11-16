@@ -1,100 +1,101 @@
 {% extends "project/base.html" %}
 {% load staticfiles %}
 {% block content %}
-    {% if type == 'caselist' %}
-        <h1 class="page-header">测试用例列表
-        <button id="create-button" type="button" onclick="createDebug()">创建</button>
-        </h1>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>名称</th>
-                <th>URL</th>
-                <th>方法</th>
-                <th>状态</th>
-                <th>项目</th>
-                <th>模块</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody id="testcaselist">
-            {% for case in cases %}
-                <tr>
-                    <td id="num">{{ forloop.counter }}</td>
-                    <td id="casename">{{ case.name }}</td>
-                    <td id="caseurl">{{ case.url }}</td>
-                    <td id="casemethod">{{ case.method }}</td>
-                    <td id="casestatus">{{case.status}}</td>
-                    <td id="createmod">{{case.project.name}}</td>
-                    <td id="createPro">{{case.model.name}}</td>
-<!--{#                    <td id="modpro">{{ m.project }}</td>#}-->
-                    <td>
-                        <a id='caseAdd' href="/interface/debugCase/{{case.id}}/">debug</a>
-                        <a id='casedel' onclick="delcase('{{ case.id }}','{{case.name}}')">delete</a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% elif type == 'debug' %}
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <div class="row">
-                {% block api_debug %}
+{% if type == 'caselist' %}
+<h1 class="page-header">测试用例列表
+    <button id="create-button" type="button" onclick="createDebug()">创建</button>
+</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>名称</th>
+        <th>URL</th>
+        <th>方法</th>
+        <th>状态</th>
+        <th>项目</th>
+        <th>模块</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="testcaselist">
+    {% for case in cases %}
+    <tr>
+        <td id="num">{{ forloop.counter }}</td>
+        <td id="casename">{{ case.name }}</td>
+        <td id="caseurl">{{ case.url }}</td>
+        <td id="casemethod">{{ case.method }}</td>
+        <td id="casestatus">{{case.status}}</td>
+        <td id="createmod">{{case.project.name}}</td>
+        <td id="createPro">{{case.model.name}}</td>
+        <!--                    <td id="modpro">{{ m.project }}</td>-->
+        <td>
+            <!--<a id='caseAdd' href="/interface/debugCase/{{case.id}}/">debug</a>-->
+            <a id="caseAdd" onclick="debugCaseAjax('{{case.id}}')">debug</a>
+            <a id='casedel' onclick="delcase('{{ case.id }}','{{case.name}}')">delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% elif type == 'debug' %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="row">
+        {% block api_debug %}
 
-                {% endblock %}
-            </div>
-        </div>
-    {% elif type == 'create' %}
-           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-           <h3 class="page-header">创建Interface用例</h3>
-            <div class="row">
-                {% block api_content %}
-                {% endblock %}
-            </div>
-        </div>
-    {% endif %}
+        {% endblock %}
+    </div>
+</div>
+{% elif type == 'create' %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h3 class="page-header">创建Interface用例</h3>
+    <div class="row">
+        {% block api_content %}
+        {% endblock %}
+    </div>
+</div>
+{% endif %}
 
 {% endblock %}
 
 {% block js %}
-    <script src="{% static '/bootstrap/js/projectManager.js' %}"></script>
-    <script src="{% static '/bootstrap/js/caseManager.js' %}"></script>
+<script src="{% static '/bootstrap/js/projectManager.js' %}"></script>
+<script src="{% static '/bootstrap/js/caseManager.js' %}"></script>
 {% endblock %}
 
 
 {% block pagination %}
-    {% if type == 'caselist' %}
-        <ul class="pagination" id="pager">
-            {% if cases.has_previous %}
-                <li class="previous"><a href="?type=caselist&search={{search}}&page={{ cases.previous_page_number }}">上一页</a></li>
-            {% else %}
-                <li class="previous disabled"><a href="#">上一页</a></li>
-            {% endif %}
-            {#页码 #}
-            {% for num in cases.paginator.page_range %}
-                {% if num == cases.number %}
-                    <li class="item active"><a href="?type=caselist&search={{search}}&page={{ num }}">{{ num }}</a></li>
-                {% else %}
-                    <li class="item"><a href="?type=caselist&search={{search}}&page={{ num }}">{{ num }}</a></li>
-                {% endif %}
-            {% endfor %}
-            {% if cases.has_next %}
-                <li class="next"><a href="?type=caselist&search={{search}}&page={{ cases.next_page_number }}">下一页</a></li>
-            {% else %}
-                <li class="next disabled"><a href="#">下一页</a></li>
-            {% endif %}
-            {# 下一页按钮结束#}
-        </ul>
+{% if type == 'caselist' %}
+<ul class="pagination" id="pager">
+    {% if cases.has_previous %}
+    <li class="previous"><a href="?type=caselist&search={{search}}&page={{ cases.previous_page_number }}">上一页</a></li>
+    {% else %}
+    <li class="previous disabled"><a href="#">上一页</a></li>
     {% endif %}
+    {#页码 #}
+    {% for num in cases.paginator.page_range %}
+    {% if num == cases.number %}
+    <li class="item active"><a href="?type=caselist&search={{search}}&page={{ num }}">{{ num }}</a></li>
+    {% else %}
+    <li class="item"><a href="?type=caselist&search={{search}}&page={{ num }}">{{ num }}</a></li>
+    {% endif %}
+    {% endfor %}
+    {% if cases.has_next %}
+    <li class="next"><a href="?type=caselist&search={{search}}&page={{ cases.next_page_number }}">下一页</a></li>
+    {% else %}
+    <li class="next disabled"><a href="#">下一页</a></li>
+    {% endif %}
+    {# 下一页按钮结束#}
+</ul>
+{% endif %}
 {% endblock %}
 {% block search %}
-    {% if type == 'caselist' %}
-        <form id="case_search" class="navbar-form navbar-right" action="/interface/searchcase/" method="get">
-            {% csrf_token %}
-            <input id="searchText" type="text" class="form-control" name="search" placeholder="case...">
-            <button type="submit" id="search">搜索</button>
-            <p><font color="red">{{ error }}</font></p>
-        </form>
-    {% endif %}
+{% if type == 'caselist' %}
+<form id="case_search" class="navbar-form navbar-right" action="/interface/searchcase/" method="get">
+    {% csrf_token %}
+    <input id="searchText" type="text" class="form-control" name="search" placeholder="case...">
+    <button type="submit" id="search">搜索</button>
+    <p><font color="red">{{ error }}</font></p>
+</form>
+{% endif %}
 {% endblock %}
