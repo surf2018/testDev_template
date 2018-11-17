@@ -13,11 +13,10 @@ from project_app.models.project_models import Project
 from project_app.models.module_models import Module
 from django.contrib.auth.models import User
 from django.db.models import Q
+from django.core import serializers
 from ..case_forms import CaseForm
 # Create your views here.
 #
-
-
 @login_required
 def caselist(request):
     username = request.session.get('username', '')
@@ -50,7 +49,6 @@ def caselist(request):
     elif(type == 'debug'):
         context = {'username': username, 'type': type}
         return render(request, 'case/api_debug.html', context)
-
 #点击debug的处理
 @csrf_exempt
 def debug_ajax(request):
@@ -107,7 +105,6 @@ def debug_ajax(request):
         username = request.session.get('username', '')
         context = {'username': username, 'type': 'debug'}
         return render(requests, 'case/api_debug.html', context)
-
 #保存新建数据
 def saveDate(request):
     username = request.POST['username']
@@ -120,7 +117,7 @@ def saveDate(request):
     type = request.POST['type']
     header = request.POST['header']
     parameter = request.POST['parameter']
-    status = request.POST['status']
+    status = request.POST['status'].title()
     print(status)
     case = Case(
         name=name,
@@ -135,7 +132,6 @@ def saveDate(request):
         project_id=proid)
     case.save()
     return HttpResponse('save ok')
-
 #select联动接口
 def selectAjax(request):
     proId = request.GET['para']
@@ -147,29 +143,10 @@ def selectAjax(request):
     results = json.dumps(modeList)
     print(results)
     return HttpResponse(results, content_type='application/json')
-
-
-def debugCase(request, caseid):
-    pros = Project.objects.all()
-    mods = Module.objects.all()
-    cases = Case.objects.get(id=caseid)
-    proname = cases.project.name
-    print(proname)
-    modname = cases.model.name
-    print(modname)
+def debugCase(request,caseid):
     username = request.session.get('username', '')
-    context = {
-        'username': username,
-        'case': cases,
-        'proname': proname,
-        'modname': modname,
-        'pros': pros,
-        'mods': mods,
-        'type': 'debug'}
-    result=json.dumps(context)
-    return HttpResponse(result, content_type='application/json')
-    # return render(request, 'case/api_debug.html', context)
-
+    context = {'username': username, 'type': 'debug','caseid':caseid}
+    return render(request, 'case/api_debug.html', context)
 #editcase and update case
 def updateDate(request):
     username = request.POST['username']
@@ -193,18 +170,15 @@ def updateDate(request):
         type=type,
         header=header,
         data=parameter,
-        status=status,
+        status=status.title(),
         create_user_id=userid,
         model_id=modid,
         project_id=proid)
     return HttpResponse('Update ok')
-
-
 def delCase(request, caseid):
     # 删除数据库
     Case.objects.filter(id=caseid).delete()
     return HttpResponseRedirect("/interface/case_manager/?type=caselist")
-
 #search case (name,url,method,project name,method name )
 def searchCase(request):
     query_text = request.GET['search']
@@ -240,4 +214,34 @@ def searchCase(request):
             'type': 'caselist',
             'search': query_text}
         return render(request, "case/testcase.html", context)
+#跳转到api_debug.html
+def returnApiDebug(request):
+    username = request.session.get('username', '')
+    context = {
+        'username': username,
+        'type': 'debug'}
+    return render(request, 'case/api_debug.html', context)
+def queryCaseAjax(request):
+    caseid=request.POST['caseid']
+    cases=Case.objects.get(id=caseid)
+    pros = serializers.serialize("json",Project.objects.all())
+    mods = serializers.serialize("json",Module.objects.all())
+    sscases = serializers.serialize("json",Case.objects.filter(id=caseid))
+    proname = cases.project.name
+    # print(proname)
+    modname = cases.model.name
+    # print(modname)
+    # username = request.session.get('username', '')
+    context = {
+        # 'username': username,
+        'cases': sscases,
+        'proname': proname,
+        'modname': modname,
+        'pros': pros,
+        'mods': mods,
+        'type': 'debug'}
+    # print(context)
+    results=json.dumps(context)
+    print(results)
+    return HttpResponse(results, content_type='application/json')
 # Create your views here.

@@ -7,148 +7,112 @@
         </div>
 
         <div style="width:80%; margin-left: 20px;">
-        <form method="post" class="bs-example bs-example-form" role="form" style="margin-top: 30px">
-{#             {% csrf_token %}#}
-            <div class="input-group">
+            <form method="post" class="bs-example bs-example-form" role="form" style="margin-top: 30px">
+                {#             {% csrf_token %}#}
+                <div class="input-group">
                 <span class="input-group-addon">
                     <label>项目
                         <select id="pro-dropdown">
                             <option id="proname" value="项目">请选择项目</option>
-                            {% for pro in pros %}
-                                {% if pro.name == proname %}
-                                    <option id="proname" value="{{pro.id}}" selected = "selected">{{pro.name}}</option>
-                                {% else %}
-                                    <option id="proname" value="{{pro.id}}">{{pro.name}}</option>
-                                {% endif %}
-
-                            {% endfor %}
                         </select></label>
                     <label>模块
                         <select id="mod-dropdown">
                             <option id="modname" value="项目">请选择模块</option>
-                            {% for mod in mods %}
-                                {% if mod.name == modname %}
-                                    <option id="modname" value="{{mod.id}}" selected = "selected">{{mod.name}}</option>
-
-                                {% else %}
-                                    <option id="modname" value="{{mod.id}}">{{mod.name}}</option>
-                                {% endif %}
-                            {% endfor %}
                     </select></label>
                 </span>
-            </div>
-            <br>
-            <div class="input-group">
-                <span class="input-group-addon">名称</span>
-                <input id="req_name" type="text" class="form-control" value="{{ case.name }}">
-            </div>
-            <br>
-            <div class="input-group">
-                <span class="input-group-addon">URL</span>
-                <input id="req_url" type="text" class="form-control" value="{{ case.url }}">
-            </div>
-            <br>
-            <div>
-                <div style="margin-top: 10px;">
-                <label>状态：</label>
-                 <label class="radio-inline">
-                    <input type="radio" name="req_status" id="status_true" value="True"> True
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="req_status" id="status_false" value="False"> False
-                </label>
                 </div>
-                <script>
-                    var status="{{case.status}}";
-                    if(status=='True'){
-                        document.getElementById("status_true").checked=true;
-                    }
-                    else {
-                        document.getElementById("status_false").checked=true;
-                    }
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">名称</span>
+                    <input id="req_name" type="text" class="form-control" value="{{ case.name }}">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">URL</span>
+                    <input id="req_url" type="text" class="form-control" value="{{ case.url }}">
+                </div>
+                <br>
+                <div>
+                    <div style="margin-top: 10px;">
+                        <label>状态：</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="req_status" id="status_true" value="true"> True
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="req_status" id="status_false" value="false"> False
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label>请求方法：</label>
+                    <label class="radio-inline">
+                        <input type="radio" name="req_method" id="get" value="get"> GET
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="req_method" id="post" value="post"> POST
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="req_method" id="pub" value="put"> PUT
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="req_method" id="delete" value="delete"> DELETE
+                    </label>
+                </div>
 
-                </script>
-             <div>
-             <div>
-                <label>请求方法：</label>
-                <label class="radio-inline">
-                    <input type="radio" name="req_method" id="get" value="get" > GET
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="req_method" id="post" value="post"> POST
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="req_method" id="pub" value="put"> PUT
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="req_method" id="delete" value="delete"> DELETE
-                </label>
-                 <script>
-                    var method="{{case.method}}";
-                    if(method=='post'){
-                        document.getElementById("post").checked=true;
-                    }
-                    else if (method=='get'){
-                         document.getElementById("get").checked=true;
-                    }
-                    else if (method=='pub'){
-                        document.getElementById("put").checked=true;
-                    }
-                    else{
-                        document.getElementById("delete").checked=true;
-                    }
+                <div style="margin-top: 10px;">
+                    <label>参数类型：</label>
+                    <label class="radio-inline">
+                        <input type="radio" name="req_type" id="from" value="from"> form-data
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="req_type" id="json" value="json"> JSON
+                    </label>
+                </div>
 
-                </script>
-            </div>
-
-            <div style="margin-top: 10px;">
-                <label>参数类型：</label>
-                <label class="radio-inline">
-                    <input type="radio" name="req_type" id="from" value="from" checked> form-data
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="req_type" id="json" value="json"> JSON
-                </label>
-                <script>
-                    var type="{{case.type}}";
-                    if(type=='from'){
-                        document.getElementById("from").checked=true;
-                    }
-                    else{
-                        document.getElementById("json").checked=true;
-                    }
-
-                </script>
-            </div>
-
-            <br>
-            <div class="input-group">
-                <span class="input-group-addon">Header</span>
-                <input id="req_header" type="text" class="form-control" value="{{ case.header }}">
-            </div>
-            <p style="color:#8B8989">说明：以字典的方式设置参数，如：{"content-type": "application/json"}</p>
-            <br>
-            <div class="input-group">
-                <span class="input-group-addon">参数</span>
-                <input id="req_parameter" type="text" class="form-control" value="{{ case.data }}">
-            </div>
-            <p style="color:#8B8989">说明：以字典的方式设置参数，如：{"id":1, "name":"名称"}</p>
-            <div style="width: 100%; height: 60px;">
-                <button type="button" class="btn btn-success" id="send" style="float: right;margin-right: 10px;">调试</button>
-                <button type="button" class="btn btn-success" id="update" style="float: right;margin-right: 10px;">保存</button>
-                <button type="button" class="btn btn-success" id="return" style="float: right;margin-right: 10px;">返回</button>
-            </div>
-
-        </form>
-
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">Header</span>
+                    <input id="req_header" type="text" class="form-control" value="{{ case.header }}">
+                </div>
+                <p style="color:#8B8989">说明：以字典的方式设置参数，如：{"content-type": "application/json"}</p>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">参数</span>
+                    <input id="req_parameter" type="text" class="form-control" value="{{ case.data }}">
+                </div>
+                <p style="color:#8B8989">说明：以字典的方式设置参数，如：{"id":1, "name":"名称"}</p>
+                <div style="width:80%; margin-left: 20px;">
+                    <p>验证结果：</p>
+                    <div id="request-process-patent"><p></p></div>
+                    <textarea id="assert" class="form-control" rows="10" name=textarea></textarea>
+                </div>
+                <div style="width: 100%; height: 60px;">
+                    <button type="button" class="btn btn-success" id="send" style="float: right;margin-right: 10px;">
+                        调试
+                    </button>
+                    <button type="button" class="btn btn-success" id="update" style="float: right;margin-right: 10px;">
+                        保存
+                    </button>
+                    <button type="button" class="btn btn-success" id="return" style="float: right;margin-right: 10px;">
+                        返回
+                    </button>
+                        <button type="button" class="btn btn-success" id="assert" style="float: right;margin-right: 10px;">
+                        验证
+                    </button>
+                </div>
+            </form>
         </div>
-
         <div style="width:80%; margin-left: 20px;">
-            <p>返回结果：</p> <div id="request-process-patent"><p></p></div>
+            <p>返回结果：</p>
+            <div id="request-process-patent"><p></p></div>
             <textarea id="result" class="form-control" rows="10" name=textarea></textarea>
         </div>
 
     </fieldset>
+{% endblock %}
+
+{% block apiDebugjs %}
+<script src="{% static '/bootstrap/js/apidebug.js' %}"></script>
 {% endblock %}
 <!--{#<script src="{% static '/bootstrap/js/jquery.cookie.js' %}"></script>#}-->
 <!--{#<script src="{% static '/bootstrap/js/csrftoken.js' %}"></script>#}-->

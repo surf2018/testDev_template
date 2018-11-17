@@ -30,8 +30,8 @@
         <td id="createPro">{{case.model.name}}</td>
         <!--                    <td id="modpro">{{ m.project }}</td>-->
         <td>
-            <!--<a id='caseAdd' href="/interface/debugCase/{{case.id}}/">debug</a>-->
-            <a id="caseAdd" onclick="debugCaseAjax('{{case.id}}')">debug</a>
+            <a id='caseEdit' href="/interface/debugCase/{{case.id}}/">debug</a>
+            <!--<a id="caseedit" onclick="queryCaseAjax('{{case.id}}')">debug</a>-->
             <a id='casedel' onclick="delcase('{{ case.id }}','{{case.name}}')">delete</a>
         </td>
     </tr>
