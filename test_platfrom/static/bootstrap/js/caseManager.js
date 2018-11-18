@@ -66,7 +66,6 @@ $('#send').click(function() {$('#request-process-patent').html("正在提交数�
         url: "/interface/debug_ajax/",
         data: datas,
         success: function(ret) {
-            console.log("debug_ajax success")
             console.log(ret)
                 $('#result').val(ret)
                 $('#request-process-patent').html("Status:200 OK")
