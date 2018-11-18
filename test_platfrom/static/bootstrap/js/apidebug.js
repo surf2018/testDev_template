@@ -32,7 +32,7 @@ $(function() {
                 }
             })
                 $("#mod-dropdown").html("<option value=''>请选择模块</option> " + optionstring)
-         //设置name,url,参数,头
+         //设置name,url,参数,头,验证结果
             var cases=$.parseJSON(results.cases)
             var caseName=cases[0].fields.name;
             $('#req_name').attr("value",caseName)
@@ -42,6 +42,9 @@ $(function() {
             $('#req_header').attr("value",caseHeader)
             var caseData=cases[0].fields.data;
             $('#req_parameter').attr("value",caseData)
+            var assertResult=cases[0].fields.response_assert;
+            // alert(assertResult)
+            $('#assertResult').val(assertResult)
             //设置状态，请求方法，类型
             var caseStatus=cases[0].fields.status;
             $(":radio[name='req_status'][value='" + caseStatus + "']").prop("checked", "checked");

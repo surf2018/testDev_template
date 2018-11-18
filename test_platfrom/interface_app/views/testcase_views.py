@@ -119,6 +119,7 @@ def saveDate(request):
     parameter = request.POST['parameter']
     status = request.POST['status'].title()
     print(status)
+    response_assert=request.POST['assert']
     case = Case(
         name=name,
         url=url,
@@ -127,6 +128,7 @@ def saveDate(request):
         header=header,
         data=parameter,
         status=status,
+        response_assert=response_assert,
         create_user_id=userid,
         model_id=modid,
         project_id=proid)
@@ -161,6 +163,7 @@ def updateDate(request):
     header = request.POST['header']
     parameter = request.POST['parameter']
     status = request.POST['status']
+    response_assert=request.POST['assert']
     print(status)
     Case.objects.filter(
         id=caseid).update(
@@ -171,6 +174,7 @@ def updateDate(request):
         header=header,
         data=parameter,
         status=status.title(),
+        response_assert=response_assert,
         create_user_id=userid,
         model_id=modid,
         project_id=proid)
@@ -222,6 +226,7 @@ def returnApiDebug(request):
         'type': 'debug'}
     return render(request, 'case/api_debug.html', context)
 def queryCaseAjax(request):
+    #处理editCaseAjax
     caseid=request.POST['caseid']
     cases=Case.objects.get(id=caseid)
     pros = serializers.serialize("json",Project.objects.all())
@@ -244,4 +249,12 @@ def queryCaseAjax(request):
     results=json.dumps(context)
     print(results)
     return HttpResponse(results, content_type='application/json')
+def assertResult(request):
+    aResult = request.POST['assertResult']
+    rResult = request.POST['returnResult']
+    if (aResult in rResult):
+        result = "验证成功"
+    else:
+        result = "验证失败"
+    return HttpResponse(result)
 # Create your views here.

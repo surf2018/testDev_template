@@ -28,5 +28,6 @@ urlpatterns = [
     path('delCase/<int:caseid>/',testcase_views.delCase),
     path('searchcase/',testcase_views.searchCase),
     path('queryCase/',testcase_views.queryCaseAjax),
+    path('assert/',testcase_views.assertResult),
 
 ]
