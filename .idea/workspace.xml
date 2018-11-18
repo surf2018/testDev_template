@@ -7,9 +7,9 @@
   <component name="ChangeListManager">
     <list default="true" id="65a8cca0-cca4-4b86-87dd-1015fdc445f5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/interface_app/views/testcase_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/interface_app/views/testcase_views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/apidebug.js" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/apidebug.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/caseManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/caseManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/templates/case/add_case.html" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/templates/case/add_case.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_platfrom/templates/case/api_debug.html" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/templates/case/api_debug.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +75,7 @@
           <entry key="css" value="11" />
           <entry key="csv" value="11" />
           <entry key="html" value="111" />
-          <entry key="js" value="50" />
+          <entry key="js" value="51" />
           <entry key="md" value="1" />
           <entry key="py" value="295" />
           <entry key="sql" value="1" />
@@ -87,7 +87,7 @@
           <entry key="CSS" value="11" />
           <entry key="CSV" value="10" />
           <entry key="HTML" value="111" />
-          <entry key="JavaScript" value="50" />
+          <entry key="JavaScript" value="51" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Python" value="295" />
@@ -104,7 +104,7 @@
           <entry key="md" value="18" />
           <entry key="py" value="26042" />
           <entry key="sql" value="7" />
-          <entry key="txt" value="250" />
+          <entry key="txt" value="255" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -114,7 +114,7 @@
           <entry key="HTML" value="9372" />
           <entry key="JavaScript" value="5656" />
           <entry key="Markdown" value="18" />
-          <entry key="PLAIN_TEXT" value="277" />
+          <entry key="PLAIN_TEXT" value="282" />
           <entry key="Python" value="26042" />
           <entry key="Scratch" value="7" />
         </counts>
@@ -165,8 +165,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_platfrom/templates/case/api_debug.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-44">
-              <caret line="86" column="46" selection-start-line="86" selection-start-column="46" selection-end-line="86" selection-end-column="46" />
+            <state relative-caret-position="176">
+              <caret line="96" column="26" selection-end-line="118" />
             </state>
           </provider>
         </entry>
@@ -174,8 +174,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/caseManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="66" column="20" lean-forward="true" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+            <state relative-caret-position="176">
+              <caret line="69" column="32" selection-end-line="371" />
               <folding>
                 <element signature="n#!!block;n#delcase#0" />
               </folding>
@@ -184,10 +184,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/apidebug.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="39" column="48" lean-forward="true" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_platfrom/interface_app/views/testcase_views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="138">
-              <caret line="106" column="37" selection-end-line="282" />
+              <caret line="106" column="37" lean-forward="true" selection-start-line="106" selection-start-column="37" selection-end-line="106" selection-end-column="37" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
                 <marker date="1542538962745" expanded="true" signature="8167:8168" ph="..." />
@@ -307,12 +316,12 @@
         <option value="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/module.js" />
         <option value="$PROJECT_DIR$/test_platfrom/templates/case/testcase.html" />
         <option value="$PROJECT_DIR$/test_platfrom/templates/project/base.html" />
-        <option value="$PROJECT_DIR$/test_platfrom/templates/case/api_debug.html" />
         <option value="$PROJECT_DIR$/test_platfrom/interface_app/urls.py" />
-        <option value="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/apidebug.js" />
-        <option value="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/caseManager.js" />
         <option value="$PROJECT_DIR$/test_platfrom/templates/case/add_case.html" />
         <option value="$PROJECT_DIR$/test_platfrom/interface_app/views/testcase_views.py" />
+        <option value="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/caseManager.js" />
+        <option value="$PROJECT_DIR$/test_platfrom/templates/case/api_debug.html" />
+        <option value="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/apidebug.js" />
       </list>
     </option>
   </component>
@@ -713,7 +722,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542473403419</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="调整格式">
+      <created>1542539006282</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1542539006282</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -734,12 +750,12 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23767179" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23767179" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2889813" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6806791" visible="true" weight="0.16903915" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6806791" visible="true" weight="0.16903915" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6677445" weight="0.38967973" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -772,7 +788,8 @@
     <MESSAGE value="add readme.txt" />
     <MESSAGE value="add user_app的model ,view,template单元测试" />
     <MESSAGE value="add debug tools" />
-    <option name="LAST_COMMIT_MESSAGE" value="add debug tools" />
+    <MESSAGE value="调整格式" />
+    <option name="LAST_COMMIT_MESSAGE" value="调整格式" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1087,23 +1104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/apidebug.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="45" selection-start-line="45" selection-end-line="45" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/caseManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="66" column="20" lean-forward="true" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
-          <folding>
-            <element signature="n#!!block;n#delcase#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_platfrom/interface_app/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
@@ -1111,13 +1111,6 @@
           <folding>
             <element signature="e#637#669#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/case/api_debug.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44">
-          <caret line="86" column="46" selection-start-line="86" selection-start-column="46" selection-end-line="86" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -1141,11 +1134,35 @@
     <entry file="file://$PROJECT_DIR$/test_platfrom/interface_app/views/testcase_views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
-          <caret line="106" column="37" selection-end-line="282" />
+          <caret line="106" column="37" lean-forward="true" selection-start-line="106" selection-start-column="37" selection-end-line="106" selection-end-column="37" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
             <marker date="1542538962745" expanded="true" signature="8167:8168" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/caseManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="69" column="32" selection-end-line="371" />
+          <folding>
+            <element signature="n#!!block;n#delcase#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/templates/case/api_debug.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="96" column="26" selection-end-line="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/apidebug.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="39" column="48" lean-forward="true" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
         </state>
       </provider>
     </entry>
