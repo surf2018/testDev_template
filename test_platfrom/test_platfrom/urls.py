@@ -24,5 +24,6 @@ urlpatterns = [
     path('project/',include('project_app.urls')),
     path('module/',include('project_app.urls')),
     path('interface/',include('interface_app.urls')),
+    path('task/',include('task_app.urls')),
 
 ]

@@ -5,7 +5,7 @@
         <div id="legend" class="">
             <legend class="">在线postman</legend>
         </div>
-
+        <div id="request-process-patent"><p><font color="red" size="10"></font></p></div>
         <div style="width:80%; margin-left: 20px;">
             <form method="post" class="bs-example bs-example-form" role="form" style="margin-top: 30px">
                 {#             {% csrf_token %}#}
@@ -83,7 +83,6 @@
                 <p style="color:#8B8989">说明：以字典的方式设置参数，如：{"id":1, "name":"名称"}</p>
                 <div style="width:80%; margin-left: 20px;">
                     <p>验证结果：</p>
-                    <div id="request-process-patent"><p></p></div>
                     <textarea id="assertResult" class="form-control" rows="10" name=textarea></textarea>
                 </div>
                 <div style="width: 100%; height: 60px;">
@@ -91,7 +90,7 @@
                         调试
                     </button>
                     <button type="button" class="btn btn-success" id="update" style="float: right;margin-right: 10px;">
-                        保存
+                        更新
                     </button>
                     <button type="button" class="btn btn-success" id="return" style="float: right;margin-right: 10px;">
                         返回
@@ -104,7 +103,7 @@
         </div>
         <div style="width:80%; margin-left: 20px;">
             <p>返回结果：</p>
-            <div id="request-process-patent"><p></p></div>
+            <div id="request-process-patent"><p><font color="red" size="10"></font></p></div>
             <textarea id="result" class="form-control" rows="10" name=textarea></textarea>
         </div>
 
@@ -112,7 +111,7 @@
 {% endblock %}
 
 {% block apiDebugjs %}
-    <script src="{% static '/bootstrap/js/apidebug.js' %}"></script>
+    <script src="{% static '/bootstrap/js/testcaseJs/apidebug.js' %}"></script>
 {% endblock %}
 <!--{#<script src="{% static '/bootstrap/js/jquery.cookie.js' %}"></script>#}-->
 <!--{#<script src="{% static '/bootstrap/js/csrftoken.js' %}"></script>#}-->

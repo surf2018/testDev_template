@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'project_app',
     'interface_app',
+    'task_app',
     'tools_app',
 ]
 

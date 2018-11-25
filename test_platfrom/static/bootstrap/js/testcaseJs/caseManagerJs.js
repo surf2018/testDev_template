@@ -1,3 +1,4 @@
+//点击debug,send当前数据到后台获得response结果
 $('#send').click(function () {
         $('#request-process-patent').html("正在提交数据...")
         let req_name = $('#req_name').val()
@@ -68,27 +69,24 @@ $('#send').click(function () {
             data: datas,
             success: function (ret) {
                 console.log(ret)
-                $('#result').val(ret)
-                $('#request-process-patent').html("Status:200 OK")
+                if(ret.success=="false") {
+                    alert(ret.message)
+                     $('#request-process-patent').html("")
+                }
+                else {
+                    $('#result').val(JSON.stringify(ret.data))
+                    $('#request-process-patent').html("<p><font color=\"red\" size=\"10\">"+ret.message+"</font></p>")
+                }
             },
             error: function (ret) {
                 console.log("debug_ajax fail")
-                $('#request-process-patent').html("失败")
+                $('#request-process-patent').html("<p><font color=\"red\" size=\"10\">"+ret.message+"</font></p>")
 
             }
         })
     }
 );
-
-function createDebug() {
-    window.location.href = "/interface/case_manager/?type=create"
-}
-
-
-$('#return').click(function () {
-    window.location.href = "/interface/case_manager/?type=caselist"
-})
-//update data
+//更新 testcase 数据
 $('#update').click(function () {
     $('#request-process-patent').html("正在更新数据...")
     let proName = $('option[id="proname"]:selected').val()
@@ -183,16 +181,23 @@ $('#update').click(function () {
         success: function (ret) {
             console.log("debug_ajax success")
             console.log(ret)
-            $('#request-process-patent').html("Save ok")
-        },
+            if(ret.success=="false") {
+                    alert(ret.message)
+                    $('#request-process-patent').html("")
+                }
+                else {
+                    $('#result').val(ret.data)
+                    $('#request-process-patent').html(ret.message)
+                }
+            },
         error: function (ret) {
             console.log("debug_ajax fail")
-            $('#request-process-patent').html("Save fail")
+            $('#request-process-patent').html("失败")
 
         }
     })
 });
-//save data
+//保存 testcase 的新数据
 $('#save').click(function () {
     $('#request-process-patent').html("正在保存数据...")
     let proName = $('option[id="proname"]:selected').val()
@@ -290,16 +295,22 @@ $('#save').click(function () {
         success: function (ret) {
             console.log("debug_ajax success")
             console.log(ret)
-            $('#request-process-patent').html("Save ok")
-        },
+            if(ret.success=="false") {
+                    alert(ret.message)
+                    $('#request-process-patent').html("")
+                }
+                else {
+                     $('#request-process-patent').html("<p><font color=\"red\" size=\"10\">"+ret.data+"</font></p>")
+                }
+            },
         error: function (ret) {
             console.log("debug_ajax fail")
-            $('#request-process-patent').html("Save fail")
+            $('#request-process-patent').html("保存失败")
 
         }
     })
 })
-//select的联动
+//api_debug.html的项目和模块的联动
 $('#pro-dropdown').change(function (e) {
     var values = $(this).val()
     $.ajax({
@@ -307,7 +318,11 @@ $('#pro-dropdown').change(function (e) {
         type: 'GET',
         success: function (results) {
             console.log(results)
-            if (results) {
+            if(results.success=="false") {
+                    alert(ret.message)
+                    return;
+                }
+            else {
                 var optionstring = ""
                 $.each(results, function (key, value) {
                     optionstring += "<option id=\"modname\" value=\"" + key + "\">" + value + "</option>"
@@ -315,24 +330,12 @@ $('#pro-dropdown').change(function (e) {
                 $("#mod-dropdown").html("<option id=\"modname\" value=''>请选择模块</option> " + optionstring)
             }
         },
-        error: function () {
-
+        error: function (ret) {
+            console.log("debug_ajax fail")
         }
     })
 })
-
-//delete case
-function delcase(caseid, casename) {
-    // alert("是否需要删除项目：" + pname)
-    var r = confirm("确定删除" + casename + " case？")
-    if (r == true) {
-        window.location.href = "/interface/delCase/" + caseid + "/"
-    }
-    else {
-        window.location.href = "/interface/case_manager/?type=caselist"
-    }
-}
-
+//验证结果：将预期结果和实际结果都发送给后台验证
 $('#assert').click(function () {
     $('#request-process-patent').html("正在验证数据...")
     // 获取验证结果里的数据和返回结果数据
@@ -361,10 +364,18 @@ $('#assert').click(function () {
         data: datas,
         success: function (ret) {
             console.log(ret)
-            $('#request-process-patent').html(ret)
-        },
-        error: function () {
-            $('#request-process-patent').html("验证失败")
+            if(ret.success=="false") {
+                    alert(ret.message)
+                    $('#request-process-patent').html("")
+                }
+            else {
+                    alert(ret.data)
+                    $('#request-process-patent').html("")
+                }
+            },
+        error: function (ret) {
+            console.log("debug_ajax fail")
+            $('#request-process-patent').html("失败")
 
         }
     })

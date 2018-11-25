@@ -1,4 +1,4 @@
-//js传送caseid对应的信息给后台, 成功后返回case的数据库数据
+//js传送caseid对应的信息给后台, 成功后返回对应case的数据
 $(function () {
     var aurl = window.location.pathname
     var caseid = aurl.split('/')[3]
@@ -8,7 +8,7 @@ $(function () {
         data: {"caseid": caseid},
         success: function (results) {
             console.log(results)
-            //选择project
+                //选择project
             var projects = results.pros
             var optionstring = ""
             $.each($.parseJSON(projects), function (key, value) {
@@ -56,5 +56,4 @@ $(function () {
         error: function () {
         }
     })
-
 })

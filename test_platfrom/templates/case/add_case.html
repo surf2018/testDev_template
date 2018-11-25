@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block api_content %}
     <fieldset>
-        <!--<div id="request-process-patent"><p></p></div>-->
+        <div id="request-process-patent"></div>
         <div style="width:80%; margin-left: 20px;">
         <form method="post" class="bs-example bs-example-form" role="form" style="margin-top: 30px">
 {#             {% csrf_token %}#}
@@ -96,7 +96,8 @@
         </div>
 
         <div style="width:80%; margin-left: 20px;">
-            <p>返回结果：</p><div id="request-process-patent"><p></p></div>
+            <p>返回结果：</p>
+             <div id="request-process-patent"></div>
             <textarea id="result" class="form-control" rows="10" name=textarea></textarea>
         </div>
 

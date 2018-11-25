@@ -15,20 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from interface_app.views import testcase_views
-from interface_app.views import testcase_api
+from task_app.views import task_views
 # from project_app import views
 
 urlpatterns = [
-    path('case_manager/',testcase_views.caselist),
-    path('debug_ajax/',testcase_api.debug_ajax),
-    path('save/',testcase_api.saveDate),
-    path('seletAjax/',testcase_api.selectAjax),
-    path('debugCase/<int:caseid>/',testcase_views.debugCase),
-    path('update/',testcase_api.updateDate),
-    path('delCase/<int:caseid>/',testcase_views.delCase),
-    path('searchcase/',testcase_views.searchCase),
-    path('queryCase/',testcase_api.queryCaseAjax),
-    path('assert/',testcase_api.assertResult),
+    path('task_manager/',task_views.caselist),
 
 ]
