@@ -19,6 +19,6 @@ from task_app.views import task_views
 # from project_app import views
 
 urlpatterns = [
-    path('task_manager/',task_views.caselist),
+    path('task_manager/',task_views.tasklist),
 
 ]
