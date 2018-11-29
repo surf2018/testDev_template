@@ -6,6 +6,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from ..models import Task
 from project_app.models.project_models import Project
 from project_app.models.module_models import Module
+from interface_app.models import Case
+from task_app.models import Task
 from django.db.models import Q
 # Create your views here.
 #
@@ -14,21 +16,21 @@ from django.db.models import Q
 def tasklist(request):
     username = request.session.get('username', '')
     type = request.GET['type']
-    if (type == '' or type == 'caselist'):
-        case = Case.objects.all()
+    if (type == '' or type == 'tasklist'):
+        tasks = Task.objects.all()
         # 分页
-        paginator = Paginator(case, 5)
+        paginator = Paginator(tasks, 5)
         page = request.GET.get('page', 1)
         curpage = int(page)
         try:
             print(page)
-            case = paginator.page(curpage)
+            tasks = paginator.page(curpage)
         except PageNotAnInteger:
-            case = paginator.page(1)
+            tasks = paginator.page(1)
         except EmptyPage:
-            case = paginator.page(paginator.num_pages)
-        context = {'username': username, 'type': type, 'cases': case}
-        return render(request, 'case/testcase.html', context)
+            tasks = paginator.page(paginator.num_pages)
+        context = {'username': username, 'type': type, 'tasks': tasks}
+        return render(request, 'task/task.html', context)
     #创建测试用例
     if (type == 'create'):
         pros = Project.objects.all()

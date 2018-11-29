@@ -1,0 +1,119 @@
+{% extends "project/base.html" %}
+{% load staticfiles %}
+{% block content %}
+{% if type == 'tasklist' %}
+<h1 class="page-header">任务列表
+    <button id="create-button" type="button" onclick="createTask()">创建任务</button>
+</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>名称</th>
+        <th>描述</th>
+        <th>状态</th>
+        <th>创建时间</th>
+        <th>结果</th> <!--NG or OK -->
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="tasklist">
+    {% for task in tasks %}
+    <tr>
+        <td id="num">{{ forloop.counter }}</td>
+        <td id="taskname">{{ task.name }}</td>
+        <td id="taskdes">{{ task.description }}</td>
+        {% if task.status == '0' %}
+            <td id="taskstatus"><p><font color="green">未执行</font></p></td>
+            <td id="taskresult"></td>
+        {% elif task.status == '1' %}
+            <td id="taskstatus"><p><font color="red">正在执行</font></p></td>
+            <td id="taskresult"></td>
+        {% else %}
+             <td id="taskstatus">执行完毕</td>
+            {% if task.result == '0' %}
+                <td id="taskresult"><p><font color="red">测试NG</font></p></td>
+            {% else %}
+                <td id="taskresult"><p><font color="green">测试OK</font></p></td>
+            {% endif %}
+        {% endif %}
+        <td id="task_createTime">{{ task.create_time |date:"Y-m-d H:i:s" }}</td>
+
+        <td>
+            <a id='runTask' href="/task/runTask/{{task.id}}/">运行</a>
+            <a id='taskEdit' href="/task/editTask/{{task.id}}/">编辑</a>
+            <a id='taskdel' onclick="deltask('{{ task.id }}','{{task.name}}')">删除</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% elif type == 'run' %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="row">
+        {% block task_run %}
+
+        {% endblock %}
+    </div>
+</div>
+{% elif type == 'edit' %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="row">
+        {% block api_Taskedit %}
+
+        {% endblock %}
+    </div>
+</div>
+{% elif type == 'create' %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h3 class="page-header">创建Task</h3>
+    <div class="row">
+        {% block api_taskContent %}
+        {% endblock %}
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static '/bootstrap/js/projectManager.js' %}"></script>
+    <script src="{% static '/bootstrap/js/taskJs/taskManager.js' %}"></script>
+    <script src="{% static '/bootstrap/js/taskJs/taskManagerJs.js' %}"></script>
+{% endblock %}
+
+
+{% block pagination %}
+{% if type == 'tasklist' %}
+<ul class="pagination" id="pager">
+    {% if tasks.has_previous %}
+    <li class="previous"><a href="?type=tasklist&search={{search}}&page={{ tasks.previous_page_number }}">上一页</a></li>
+    {% else %}
+    <li class="previous disabled"><a href="#">上一页</a></li>
+    {% endif %}
+    {#页码 #}
+    {% for num in tasks.paginator.page_range %}
+    {% if num == tasks.number %}
+    <li class="item active"><a href="?type=tasklist&search={{search}}&page={{ num }}">{{ num }}</a></li>
+    {% else %}
+    <li class="item"><a href="?type=tasklist&search={{search}}&page={{ num }}">{{ num }}</a></li>
+    {% endif %}
+    {% endfor %}
+    {% if tasks.has_next %}
+    <li class="next"><a href="?type=tasklist&search={{search}}&page={{ tasks.next_page_number }}">下一页</a></li>
+    {% else %}
+    <li class="next disabled"><a href="#">下一页</a></li>
+    {% endif %}
+    {# 下一页按钮结束#}
+</ul>
+{% endif %}
+{% endblock %}
+{% block search %}
+{% if type == 'tasklist' %}
+<form id="task_search" class="navbar-form navbar-right" action="/task/searchtask/" method="get">
+    {% csrf_token %}
+    <input id="searchText" type="text" class="form-control" name="search" placeholder="task name...">
+    <button type="submit" id="search">搜索</button>
+    <p><font color="red">{{ error }}</font></p>
+</form>
+{% endif %}
+{% endblock %}
