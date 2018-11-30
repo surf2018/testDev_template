@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from task_app.views import task_views
+from task_app.views import task_views,task_api
 # from project_app import views
 
 urlpatterns = [
     path('task_manager/',task_views.tasklist),
+    path('seletAjax/',task_api.selectAjax),
 
 ]

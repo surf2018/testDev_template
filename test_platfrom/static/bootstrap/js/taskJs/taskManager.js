@@ -1,10 +1,10 @@
-//创建testcase
-function createDebug() {
-    window.location.href = "/interface/case_manager/?type=create"
+//创建task
+function createTask() {
+    window.location.href = "/task/task_manager/?type=create"
 }
 //返回到caselist
 $('#return').click(function () {
-    window.location.href = "/interface/case_manager/?type=caselist"
+    window.location.href = "/interface/task_manager/?type=caselist"
 })
 
 //删除 testcase

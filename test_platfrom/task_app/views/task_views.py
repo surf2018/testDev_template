@@ -33,14 +33,13 @@ def tasklist(request):
         return render(request, 'task/task.html', context)
     #创建测试用例
     if (type == 'create'):
-        pros = Project.objects.all()
-        mods = Module.objects.all()
+        pros=Project.objects.all()
         context = {
             'username': username,
             'type': type,
-            'pros': pros,
-            'mods': mods}
-        return render(request, 'case/add_case.html', context)
+            'pros':pros
+        }
+        return render(request, 'task/add_task.html', context)
 # 编辑用例
 def debugCase(request, caseid):
     username = request.session.get('username', '')
