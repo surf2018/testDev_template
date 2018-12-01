@@ -20,6 +20,7 @@ from task_app.views import task_views,task_api
 
 urlpatterns = [
     path('task_manager/',task_views.tasklist),
+    path('save/',task_api.save),
     path('seletAjax/',task_api.selectAjax),
 
 ]

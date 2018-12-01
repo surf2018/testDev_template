@@ -8,22 +8,22 @@
 {#             {% csrf_token %}#}
             <div class="input-group">
                 <span class="input-group-addon">名称</span>
-                <input id="name" type="text" class="form-control" placeholder="name">
+                <input id="taskname" type="text" class="form-control" placeholder="name">
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">描述</span>
-                <textarea id="description" type="text" class="form-control" placeholder="description"></textarea>
+                <textarea id="taskdesp" type="text" class="form-control" placeholder="description"></textarea>
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">状态</span>
-                <input id="status" type="text" class="form-control" disabled value="未执行">
+                <input id="taskstat" type="text" class="form-control" disabled value="未执行">
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">结果</span>
-                <input id="status" type="text" class="form-control" disabled >
+                <input id="taskresult" type="text" class="form-control" disabled >
             </div>
             <br>
             <label>项目
@@ -37,20 +37,25 @@
                         <select id="mod-dropdown">
                             <option id="modname" value="-1">请选择模块</option>
                     </select></label>
-            <br>
-            <div class="input-group">请选择用例
-                <textarea id="cases" class="form-control" rows="10" name="textarea"></textarea>
+            <br><br>
+            <p>请选择测试用例:</p>
+            <div id="caseListView" style="width:260px;height:200px; overflow-y:scroll; border:1px solid; display:inline-block;background:#ebebeb;">
+            </div>
+            <div id="checkCaseList" style="width:260px;height:200px; overflow-y:scroll; border:1px solid; display:inline-block;background:#e3e3e3;margin-left:10px;">
+            </div>
+            <div style="width: 100%; height: 60px;">
+                <button type="button" class="btn btn-success" id="addCase" style="float: left;margin-right: 10px;">添加</button>
             </div>
             <br>
             <div style="width: 100%; height: 60px;">
-                <button type="button" class="btn btn-success" id="send" style="float: right;margin-right: 10px;">调试</button>
+                <button type="button" class="btn btn-success" id="run" style="float: right;margin-right: 10px;">运行</button>
                 <button type="button" class="btn btn-success" id="save" style="float: right;margin-right: 10px;">保存</button>
                 <button type="button" class="btn btn-success" id="return" style="float: right;margin-right: 10px;">返回</button>
-                <button type="button" class="btn btn-success" id="assert" style="float: right;margin-right: 10px;">验证</button>
             </div>
         </form>
         </div>
     </fieldset>
 {% endblock %}
+ <script src="{% static '/bootstrap/js/taskJs/taskManager.js' %}"></script>
 <!--{#<script src="{% static '/bootstrap/js/jquery.cookie.js' %}"></script>#}-->
 <!--{#<script src="{% static '/bootstrap/js/csrftoken.js' %}"></script>#}-->

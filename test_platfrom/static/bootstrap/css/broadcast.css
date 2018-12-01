@@ -6,3 +6,10 @@
 #module_pro{
     float: right;
 }
+.div-inline{
+    display:inline;
+    width:260px;
+    height:200px;
+    overflow-y:scroll;
+    border:1px solid;
+}

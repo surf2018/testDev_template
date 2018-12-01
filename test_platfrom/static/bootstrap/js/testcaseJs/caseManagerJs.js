@@ -327,7 +327,7 @@ $('#pro-dropdown').change(function (e) {
                 $.each(results, function (key, value) {
                     optionstring += "<option id=\"modname\" value=\"" + key + "\">" + value + "</option>"
                 })
-                $("#mod-dropdown").html("<option id=\"modname\" value=''>请选择模块</option> " + optionstring)
+                $("#mod-dropdown").html("<option id=\"modname\" value='-1'>请选择模块</option> " + optionstring)
             }
         },
         error: function (ret) {
