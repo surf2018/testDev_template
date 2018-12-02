@@ -38,18 +38,21 @@
                             <option id="modname" value="-1">请选择模块</option>
                     </select></label>
             <br><br>
-            <p>请选择测试用例:</p>
+            <div id="main" style="width:600px;">
+                <p id='left'style="width:200px;float:left;">请选择测试用例:</p>
+                <p id='right'style="width:200px;float:right">已选择测试用例:</p>
+            </div>
             <div id="caseListView" style="width:260px;height:200px; overflow-y:scroll; border:1px solid; display:inline-block;background:#ebebeb;">
             </div>
-            <div id="checkCaseList" style="width:260px;height:200px; overflow-y:scroll; border:1px solid; display:inline-block;background:#e3e3e3;margin-left:10px;">
+            <div id="checkCaseList" style="width:260px;height:200px; overflow-y:scroll; border:1px solid; display:inline-block;background:#faf2cc;margin-left:10px;">
             </div>
             <div style="width: 100%; height: 60px;">
-                <button type="button" class="btn btn-success" id="addCase" style="float: left;margin-right: 10px;">添加</button>
+                <button type="button" class="btn btn-success" id="addCase" style="float: left;margin-right: 10px;">添加case</button>
+                <button type="button" class="btn btn-success" id="delCase" style="float: right;margin-right: 10px;">删除case</button>
             </div>
-            <br>
             <div style="width: 100%; height: 60px;">
-                <button type="button" class="btn btn-success" id="run" style="float: right;margin-right: 10px;">运行</button>
                 <button type="button" class="btn btn-success" id="save" style="float: right;margin-right: 10px;">保存</button>
+                <button type="button" class="btn btn-success" id="run" style="float: right;margin-right: 10px;">运行</button>
                 <button type="button" class="btn btn-success" id="return" style="float: right;margin-right: 10px;">返回</button>
             </div>
         </form>

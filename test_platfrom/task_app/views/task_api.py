@@ -43,8 +43,9 @@ def save(request):
     taskDesp=request.POST['taskDesp']
     taskResult=request.POST["taskResult"]
     taskStat=request.POST['taskStat']
-    caseList=request.POST['caseList']
+    caseList=request.POST.getlist('caseList')
     print("caselist:"+str(caseList))
+
     #check taskname是否存在
     task=Task.objects.filter(name=taskName)
     if(task):

@@ -2,7 +2,8 @@
 $('#pro-dropdown').change(function (e) {
     var values = $(this).val()
     //模块是否被选中，如果被选中返回属于项目和模块的用例，不选中返回属于项目用例
-    var modVal=$('#mod-dropdown').val()
+    // var modVal=$('#mod-dropdown').val()
+    var modVal="-1"
     $.ajax({
         url: '/task/seletAjax/?ppara=' + values + '&mpara=' + modVal,
         type: 'GET',
@@ -22,9 +23,9 @@ $('#pro-dropdown').change(function (e) {
                 $("#mod-dropdown").html("<option id=\"modname\" value=''>请选择模块</option> " + optionstring)
                 //测试用例信息
                 $.each($.parseJSON(results.data)['caseList'], function (key, value) {
-                    caseString += "<input name=\"casename\" type=\"checkbox\" value=\""+key+"\" onclick=\"oneToAll()\">"+value+"<br />"
+                    caseString += "<input name=\"casename\" id=\""+ value +"\" type=\"checkbox\" value=\""+key+"\" onclick=\"loneToAll()\">"+value+"<br />"
                 })
-                $("#caseListView").html("<label><input id=\"selectAll\" type=\"checkbox\" value=\"-1\" onclick=\"selectAllCase()\">All</label><br />"+caseString)
+                $("#caseListView").html("<label><input id=\"selectAll\" type=\"checkbox\" value=\"-1\" onclick=\"lselectAllCase()\">All</label><br />"+caseString)
             }
         },
         error: function (ret) {
@@ -64,10 +65,9 @@ $('#mod-dropdown').change(function (e) {
                 $("#mod-dropdown").html("<option id=\"modname\" value='-1'>请选择模块</option> " + optionstring)
                 //测试用例信息
                 $.each($.parseJSON(results.data)['caseList'], function (key, value) {
-                    caseString += "<input name=\"casename\" type=\"checkbox\" value=\""+key+"\" onclick=\"oneToAll()\">"+value+"<br />"
+                    caseString += "<input name=\"casename\" id=\""+value+"\" type=\"checkbox\" value=\""+key+"\" onclick=\"loneToAll()\">"+value+"<br />"
                 })
-
-                $("#caseListView").html("<label><input id=\"selectAll\" type=\"checkbox\" value=\"-1\" onclick=\"selectAllCase()\">All</label><br />"+caseString)
+                $("#caseListView").html("<label><input id=\"selectAll\" type=\"checkbox\" value=\"-1\" onclick=\"lselectAllCase()\">All</label><br />"+caseString)
             }
         },
         error: function (ret) {
@@ -105,14 +105,11 @@ $('#save').click(function () {
     }
     //获取用例列表
     var castlist = [];
-    $("input[name='casename']").each(function (i) {
-        if($(this).is(':checked')){
-            let caseid=$(this).val()
-            alert(caseid)
-            castlist.push(caseid)
-        }
-        console.log(castlist)
+    $("#checkCaseList>input[name='casename']").each(function (i) {
+        let caseid=$(this).val()
+        castlist.push(caseid)
     })
+    console.log(castlist)
     // 验证任务名不能为空(判断重名在后台处理）
     if (task_name == "") {
         $('#request-process-patent').html("")
