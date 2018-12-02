@@ -9,7 +9,11 @@ from project_app.models.module_models import Module
 from interface_app.models import Case
 from task_app.models import Task
 from django.db.models import Q
-#获取用例列表
+
+
+# 获取用例列表
+
+
 @login_required
 def tasklist(request):
     username = request.session.get('username', '')
@@ -30,13 +34,13 @@ def tasklist(request):
         context = {'username': username, 'type': type, 'tasks': tasks}
         print(context)
         return render(request, 'task/task.html', context)
-    #创建测试用例
+    # 创建测试用例
     if (type == 'create'):
-        pros=Project.objects.all()
+        pros = Project.objects.all()
         context = {
             'username': username,
             'type': type,
-            'pros':pros
+            'pros': pros
         }
         return render(request, 'task/add_task.html', context)
 
