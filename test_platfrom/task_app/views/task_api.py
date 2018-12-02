@@ -1,10 +1,10 @@
 # Create your views here.
-from django.shortcuts import render
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponse
-from ..models import Task
-from project_app.models.project_models import Project
+# from django.shortcuts import render
+# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+# from django.contrib.auth.decorators import login_required
+# from django.http import HttpResponseRedirect, HttpResponse
+# from ..models import Task
+# from project_app.models.project_models import Project
 from project_app.models.module_models import Module
 import json
 from test_platfrom.common import response_failed,response_succeess
@@ -50,10 +50,11 @@ def save(request):
     task=Task.objects.filter(name=taskName)
     if(task):
         print("task"+taskName+"has been exist")
-        return response_failed("task:"+name+" 已经存在")
+        return response_failed("task:"+taskName+" 已经存在,保存失败")
     else:
         task = Task(
             name=taskName,
+            description=taskDesp,
             status=taskStat,
             result=taskResult,
             create_user_id=userId,

@@ -82,25 +82,43 @@ function roneToAll(){
         $("#checkCaseList input#selectAll").prop("checked",false)
     }
 }
+
 //如果addcase的button被点击，在右边显示出增加的用例名
 $('#addCase').click(function () {
     //将已选择的case记录到checkCaseList中，新的case将追加到列表中
-    var checkCaseList=[];
+    var checkCaseList=[]
     $("#checkCaseList>input[name='casename']").each(function (i) {
-        let name=$(this).val()
-        checkCaseList.push(name)
+        let name=$(this).attr('id')
+        let caseid=$(this).val()
+        let caseinfo={}
+        caseinfo[caseid]=name
+        checkCaseList.push(caseinfo)
     })
     var operString="";
     //check 请选择用例框，将新选择用例加入到checkCaseList中,如果有用例选择已经添加将不再添加'
     $("#caseListView>input[name='casename']").each(function (i) {
         if ($(this).is(':checked')) {
             //如果被选中，加入数组
-            let caseName = $(this).attr('id')
-            if($.inArray(caseName, checkCaseList)==-1){
-                checkCaseList.push(caseName)
+            var caseName1 = $(this).attr('id')
+            var caseid1=$(this).val()
+            var caseInfo1={}
+            var flag=0
+            caseInfo1[caseid1]=caseName1
+            //判断是否存在字典中，不存在则加入
+            for (var i=0; i<checkCaseList.length;i++) {
+                $.each(checkCaseList[i], function (key, val) {
+                    if (caseid1 == key) {
+                        flag = 1
+                    }
+                })
+                if (flag == 1) {
+                    alert(caseName1 + "已经存在了，不再添加")
+                    break
+                }
             }
-            else{
-                alert(caseName+"已经存在了，不再添加")
+            if(flag==0){
+                console.log(caseName1+"不存在，添加")
+                checkCaseList.push(caseInfo1)
             }
         }
     })
@@ -108,8 +126,9 @@ $('#addCase').click(function () {
     //遍历数组中的元素，显示在已选case的框中
     for(var i=0; i < checkCaseList.length; i++) {
         // alert(checkCaseList[i])
-        let val=checkCaseList[i]
-        operString += "<input name=\"casename\" id=\""+val+"\" type=\"checkbox\" value=\""+val+"\" onclick=\"roneToAll()\">"+val+"<br />"
+        $.each(checkCaseList[i], function (key, val) {
+            operString += "<input name=\"casename\" id=\""+val+"\" type=\"checkbox\" value=\""+key+"\" onclick=\"roneToAll()\">"+val+"<br />"
+        })
     }
     var operStr="<label><input id=\"selectAll\" type=\"checkbox\" value=\"-1\" onclick=\"rselectAllCase()\">All</label><br />"+operString
     // alert(operStr)
@@ -123,8 +142,8 @@ $('#delCase').click(function (){
     $("#checkCaseList>input[name='casename']").each(function () {
         if(!$(this).is(":checked")){
             let val=$(this).val()
-            lastCheck.push(val)
-            operString += "<input name=\"casename\" id=\""+val+"\" type=\"checkbox\" value=\""+val+"\" onclick=\"roneToAll()\">"+val+"<br />"
+            let caseid=$(this).attr('id')
+            operString += "<input name=\"casename\" id=\""+caseid+"\" type=\"checkbox\" value=\""+val+"\" onclick=\"roneToAll()\">"+caseid+"<br />"
         }
     })
      var operStr="<label><input id=\"selectAll\" type=\"checkbox\" value=\"-1\" onclick=\"rselectAllCase()\">All</label><br />"+operString

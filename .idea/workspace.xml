@@ -8,9 +8,7 @@
     <list default="true" id="65a8cca0-cca4-4b86-87dd-1015fdc445f5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/taskJs/taskManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/taskJs/taskManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/taskJs/taskManagerJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/taskJs/taskManagerJs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_platfrom/task_app/views/task_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/task_app/views/task_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_platfrom/templates/task/add_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/test_platfrom/templates/task/add_task.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,11 +99,11 @@
           <entry key="csv" value="117" />
           <entry key="dummy" value="36" />
           <entry key="html" value="11081" />
-          <entry key="js" value="10691" />
+          <entry key="js" value="11339" />
           <entry key="md" value="18" />
-          <entry key="py" value="29951" />
+          <entry key="py" value="29979" />
           <entry key="sql" value="7" />
-          <entry key="txt" value="300" />
+          <entry key="txt" value="306" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -113,10 +111,10 @@
           <entry key="CSS" value="38" />
           <entry key="CSV" value="117" />
           <entry key="HTML" value="11081" />
-          <entry key="JavaScript" value="10691" />
+          <entry key="JavaScript" value="11339" />
           <entry key="Markdown" value="18" />
-          <entry key="PLAIN_TEXT" value="336" />
-          <entry key="Python" value="29951" />
+          <entry key="PLAIN_TEXT" value="342" />
+          <entry key="Python" value="29979" />
           <entry key="Scratch" value="7" />
         </counts>
       </usages-collector>
@@ -136,8 +134,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/taskJs/taskManagerJs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1254">
-              <caret line="123" column="17" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="17" />
+            <state relative-caret-position="-31">
+              <caret line="109" column="28" selection-start-line="109" selection-start-column="22" selection-end-line="109" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -171,14 +169,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_platfrom/task_app/views/task_api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="22">
+              <caret line="1" selection-start-line="1" selection-start-column="2" selection-end-line="6" selection-end-column="55" />
               <folding>
-                <element signature="e#26#61#0" expanded="true" />
-                <marker date="1543741854561" expanded="true" signature="1325:2088" ph="..." />
+                <element signature="e#344#395#0" expanded="true" />
+                <marker date="1543750075322" expanded="true" signature="1337:2143" ph="..." />
               </folding>
             </state>
           </provider>
@@ -196,11 +194,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/taskJs/taskManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+            <state relative-caret-position="-435">
+              <caret line="116" column="17" lean-forward="true" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
               <folding>
                 <element signature="n#!!block;n#roneToAll#0" />
               </folding>
@@ -212,7 +210,7 @@
         <entry file="file://$PROJECT_DIR$/test_platfrom/task_app/views/task_views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="735">
-              <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+              <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
               <folding>
                 <element signature="e#26#61#0" expanded="true" />
               </folding>
@@ -234,7 +232,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>context</find>
       <find>#save</find>
       <find>assertResult</find>
       <find>update</find>
@@ -261,8 +258,9 @@
       <find>option</find>
       <find>create</find>
       <find>addCase</find>
-      <find>save</find>
       <find>attr('id')</find>
+      <find>push</find>
+      <find>save</find>
       <find>castlist</find>
     </findStrings>
     <replaceStrings>
@@ -270,9 +268,17 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="PUSH_UPDATE_ALL_ROOTS" value="false" />
     <option name="ROOT_SYNC" value="SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_COMMON_BRANCH" value="test" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--follow-tags" />
+        <option name="title" value="Current Branch" />
+      </GitPushTagMode>
+    </option>
   </component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="fc7e8306-d896-4a51-9429-78466efb9a5f" />
@@ -329,8 +335,8 @@
         <option value="$PROJECT_DIR$/test_platfrom/task_app/urls.py" />
         <option value="$PROJECT_DIR$/test_platfrom/templates/task/add_task.html" />
         <option value="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/taskJs/taskManagerJs.js" />
-        <option value="$PROJECT_DIR$/test_platfrom/task_app/views/task_api.py" />
         <option value="$PROJECT_DIR$/test_platfrom/static/bootstrap/js/taskJs/taskManager.js" />
+        <option value="$PROJECT_DIR$/test_platfrom/task_app/views/task_api.py" />
       </list>
     </option>
   </component>
@@ -341,10 +347,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="7" />
-    <option name="y" value="52" />
+    <option name="x" value="148" />
+    <option name="y" value="64" />
     <option name="width" value="1757" />
-    <option name="height" value="941" />
+    <option name="height" value="942" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -747,7 +753,14 @@
       <option name="project" value="LOCAL" />
       <updated>1543684627533</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="save task">
+      <created>1543742822668</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1543742822668</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -773,7 +786,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49717057" weight="0.37900355" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.57154405" visible="true" weight="0.29003558" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5327405" visible="true" weight="0.2153025" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6645109" weight="0.66370106" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -781,7 +794,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49474534" weight="0.35409254" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5004042" side_tool="true" weight="0.50889677" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.4672595" side_tool="true" weight="0.18149467" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4995958" weight="0.3291815" />
       <window_info anchor="bottom" id="Messages" order="13" />
@@ -1148,16 +1161,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/task_app/views/task_views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
-          <folding>
-            <element signature="e#26#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_platfrom/templates/task/add_task.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1012">
@@ -1173,30 +1176,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/task_app/views/task_api.py">
+    <entry file="file://$PROJECT_DIR$/test_platfrom/task_app/views/task_views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        <state relative-caret-position="735">
+          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
           <folding>
             <element signature="e#26#61#0" expanded="true" />
-            <marker date="1543741854561" expanded="true" signature="1325:2088" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/taskJs/taskManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-435">
+          <caret line="116" column="17" lean-forward="true" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
+          <folding>
+            <element signature="n#!!block;n#roneToAll#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/taskJs/taskManagerJs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="123" column="17" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="17" />
+        <state relative-caret-position="-31">
+          <caret line="109" column="28" selection-start-line="109" selection-start-column="22" selection-end-line="109" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_platfrom/static/bootstrap/js/taskJs/taskManager.js">
+    <entry file="file://$PROJECT_DIR$/test_platfrom/task_app/views/task_api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <caret line="1" selection-start-line="1" selection-start-column="2" selection-end-line="6" selection-end-column="55" />
           <folding>
-            <element signature="n#!!block;n#roneToAll#0" />
+            <element signature="e#344#395#0" expanded="true" />
+            <marker date="1543750075322" expanded="true" signature="1337:2143" ph="..." />
           </folding>
         </state>
       </provider>
