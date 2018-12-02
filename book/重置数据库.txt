@@ -1,0 +1,6 @@
+(1）在该app模块下，有一个migrations文件夹，除了前两个文件外(__pycache_ 文件夹和__init__.py)，其他的文件都删除，其实每一次如果有变化的话，
+这边就会生成一个文件，下面这个001_initial.py看名字就知道是第一次迁移的时候生成的，也就是因为有它的存在，所以以后每次再执行就不再创建表了。 
+(2)2）其次，在数据库里面也有相应的记录，也要删除。我们仔细看看数据库里面存的是什么，在django_migrations里面，这个表里面存的都是每次迁移的记录，当然记录的是什么模块以及对应的文件名字，比如我们这里的模块是dtheme，这里的文件名叫001_initial，和我们文件夹里面是一一对应的，同样，删除这条记录。 
+删除django_migrations里的对应用户app的记录删除
+（3)重新执行python manage.py makemigrations
+python manage.py migrate
