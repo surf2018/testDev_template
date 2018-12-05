@@ -23,7 +23,7 @@ function deltask(taskid, taskname) {
 function lselectAllCase() {
     //请选择用例的All是否勾选
     if ($('#caseListView input#selectAll').is(':checked')) {
-        // alert("请选择用例的All被勾选")
+        // alert("请选择用例框的All被勾选")
         $("#caseListView>input[name='casename']").prop('checked', true)
     }
     else {
@@ -98,7 +98,7 @@ $('#addCase').click(function () {
         checkCaseList.push(caseinfo)
     })
     var operString = "";
-    //check 请选择用例框，将新选择用例加入到checkCaseList中,如果有用例选择已经添加将不再添加'
+    //检查请选择用例框，将新选择用例加入到checkCaseList中,如果有用例选择已经添加将不再添加'
     $("#caseListView>input[name='casename']").each(function (i) {
         if ($(this).is(':checked')) {
             //如果被选中，加入数组

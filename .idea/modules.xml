@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../TestCCA/.idea/TVUCCPro.iml" filepath="$PROJECT_DIR$/../TestCCA/.idea/TVUCCPro.iml" />
       <module fileurl="file://$PROJECT_DIR$/../myPoll/.idea/myPoll.iml" filepath="$PROJECT_DIR$/../myPoll/.idea/myPoll.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/testDev_template.iml" filepath="$PROJECT_DIR$/.idea/testDev_template.iml" />
       <module fileurl="file://$PROJECT_DIR$/../testDjango/.idea/testDjango.iml" filepath="$PROJECT_DIR$/../testDjango/.idea/testDjango.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../test_dc01/.idea/test_dc01.iml" filepath="$PROJECT_DIR$/../test_dc01/.idea/test_dc01.iml" />
     </modules>
   </component>
 </project>

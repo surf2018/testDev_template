@@ -23,5 +23,6 @@ urlpatterns = [
     path('save/',task_api.save),
     path('seletAjax/',task_api.selectAjax),
     path('delTask/<int:taskid>/',task_views.delTask),
+    path('editTask/<int:taskid>/',task_views.editTask),
 
 ]

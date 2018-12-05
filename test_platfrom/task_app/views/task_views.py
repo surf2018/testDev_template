@@ -47,7 +47,7 @@ def tasklist(request):
 # 编辑任务
 def editTask(request, taskid):
     username = request.session.get('username', '')
-    context = {'username': username, 'type': 'debug', 'taskid': taskid}
+    context = {'username': username, 'type': 'edit', 'taskid': taskid}
     return render(request, 'task/edit_task.html', context)
 
 #删除任务

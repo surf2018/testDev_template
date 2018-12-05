@@ -41,7 +41,7 @@ def selectAjax(request):
     print(results)
     return response_succeess(results)
 
-
+#保存新数据
 def save(request):
     name = request.session.get('username', '')
     userId = User.objects.get(username=name).id
@@ -67,5 +67,7 @@ def save(request):
             cases=caseList)
         task.save()
         return response_succeess(data="保存成功")
+# # 编辑用例
+# def editTask(request):
 
 # Create your views here.
