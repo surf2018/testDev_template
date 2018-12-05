@@ -44,17 +44,17 @@ def tasklist(request):
         }
         return render(request, 'task/add_task.html', context)
 
-# # 编辑任务
-# def debugCase(request, caseid):
-#     username = request.session.get('username', '')
-#     context = {'username': username, 'type': 'debug', 'caseid': caseid}
-#     return render(request, 'case/api_debug.html', context)
+# 编辑任务
+def editTask(request, taskid):
+    username = request.session.get('username', '')
+    context = {'username': username, 'type': 'debug', 'taskid': taskid}
+    return render(request, 'task/edit_task.html', context)
 
-# #删除任务
-# def delTask(request, taskid):
-#     # 从数据库里删除任务
-#     Task.objects.filter(id=taskid).delete()
-#     return HttpResponseRedirect("/task/task_manager/?type=caselist")
+#删除任务
+def delTask(request, taskid):
+    # 从数据库里删除任务
+    Task.objects.filter(id=taskid).delete()
+    return HttpResponseRedirect("/task/task_manager/?type=tasklist")
 
 
 # # 搜索任务

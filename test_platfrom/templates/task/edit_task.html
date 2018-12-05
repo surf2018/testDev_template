@@ -1,0 +1,64 @@
+{% extends "task/task.html" %}
+{% load staticfiles %}
+{% block api_taskContent %}
+    <fieldset>
+        <div id="request-process-patent"></div>
+        <div style="width:80%; margin-left: 20px;">
+        <form method="post" class="bs-example bs-example-form" role="form" style="margin-top: 30px">
+{#             {% csrf_token %}#}
+            <div class="input-group">
+                <span class="input-group-addon">名称</span>
+                <input id="taskname" type="text" class="form-control" placeholder="name">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">描述</span>
+                <textarea id="taskdesp" type="text" class="form-control" placeholder="description"></textarea>
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">状态</span>
+                <input id="taskstat" type="text" class="form-control" disabled value="未执行">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">结果</span>
+                <input id="taskresult" type="text" class="form-control" disabled >
+            </div>
+            <br>
+            <label>项目
+                <select id="pro-dropdown">
+                    <option id="proname" value="-1">请选择项目</option>
+                    {% for pro in pros %}
+                        <option id="proname" value="{{pro.id}}">{{pro.name}}</option>
+                    {% endfor %}
+                </select></label>
+                    <label>模块
+                        <select id="mod-dropdown">
+                            <option id="modname" value="-1">请选择模块</option>
+                    </select></label>
+            <br><br>
+            <div id="main" style="width:600px;">
+                <p id='left'style="width:200px;float:left;">请选择测试用例:</p>
+                <p id='right'style="width:200px;float:right">已选择测试用例:</p>
+            </div>
+            <div id="caseListView" style="width:260px;height:200px; overflow-y:scroll; border:1px solid; display:inline-block;background:#ebebeb;">
+            </div>
+            <div id="checkCaseList" style="width:260px;height:200px; overflow-y:scroll; border:1px solid; display:inline-block;background:#faf2cc;margin-left:10px;">
+            </div>
+            <div style="width: 100%; height: 60px;">
+                <button type="button" class="btn btn-success" id="addCase" style="float: left;margin-right: 10px;">添加case</button>
+                <button type="button" class="btn btn-success" id="delCase" style="float: right;margin-right: 10px;">删除case</button>
+            </div>
+            <div style="width: 100%; height: 60px;">
+                <button type="button" class="btn btn-success" id="save" style="float: right;margin-right: 10px;">保存</button>
+                <button type="button" class="btn btn-success" id="run" style="float: right;margin-right: 10px;">运行</button>
+                <button type="button" class="btn btn-success" id="return" style="float: right;margin-right: 10px;">返回</button>
+            </div>
+        </form>
+        </div>
+    </fieldset>
+{% endblock %}
+ <script src="{% static '/bootstrap/js/taskJs/taskManager.js' %}"></script>
+<!--{#<script src="{% static '/bootstrap/js/jquery.cookie.js' %}"></script>#}-->
+<!--{#<script src="{% static '/bootstrap/js/csrftoken.js' %}"></script>#}-->
