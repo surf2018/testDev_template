@@ -32,14 +32,47 @@ $(function () {
         }
     })
 })
-//    var setting = {
-//       async: {
-//          enable: true,
-//          autoParam:[pid,mid], //异步请求，点击节点时，自动提交name属性，服务端可以通过request.POST.get(name)；注意，第一次初始化的时候，传的是空
-//          type: "post",
-//          url: "/task/ztree/dirlist/"
-//       }
-// };
-//    $(document).ready(function(){
-//       $.fn.zTree.init($("#treeInfo"), setting);
-//    });
+//ztree设置
+var setting = {
+    check: {
+        enable: true,
+        autoCheckTrigger: true,
+        chkStyle: "checkbox",
+        chkboxType: { "Y": "ps", "N": "s" }
+    },
+
+    async:{
+        enable:true,
+        otherParam:{//传入查询参数
+            //注意，要传入动态变化的参数必须用return的方式
+            "taskid":function(){
+                return window.location.pathname.split('/')[3]
+            }
+        },
+        type:'post',
+        url:"/task/getZtreeList/"
+        },
+   data: {
+        simpleData: {
+        enable: true
+        }
+    }
+};
+// var zNodes =[
+//   { id:1, pId:0, name:"湖北省", open:true},
+//   { id:11, pId:1, name:"武汉市", open:true},
+//   { id:111, pId:11, name:"汉口"},
+//   { id:112, pId:11, name:"武昌"},
+//   { id:12, pId:1, name:"黄石市", open:true},
+//   { id:121, pId:12, name:"黄石港区"},
+//   { id:122, pId:12, name:"西塞山区"},
+//   { id:2, pId:0, name:"湖南省", open:true},
+//   { id:21, pId:2, name:"长沙市"},
+//   { id:22, pId:2, name:"株洲市", open:true},
+//   { id:221, pId:22, name:"天元区"},
+//   { id:222, pId:22, name:"荷塘区"},
+//   { id:23, pId:2, name:"湘潭市"}
+// ];
+$(document).ready(function(){
+  $.fn.zTree.init($("#treeInfo"), setting);
+});

@@ -1,6 +1,6 @@
 {% extends "task/task.html" %}
 {% load staticfiles %}
-<link href="{% static '/bootstrap/css/zTreeStyle.css' %}" rel="stylesheet" />
+
 {% block api_Taskedit %}
     <fieldset>
         <div id="request-process-patent"></div>
@@ -21,14 +21,14 @@
                 <p id='left'style="width:200px;float:left;">请选择测试用例:</p>
                 <p id='right'style="width:200px;float:right">已选择测试用例:</p>
             </div>
-            <div id=caseListView class="content_wrap" style="width:260px;height:200px; overflow-y:scroll; border:1px solid; display:inline-block;background:#ebebeb;">
+            <div id=caseListView class="content_wrap" style="width:260px;height:200px; overflow-y:scroll; border:1px solid; display:inline-block;background: seashell">
                <div class="zTreeDemoBackground">
                   <ul id="treeInfo" class="ztree"></ul>
                </div>
             </div>
             <div id="checkCaseList" style="width:260px;height:200px; overflow-y:scroll; border:1px solid; display:inline-block;background:#faf2cc;margin-left:10px;">
             </div>
-            <div style="width: 100%; height: 60px;">
+            <div style="width: 50%; height: 60px; float: left">
                 <button type="button" class="btn btn-success" id="update" style="float: right;margin-right: 10px;">更新</button>
                 <button type="button" class="btn btn-success" id="run" style="float: right;margin-right: 10px;">运行已选择用例</button>
                 <button type="button" class="btn btn-success" id="return" style="float: right;margin-right: 10px;">返回任务列表</button>
@@ -38,10 +38,12 @@
     </fieldset>
 {% endblock %}
 {%  block api_taskEditJs %}
-
+<!--<script src="{% static '/bootstrap/js/taskJs/jquery.ztree.all.min.js' %}"></script>-->
 <script src="{% static '/bootstrap/js/taskJs/task.js' %}"></script>
-{#<script src="{% static '/bootstrap/js/jquery.ztree.core.min.js' %}"></script>#}
+
+<!--<script src="{% static '/bootstrap/js/jquery.ztree.core.min.js' %}"></script>#}
 {#<script src="{% static '/bootstrap/js/jquery.ztree.excheck.min.js' %}"></script>#}
 {#<script src="{% static '/bootstrap/js/jquery.ztree.exedit.min.js' %}"></script>#}
+-->
 {% endblock %}
 <!--{#<script src="{% static '/bootstrap/js/csrftoken.js' %}"></script>#}-->

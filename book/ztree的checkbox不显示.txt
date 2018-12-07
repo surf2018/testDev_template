@@ -1,0 +1,4 @@
+(1)<script src="zTree_v3-master/js/jquery.ztree.excheck.js"></script> 文件是否引入
+(2)如果再显示：
+检查ztreestyle.css中的图片位置是否不正确，如不正确更改。
+更改后，重新运行。正常显示

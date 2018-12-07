@@ -5,12 +5,13 @@
 # from django.http import HttpResponseRedirect, HttpResponse
 # from ..models import Task
 # from project_app.models.project_models import Project
-from project_app.models.module_models import Module
+from project_app.models.module_models import Module,Project
 import json
 from test_platfrom.common import response_failed, response_succeess
 from interface_app.models import Case
 from django.contrib.auth.models import User
 from task_app.models import Task
+from django.http import HttpResponse
 from django.db.models import Q
 
 
@@ -84,5 +85,35 @@ def queryTask(request):
     data={"taskname":taskname,"taskDesp":taskDesp,"cases":caseNames}
     return response_succeess(data)
 
-
+def getZtreeList(request):
+    zNodesArray=[]
+    #获取所有的case
+    cases=Case.objects.all()
+    for case in cases:
+        caseid=case.id
+        casename=case.name
+        mid=case.model.id
+        nodeList = {'id': caseid, 'pId': mid, 'name': casename}
+        zNodesArray.append(nodeList)
+    # 获取所有的model追加到zNodesArray
+    models = Module.objects.all()
+    for model in models:
+        modid = model.id
+        modname = model.name
+        proid = model.project.id
+        nodeList = {'id': modid, 'pId': proid, 'name': modname}
+        zNodesArray.append(nodeList)
+    # 获取所有的project，追加到zNodeArray
+    pros = Project.objects.all()
+    for pro in pros:
+        proid = pro.id
+        proname = pro.name
+        nodeList = {'id': proid, 'pId': '0', 'name': proname}
+        zNodesArray.append(nodeList)
+    # 勾选已选的case
+    taskid = request.POST['taskid']
+    task = Task.objects.get(id=taskid)
+    cases = task.cases.strip('[]').replace("'", "").split(',')
+    print(zNodesArray)
+    return HttpResponse(json.dumps(zNodesArray))
 # Create your views here.
