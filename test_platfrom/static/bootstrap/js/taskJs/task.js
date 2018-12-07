@@ -16,15 +16,16 @@ $(function () {
                 $('#taskdesp').val(task_desp);
                 let checkCaseList=results.data.cases;
                 var operString='';
+                var caseinfo={};
                 //显示已经选择的taskCase
                 for (var i = 0; i < checkCaseList.length; i++) {
                 // alert(checkCaseList[i])
-                    $.each(checkCaseList[i], function (key, val) {
-                        operString += "<p name=\"casename\" id=\"" + key + "\" value=\"" + val + "\">" + val + "</p>"
-                    })
+                    operString += "<input name=\"casename\" id=\""+checkCaseList[i].caseid+"\" type=\"checkbox\" value=\""+checkCaseList[i].name+"\" onclick=\"roneToAll()\" >"+checkCaseList[i].proname+"-->"+checkCaseList[i].modname+"-->"+checkCaseList[i].casename+"</input><br />"
+
                 }
                 // alert(operStr)
-                $("#checkCaseList").html(operString)
+                var operS="<label><input id=\"selectAll\" type=\"checkbox\" value=\"-1\" onclick=\"rselectAllCase()\">All</label><br />"+operString
+                $("#checkCaseList").html(operS)
             }
         },
         error: function () {

@@ -77,7 +77,10 @@ def queryTask(request):
     caseNames=[]
     for case in cases:
         casename=Case.objects.get(id=case).name
-        caseNames.append({case:casename})
+        proname=Case.objects.get(id=case).project.name
+        modname=Case.objects.get(id=case).model.name
+        caseNames.append({'caseid':case,'casename':casename,'proname':proname,'modname':modname})
+    print(caseNames)
     data={"taskname":taskname,"taskDesp":taskDesp,"cases":caseNames}
     return response_succeess(data)
 
