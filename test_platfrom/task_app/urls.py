@@ -24,5 +24,6 @@ urlpatterns = [
     path('seletAjax/',task_api.selectAjax),
     path('delTask/<int:taskid>/',task_views.delTask),
     path('editTask/<int:taskid>/',task_views.editTask),
+    path('queryTask/',task_api.queryTask),
 
 ]

@@ -16,17 +16,6 @@
                 <span class="input-group-addon">描述</span>
                 <textarea id="taskdesp" type="text" class="form-control" placeholder="description"></textarea>
             </div>
-            <br>
-            <div class="input-group">
-                <span class="input-group-addon">状态</span>
-                <input id="taskstat" type="text" class="form-control" disabled value="未执行">
-            </div>
-            <br>
-            <div class="input-group">
-                <span class="input-group-addon">结果</span>
-                <input id="taskresult" type="text" class="form-control" disabled >
-            </div>
-            <br>
             <br><br>
             <div id="main" style="width:600px;">
                 <p id='left'style="width:200px;float:left;">请选择测试用例:</p>
@@ -48,9 +37,11 @@
         </div>
     </fieldset>
 {% endblock %}
-<script src="{% static '/bootstrap/js/taskJs/taskManager.js' %}"></script>
+{%  block api_taskEditJs %}
+
 <script src="{% static '/bootstrap/js/taskJs/task.js' %}"></script>
-<script src="{% static '/bootstrap/js/jquery.ztree.core.min.js' %}"></script>
-<script src="{% static '/bootstrap/js/jquery.ztree.excheck.min.js' %}"></script>
-<script src="{% static '/bootstrap/js/jquery.ztree.exedit.min.js' %}"></script>
+{#<script src="{% static '/bootstrap/js/jquery.ztree.core.min.js' %}"></script>#}
+{#<script src="{% static '/bootstrap/js/jquery.ztree.excheck.min.js' %}"></script>#}
+{#<script src="{% static '/bootstrap/js/jquery.ztree.exedit.min.js' %}"></script>#}
+{% endblock %}
 <!--{#<script src="{% static '/bootstrap/js/csrftoken.js' %}"></script>#}-->

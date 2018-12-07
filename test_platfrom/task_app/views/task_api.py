@@ -67,7 +67,19 @@ def save(request):
             cases=caseList)
         task.save()
         return response_succeess(data="保存成功")
-# # 编辑用例
-# def editTask(request):
+# 根据ajax传的taskid来查询caseid
+def queryTask(request):
+    taskid=request.POST['taskid']
+    task=Task.objects.get(id=taskid)
+    taskname=task.name
+    taskDesp=task.description
+    cases=task.cases.strip('[]').replace("'","").split(',')
+    caseNames=[]
+    for case in cases:
+        casename=Case.objects.get(id=case).name
+        caseNames.append({case:casename})
+    data={"taskname":taskname,"taskDesp":taskDesp,"cases":caseNames}
+    return response_succeess(data)
+
 
 # Create your views here.
