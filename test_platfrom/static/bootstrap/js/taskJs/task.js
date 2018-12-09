@@ -1,4 +1,4 @@
-//获取到taskid，显示task的值
+//获取到taskid，显示已选择的caselist
 $(function () {
     var aurl = window.location.pathname
     var taskid = aurl.split('/')[3]
@@ -16,15 +16,14 @@ $(function () {
                 $('#taskdesp').val(task_desp);
                 let checkCaseList=results.data.cases;
                 var operString='';
-                var caseinfo={};
                 //显示已经选择的taskCase
                 for (var i = 0; i < checkCaseList.length; i++) {
                 // alert(checkCaseList[i])
-                    operString += "<input name=\"casename\" id=\""+checkCaseList[i].caseid+"\" type=\"checkbox\" value=\""+checkCaseList[i].name+"\" onclick=\"roneToAll()\" >"+checkCaseList[i].proname+"-->"+checkCaseList[i].modname+"-->"+checkCaseList[i].casename+"</input><br />"
+                    operString += "<input name=\"casename\" id=\""+checkCaseList[i].caseid+"\" type=\"checkbox\" value=\""+checkCaseList[i].casename+"\" onclick=\"roneToAll()\"  checked='checked'>"+checkCaseList[i].casename+"</input><br />"
 
                 }
                 // alert(operStr)
-                var operS="<label><input id=\"selectAll\" type=\"checkbox\" value=\"-1\" onclick=\"rselectAllCase()\">All</label><br />"+operString
+                var operS="<label><input id=\"selectAll\" type=\"checkbox\" value=\"-1\" onclick=\"rselectAllCase()\" checked=\"checked\" >All</label><br />"+operString
                 $("#checkCaseList").html(operS)
             }
         },
@@ -40,7 +39,6 @@ var setting = {
         chkStyle: "checkbox",
         chkboxType: { "Y": "ps", "N": "s" }
     },
-
     async:{
         enable:true,
         otherParam:{//传入查询参数
@@ -51,28 +49,47 @@ var setting = {
         },
         type:'post',
         url:"/task/getZtreeList/"
-        },
+    },
    data: {
         simpleData: {
-        enable: true
+        enable: true,
+
         }
+    },
+    callback:{
+        beforeCheck:true,
+        onCheck:onCheck //监听ztree
     }
 };
-// var zNodes =[
-//   { id:1, pId:0, name:"湖北省", open:true},
-//   { id:11, pId:1, name:"武汉市", open:true},
-//   { id:111, pId:11, name:"汉口"},
-//   { id:112, pId:11, name:"武昌"},
-//   { id:12, pId:1, name:"黄石市", open:true},
-//   { id:121, pId:12, name:"黄石港区"},
-//   { id:122, pId:12, name:"西塞山区"},
-//   { id:2, pId:0, name:"湖南省", open:true},
-//   { id:21, pId:2, name:"长沙市"},
-//   { id:22, pId:2, name:"株洲市", open:true},
-//   { id:221, pId:22, name:"天元区"},
-//   { id:222, pId:22, name:"荷塘区"},
-//   { id:23, pId:2, name:"湘潭市"}
-// ];
+//初始化ztree
 $(document).ready(function(){
-  $.fn.zTree.init($("#treeInfo"), setting);
+    $.fn.zTree.init($("#treeInfo"), setting);
 });
+
+function onCheck(e,treeId,treeNode){
+    var treeObj = $.fn.zTree.getZTreeObj('treeInfo');
+    var nodes = treeObj.getCheckedNodes(true)
+    var id1 = "",pid1="",modid="",cs="",cur_caseid='',casename='';
+    var checkedCaseArray=[];
+    //得到mod和pro的关系
+    for (var i = 0; i < nodes.length; i++) {
+        id1 = nodes[i].id;
+        pid1=nodes[i].pId;
+        cs=nodes[i].checked;
+        var testmodList={};
+        if (id1 >= 40000 && cs==true) {
+            cur_caseid=id1/40000;
+            casename=nodes[i].name;
+            testmodList={'caseid':cur_caseid,'casename':casename}
+            checkedCaseArray.push(testmodList);
+        }
+    }
+    console.log(checkedCaseArray)
+    var operString='';
+    for (var j = 0; j < checkedCaseArray.length; j++){
+        operString += "<input name=\"casename\" id=\""+checkedCaseArray[j].caseid+"\" type=\"checkbox\" value=\""+checkedCaseArray[j].casename+"\" onclick=\"roneToAll()\"  checked='checked'>"+checkedCaseArray[j].casename+"</input><br />"
+    }
+    // alert(operStr)
+    var operS="<label><input id=\"selectAll\" type=\"checkbox\" value=\"-1\" onclick=\"rselectAllCase()\" checked=\"checked\" >All</label><br />"+operString
+    $("#checkCaseList").html(operS)
+}

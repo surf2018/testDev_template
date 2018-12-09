@@ -26,5 +26,6 @@ urlpatterns = [
     path('editTask/<int:taskid>/',task_views.editTask),
     path('queryTask/',task_api.queryTask),
     path('getZtreeList/',task_api.getZtreeList),
+    path('update/',task_api.update),
 
 ]
