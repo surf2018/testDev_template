@@ -1,33 +1,29 @@
 
-import request
+import requests
 import json
-from ddt import ddt,data,unpack
+from ddt import ddt,data,unpack,file_data
 import unittest
 import csv
 import requests
 from test_platfrom.common import response_failed,response_succeess
+from test_platfrom.task_app.apps import TASK_PATH,REPORT_PATH
+import xmlrunner
+import sys
 #测试数据
-def get_data(file_name):
-    # print("file_name"+str(file_name))
-    # create an empty list to store rows
-    rows = []
-    # open the CSV file
-    data_file = open(file_name, "r")
-    # create a CSV Reader from CSV file
-    reader = csv.reader(data_file)
-    # skip the headers
-    next(reader, None)
-    # add rows from reader to list
-    for row in reader:
-        rows.append(row)
-    print(rows)
-    return rows
+#取文件
+def getCommandParameter():
+    return sys.argv[0]
+
+def get_file():
+    taskid=getCommandParameter()
+    return TASK_PATH + 'Task_'+taskid+".json"
+
 @ddt
 class ccaSystem(unittest.TestCase):
     def setUp(self):
         print("running test task")
-
-    @data(*get_data("test_data.csv"))
+    # @data(*get_data("test_data.csv"))
+    @file_data(get_file)
     @unpack
     def test_run(self,url,method,type,header,data,assertText):
         if (method == 'post'):
@@ -111,3 +107,13 @@ class ccaSystem(unittest.TestCase):
             message="请求方法错误"
             print(message)
         self.assertEqual(message,"OK"),"test fail"
+
+def runTaskTestcase(taskid):
+    filename = 'task_' + taskid + '.xml'
+    with open(TASK_PATH + filename, 'wb') as output:
+        unittest.main(
+            runner = xmlrunner.XMLTestRunner(output=output),failfast=False, buffer=False, catchbreak=False)
+
+if __name__=='__main__':
+    taskid=sys.argv[0]
+    runTaskTestcase(taskid)

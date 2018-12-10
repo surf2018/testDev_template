@@ -18,9 +18,8 @@ $(function () {
                 var operString='';
                 //显示已经选择的taskCase
                 for (var i = 0; i < checkCaseList.length; i++) {
-                // alert(checkCaseList[i])
                     operString += "<input name=\"casename\" id=\""+checkCaseList[i].caseid+"\" type=\"checkbox\" value=\""+checkCaseList[i].casename+"\" onclick=\"roneToAll()\"  checked='checked'>"+checkCaseList[i].casename+"</input><br />"
-
+                    console.log(operString)
                 }
                 // alert(operStr)
                 var operS="<label><input id=\"selectAll\" type=\"checkbox\" value=\"-1\" onclick=\"rselectAllCase()\" checked=\"checked\" >All</label><br />"+operString

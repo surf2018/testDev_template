@@ -12,14 +12,15 @@ from interface_app.models import Case
 from django.contrib.auth.models import User
 from task_app.models import Task
 from django.http import HttpResponse
+from task_app.apps import TASK_PATH,TASK_RUN_PATH
+import os
+
 from django.db.models import Q
 
 
 # Create your views here.
 #
 # 获取用例列表
-
-
 def selectAjax(request):
     proId = request.GET['ppara']
     modId = request.GET['mpara']
@@ -77,9 +78,9 @@ def queryTask(request):
     cases=task.cases.strip('[]').replace("'","").split(',')
     caseNames=[]
     for case in cases:
-        casename=Case.objects.get(id=case).name
-        proname=Case.objects.get(id=case).project.name
-        modname=Case.objects.get(id=case).model.name
+        casename=Case.objects.get(id=int(case)).name
+        proname=Case.objects.get(id=int(case)).project.name
+        modname=Case.objects.get(id=int(case)).model.name
         caseNames.append({'caseid':case,'casename':casename,'proname':proname,'modname':modname})
     print(caseNames)
     data={"taskname":taskname,"taskDesp":taskDesp,"cases":caseNames}
@@ -158,6 +159,36 @@ def update(request):
 def runTask(request):
     #将获取到的testcase的列表写入json文件
     caseList=request.POST.getlist('caseList')
+    taskid=request.POST['taskid']
     print("receive testcase list"+str(caseList))
-    for case
+    case_dict={}
+    for case in caseList:
+        caseInfo=Case.objects.get(id=int(case))
+        case_url=caseInfo.url
+        case_method=caseInfo.method
+        case_type=caseInfo.type
+        case_header=caseInfo.header
+        case_data=caseInfo.data
+        case_assert=caseInfo.response_assert
+        case_dict[case]={'url':case_url,'method':case_method,'type':case_type,'header':case_header,'data':case_data,'assertText':case_assert}
+    print("runTask_json:")
+    print(case_dict)
+    #写入json文件
+    taskJsonPath=TASK_PATH+"/task_"+taskid+".json"
+    with open(taskJsonPath, "w") as f:
+        json.dump(case_dict, f)
+    print("加载入文件完成...")
+    #调用程序执行脚本
+    print("运行:"+TASK_RUN_PATH+"用例")
+    command="python " + TASK_RUN_PATH+" "+taskid
+    print("命令:"+command)
+    os.system("python " + TASK_RUN_PATH+" "+taskid)
+    #解析xml文件
+    result=1
+    if(result==1):
+        return response_succeess(data="运行成功")
+    else:
+        return response_failed("运行失败")
+
+    # for case
 # Create your views here.
