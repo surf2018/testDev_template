@@ -1,5 +1,5 @@
 from django.apps import AppConfig
-from test_platfrom.settings import BASE_DIR
+from settings import BASE_DIR
 
 class TaskAppConfig(AppConfig):
     name = 'task_app'

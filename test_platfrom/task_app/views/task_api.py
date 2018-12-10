@@ -182,7 +182,7 @@ def runTask(request):
     print("运行:"+TASK_RUN_PATH+"用例")
     command="python " + TASK_RUN_PATH+" "+taskid
     print("命令:"+command)
-    os.system("python " + TASK_RUN_PATH+" "+taskid)
+    os.system("python " + TASK_RUN_PATH)
     #解析xml文件
     result=1
     if(result==1):
