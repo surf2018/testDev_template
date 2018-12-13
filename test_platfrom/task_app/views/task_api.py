@@ -176,7 +176,7 @@ def runTask(request):
     print("runTask_json:")
     print(case_dict)
     #写入json文件
-    taskJsonPath=TASK_PATH+"/task_"+taskid+".json"
+    taskJsonPath=TASK_PATH+"/task.json"
     with open(taskJsonPath, "w") as f:
         json.dump(case_dict, f)
     print("加载入文件完成...")
@@ -186,7 +186,52 @@ def runTask(request):
     print("命令:"+command)
     os.system("python " + TASK_RUN_PATH)
     #解析xml文件
-    resultPath=REPORT_PATH+"/taskResult_.xml"
+    resultPath=REPORT_PATH+"/taskResult.xml"
+    tree=ET.ElementTree(file=resultPath)
+    root=tree.getroot()
+    print(root.tag)
+    if(root.tag=="testsuite"):
+        print(root.attrib)
+        if(root.attrib['errors']=='0' and root.attrib['failures']=='0'):
+            result=1
+            return response_succeess(data="任务运行成功")
+        else:
+            result=0
+            return response_failed(data="任务运行失败")
+    else:
+        result=0
+        return response_failed("任务运行失败")
+    # for case
+def TaskListrun(request):
+    #将获取到的testcase的列表写入json文件
+    result=0
+    caseList=request.POST.getlist('caseList')
+    taskid=request.POST['taskid']
+    print("receive testcase list"+str(caseList))
+    case_dict={}
+    for case in caseList:
+        caseInfo=Case.objects.get(id=int(case))
+        case_url=caseInfo.url
+        case_method=caseInfo.method
+        case_type=caseInfo.type
+        case_header=caseInfo.header
+        case_data=caseInfo.data
+        case_assert=caseInfo.response_assert
+        case_dict[case]={'url':case_url,'method':case_method,'type':case_type,'header':case_header,'data':case_data,'assertText':case_assert}
+    print("runTask_json:")
+    print(case_dict)
+    #写入json文件
+    taskJsonPath=TASK_PATH+"/task.json"
+    with open(taskJsonPath, "w") as f:
+        json.dump(case_dict, f)
+    print("加载入文件完成...")
+    #调用程序执行脚本
+    print("运行:"+TASK_RUN_PATH+"用例")
+    command="python " + TASK_RUN_PATH
+    print("命令:"+command)
+    os.system("python " + TASK_RUN_PATH)
+    #解析xml文件
+    resultPath=REPORT_PATH+"/taskResult.xml"
     tree=ET.ElementTree(file=resultPath)
     root=tree.getroot()
     print(root.tag)
@@ -201,5 +246,4 @@ def runTask(request):
     else:
         result=0
         return response_failed("任务运行失败")
-    # for case
 # Create your views here.

@@ -130,7 +130,7 @@ $('#addCase').click(function () {
     for (var i = 0; i < checkCaseList.length; i++) {
         // alert(checkCaseList[i])
         $.each(checkCaseList[i], function (key, val) {
-            operString += "<input name=\"casename\" id=\"" + val + "\" type=\"checkbox\" value=\"" + key + "\" onclick=\"roneToAll()\">" + val + "<br />"
+            operString += "<input name=\"casename\" id=\"" + key + "\" type=\"checkbox\" value=\"" + val + "\" onclick=\"roneToAll()\">" + val + "<br />"
         })
     }
     var operStr = "<label><input id=\"selectAll\" type=\"checkbox\" value=\"-1\" onclick=\"rselectAllCase()\">All</label><br />" + operString
