@@ -21,7 +21,7 @@ class ccaSystem(unittest.TestCase):
     def setUp(self):
         print("running test task")
     # @data(*get_data("test_data.csv"))
-    @file_data(TASK_PATH+"/task.json")
+    @file_data(TASK_PATH+"/task_1.json")
     @unpack
     def test_run(self,url,method,type,header,data,assertText):
         print(url,method)
@@ -130,7 +130,7 @@ class ccaSystem(unittest.TestCase):
         self.assertEqual(message,'OK'),"测试失败"
 
 def runTaskTestcase():
-    filename = REPORT_PATH+'/taskResult.xml'
+    filename = REPORT_PATH+'/taskResult_.xml'
     print(filename)
     with open(filename, 'w',encoding='utf-8') as output:
         unittest.main(testRunner=xmlrunner.XMLTestRunner(output), failfast=False, buffer=False, catchbreak=False)

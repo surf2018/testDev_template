@@ -87,7 +87,7 @@ class modTemplateTestCase(StaticLiveServerTestCase):
         if (title == exp_title and username == exp_user and flag == 1):
             result = 1
         self.assertEqual(result, 1), "test_01addModlePage fail"
-    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\project_app\\tests\\mod_data.csv"))
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfroms\project_app\\tests\\mod_data.csv"))
     @unpack
     def test_02addModule(self,name,des,ctime,etime,proid,proname):
         modInfo=[]
@@ -158,7 +158,7 @@ class modTemplateTestCase(StaticLiveServerTestCase):
             pass
         self.assertIn(exp_title, title), "test_04editModPage fail"
         self.assertEqual(flag,1),"test_04editProPage fail"
-    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\\project_app\\tests\\mod_data.csv"))
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfroms\\project_app\\tests\\mod_data.csv"))
     @unpack
     def test_05editMod(self,name,des,ctime,etime,proid,proname):
         modname = 'mod_test'
@@ -209,7 +209,7 @@ class modTemplateTestCase(StaticLiveServerTestCase):
             result = 1
         self.assertEqual(result, 1), "test_05editMod fail"
 
-    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\\project_app\\tests\\mod_search_data.csv"))
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfroms\\project_app\\tests\\mod_search_data.csv"))
     @unpack
     def test_07searchMod(self,searchText):
         print("running test_07searchMod")

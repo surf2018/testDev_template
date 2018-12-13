@@ -40,7 +40,7 @@
         <td id="task_createTime">{{ task.create_time |date:"Y-m-d H:i:s" }}</td>
 
         <td>
-            <a id='runTask' href="/task/runTask/{{task.id}}/">运行</a>
+            <a id='run'>运行</a>
             <a id='taskEdit' href="/task/editTask/{{task.id}}/">编辑</a>
             <a id='taskdel' onclick="deltask('{{ task.id }}','{{task.name}}')">删除</a>
         </td>

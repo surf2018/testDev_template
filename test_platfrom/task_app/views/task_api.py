@@ -7,13 +7,14 @@
 # from project_app.models.project_models import Project
 from project_app.models.module_models import Module,Project
 import json
-from test_platfrom.common import response_failed, response_succeess
+from test_platfroms.common import response_failed, response_succeess
 from interface_app.models import Case
 from django.contrib.auth.models import User
 from task_app.models import Task
 from django.http import HttpResponse
-from task_app.apps import TASK_PATH,TASK_RUN_PATH
+from task_app.apps import TASK_PATH,TASK_RUN_PATH,REPORT_PATH
 import os
+import xml.etree.cElementTree as ET
 
 from django.db.models import Q
 
@@ -158,6 +159,7 @@ def update(request):
 #运行任务
 def runTask(request):
     #将获取到的testcase的列表写入json文件
+    result=0
     caseList=request.POST.getlist('caseList')
     taskid=request.POST['taskid']
     print("receive testcase list"+str(caseList))
@@ -180,15 +182,24 @@ def runTask(request):
     print("加载入文件完成...")
     #调用程序执行脚本
     print("运行:"+TASK_RUN_PATH+"用例")
-    command="python " + TASK_RUN_PATH+" "+taskid
+    command="python " + TASK_RUN_PATH
     print("命令:"+command)
     os.system("python " + TASK_RUN_PATH)
     #解析xml文件
-    result=1
-    if(result==1):
-        return response_succeess(data="运行成功")
+    resultPath=REPORT_PATH+"/taskResult_.xml"
+    tree=ET.ElementTree(file=resultPath)
+    root=tree.getroot()
+    print(root.tag)
+    if(root.tag=="testsuite"):
+        print(root.attrib)
+        if(root.attrib['errors']=='0' and root.attrib['failures']=='0'):
+            result=1
+            return response_succeess(data="任务运行成功")
+        else:
+            result=0
+            return response_succeess(data="任务运行失败")
     else:
-        return response_failed("运行失败")
-
+        result=0
+        return response_failed("任务运行失败")
     # for case
 # Create your views here.

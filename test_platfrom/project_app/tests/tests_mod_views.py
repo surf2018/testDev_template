@@ -53,7 +53,7 @@ class ModViewsTestCase(TestCase):
         self.assertIn("新建模块", content)
         self.assertTemplateUsed(response, 'project/module.html')
 
-    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\project_app\\tests\\mod_data.csv"))
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfroms\project_app\\tests\\mod_data.csv"))
     @unpack
     def test_03addModule(self,mname,mdes,mctime,metime,proid,proname):
         datas = {"name":mname, "description":mdes,"createTime":mctime,"endTime": metime,"project":proid}
@@ -72,7 +72,7 @@ class ModViewsTestCase(TestCase):
         self.assertIn(exp_pro,content),"test_04editModulePage fail"
         self.assertTemplateUsed(response,'project/module.html'),"test_04editModulePage fail"
 
-    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\project_app\\tests\\mod_data.csv"))
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfroms\project_app\\tests\\mod_data.csv"))
     @unpack
     def test_05editModule(self,mname,mdes,mctime,metime,proid,proname):
         result=0
@@ -86,7 +86,7 @@ class ModViewsTestCase(TestCase):
         self.assertEqual(statusConde, 302),"test_05editModule fail"
         self.assertEqual(result,1),"test_05editModule fail"
 
-    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\\project_app\\tests\\mod_search_data.csv"))
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfroms\\project_app\\tests\\mod_search_data.csv"))
     @unpack
     def test_06searchModle(self,searchText):
         response = self.client.get('/module/searchm/?search='+searchText)

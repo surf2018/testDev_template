@@ -50,7 +50,7 @@ class ProViewsTestCase(TestCase):
         self.assertIn("新建项目", content)
         self.assertTemplateUsed(response, 'project/broadcast.html')
 
-    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\project_app\\tests\\pro_data.csv"))
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfroms\project_app\\tests\\pro_data.csv"))
     @unpack
     def test_03addProject(self,pname,pdes,ctime,stat,etime):
         datas = {"name":pname, "description":pdes,"createTime":ctime,"status":stat,"endTime": etime}
@@ -69,7 +69,7 @@ class ProViewsTestCase(TestCase):
         self.assertIn(exp_pro,content),"test_04editPojectPage fail"
         self.assertTemplateUsed(response,'project/broadcast.html'),"test_04editPojectPage fail"
 
-    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\project_app\\tests\\pro_editdata.csv"))
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfroms\project_app\\tests\\pro_editdata.csv"))
     @unpack
     def test_05editProject(self,pname,pdes,ctime,stat,etime):
         result=0
@@ -99,7 +99,7 @@ class ProViewsTestCase(TestCase):
         content = response.content.decode('utf-8')
         self.assertEqual(statusConde, 200), "test_07queryProVersion fail"
         self.assertIn(exp_title,content),"test_07queryProVersion fail"
-    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\\project_app\\tests\\pro_search_data.csv"))
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfroms\\project_app\\tests\\pro_search_data.csv"))
     @unpack
     def test_08searchPro(self,searchText):
         response = self.client.get('/project/searchp/?search='+searchText)

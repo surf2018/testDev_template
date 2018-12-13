@@ -1,6 +1,6 @@
+import sys
 from django.apps import AppConfig
-from settings import BASE_DIR
-
+from test_platfroms.settings import BASE_DIR
 class TaskAppConfig(AppConfig):
     name = 'task_app'
 
@@ -12,5 +12,7 @@ REPORT_PATH=TASK_PATH+"/report"
 
 
 if __name__ =="__main__":
+    print(BASE_PATH)
     print(TASK_PATH)
     print(TASK_RUN_PATH)
+    print(REPORT_PATH)

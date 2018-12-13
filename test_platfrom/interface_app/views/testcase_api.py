@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import requests
 import json
-from test_platfrom.common import response_failed,response_succeess
+from test_platfroms.common import response_failed,response_succeess
 from ..models import Case
 from project_app.models.project_models import Project
 from project_app.models.module_models import Module

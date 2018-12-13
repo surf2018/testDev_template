@@ -78,7 +78,7 @@ class proTemplateTestCase(StaticLiveServerTestCase):
         if (title == exp_title and username == exp_user and flag == 1):
             result = 1
         self.assertEqual(result, 1), "test_01addProjectPage fail"
-    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\project_app\\tests\\pro_data.csv"))
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfroms\project_app\\tests\\pro_data.csv"))
     @unpack
     def test_02addProject(self,name,des,ctime,stat,etime):
         proInfo=[]
@@ -151,7 +151,7 @@ class proTemplateTestCase(StaticLiveServerTestCase):
             pass
         self.assertIn(exp_title, title), "test_04editPro fail"
         self.assertEqual(flag,1),"test_04editProPage fail"
-    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfrom\\project_app\\tests\\pro_editdata.csv"))
+    @data(*get_data("D:\\PycharmProjects\\testDev_template\\test_platfroms\\project_app\\tests\\pro_editdata.csv"))
     @unpack
     def test_05editPro(self,name,des,ctime,stat,etime):
         pname = "pt"
