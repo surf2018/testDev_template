@@ -15,6 +15,7 @@ $(function () {
                 $('#taskname').val(task_name);
                 $('#taskdesp').val(task_desp);
                 let checkCaseList=results.data.cases;
+                console.log(checkCaseList)
                 var operString='';
                 //显示已经选择的taskCase
                 for (var i = 0; i < checkCaseList.length; i++) {

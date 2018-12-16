@@ -12,7 +12,8 @@ from interface_app.models import Case
 from django.contrib.auth.models import User
 from task_app.models import Task
 from django.http import HttpResponse
-from task_app.apps import TASK_PATH,TASK_RUN_PATH,REPORT_PATH
+from task_app.extend.task_thread import TaskThread
+
 import os
 import xml.etree.cElementTree as ET
 
@@ -79,11 +80,12 @@ def queryTask(request):
     cases=task.cases.strip('[]').replace("'","").split(',')
     caseNames=[]
     for case in cases:
+        case=case.strip()
         casename=Case.objects.get(id=int(case)).name
         proname=Case.objects.get(id=int(case)).project.name
         modname=Case.objects.get(id=int(case)).model.name
         caseNames.append({'caseid':case,'casename':casename,'proname':proname,'modname':modname})
-    print(caseNames)
+    # print(caseNames)
     data={"taskname":taskname,"taskDesp":taskDesp,"cases":caseNames}
     return response_succeess(data)
 
@@ -156,94 +158,14 @@ def update(request):
             create_user_id=userId,
             cases=caseList)
         return response_succeess(data="更新成功")
-#运行任务
+#create take and edit task页面运行任务
 def runTask(request):
     #将获取到的testcase的列表写入json文件
-    result=0
-    caseList=request.POST.getlist('caseList')
-    taskid=request.POST['taskid']
-    print("receive testcase list"+str(caseList))
-    case_dict={}
-    for case in caseList:
-        caseInfo=Case.objects.get(id=int(case))
-        case_url=caseInfo.url
-        case_method=caseInfo.method
-        case_type=caseInfo.type
-        case_header=caseInfo.header
-        case_data=caseInfo.data
-        case_assert=caseInfo.response_assert
-        case_dict[case]={'url':case_url,'method':case_method,'type':case_type,'header':case_header,'data':case_data,'assertText':case_assert}
-    print("runTask_json:")
-    print(case_dict)
-    #写入json文件
-    taskJsonPath=TASK_PATH+"/task.json"
-    with open(taskJsonPath, "w") as f:
-        json.dump(case_dict, f)
-    print("加载入文件完成...")
-    #调用程序执行脚本
-    print("运行:"+TASK_RUN_PATH+"用例")
-    command="python " + TASK_RUN_PATH
-    print("命令:"+command)
-    os.system("python " + TASK_RUN_PATH)
-    #解析xml文件
-    resultPath=REPORT_PATH+"/taskResult.xml"
-    tree=ET.ElementTree(file=resultPath)
-    root=tree.getroot()
-    print(root.tag)
-    if(root.tag=="testsuite"):
-        print(root.attrib)
-        if(root.attrib['errors']=='0' and root.attrib['failures']=='0'):
-            result=1
-            return response_succeess(data="任务运行成功")
-        else:
-            result=0
-            return response_failed(data="任务运行失败")
-    else:
-        result=0
-        return response_failed("任务运行失败")
-    # for case
-def TaskListrun(request):
-    #将获取到的testcase的列表写入json文件
-    result=0
-    caseList=request.POST.getlist('caseList')
-    taskid=request.POST['taskid']
-    print("receive testcase list"+str(caseList))
-    case_dict={}
-    for case in caseList:
-        caseInfo=Case.objects.get(id=int(case))
-        case_url=caseInfo.url
-        case_method=caseInfo.method
-        case_type=caseInfo.type
-        case_header=caseInfo.header
-        case_data=caseInfo.data
-        case_assert=caseInfo.response_assert
-        case_dict[case]={'url':case_url,'method':case_method,'type':case_type,'header':case_header,'data':case_data,'assertText':case_assert}
-    print("runTask_json:")
-    print(case_dict)
-    #写入json文件
-    taskJsonPath=TASK_PATH+"/task.json"
-    with open(taskJsonPath, "w") as f:
-        json.dump(case_dict, f)
-    print("加载入文件完成...")
-    #调用程序执行脚本
-    print("运行:"+TASK_RUN_PATH+"用例")
-    command="python " + TASK_RUN_PATH
-    print("命令:"+command)
-    os.system("python " + TASK_RUN_PATH)
-    #解析xml文件
-    resultPath=REPORT_PATH+"/taskResult.xml"
-    tree=ET.ElementTree(file=resultPath)
-    root=tree.getroot()
-    print(root.tag)
-    if(root.tag=="testsuite"):
-        print(root.attrib)
-        if(root.attrib['errors']=='0' and root.attrib['failures']=='0'):
-            result=1
-            return response_succeess(data="任务运行成功")
-        else:
-            result=0
-            return response_succeess(data="任务运行失败")
-    else:
-        result=0
-        return response_failed("任务运行失败")
+    taskid = request.POST['taskid']
+    print("receive taskid:" + str(taskid))
+    th=TaskThread(taskid)
+    result=th.new_run()
+    print("task_api"+str(result))
+    #返回结果到ajax
+#接续介乎
 # Create your views here.

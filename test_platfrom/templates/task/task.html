@@ -6,6 +6,7 @@
     <button id="create-button" type="button" onclick="createTask()">创建任务</button>
 </h1>
 <table class="table table-striped">
+    <div id="request-process-patent"></div>
     <thead>
     <tr>
         <th>ID</th>
@@ -19,28 +20,29 @@
     </thead>
     <tbody id="tasklist">
     {% for task in tasks %}
-    <tr>
+    <tr id="{{ task.id }}">
         <td id="num">{{ forloop.counter }}</td>
         <td id="taskname">{{ task.name }}</td>
         <td id="taskdes">{{ task.description }}</td>
         {% if task.status == '0' %}
-            <td id="taskstatus"><p><font color="green">未执行</font></p></td>
+            <td id="taskstatus" value="未执行"><p><font color="green">未执行</font></p></td>
             <td id="taskresult"></td>
         {% elif task.status == '1' %}
-            <td id="taskstatus"><p><font color="red">正在执行</font></p></td>
+            <td id="taskstatus" value="正在执行"><p><font color="red">正在执行</font></p></td>
             <td id="taskresult"></td>
         {% else %}
-             <td id="taskstatus">执行完毕</td>
+             <td id="taskstatus" value="执行完毕">执行完毕</td>
             {% if task.result == '0' %}
-                <td id="taskresult"><p><font color="red">测试NG</font></p></td>
+                <td id="taskresult" value="测试NG"><p><font color="red">测试NG</font></p></td>
             {% else %}
-                <td id="taskresult"><p><font color="green">测试OK</font></p></td>
+                <td id="taskresult" value="测试OK"><p><font color="green">测试OK</font></p></td>
             {% endif %}
         {% endif %}
         <td id="task_createTime">{{ task.create_time |date:"Y-m-d H:i:s" }}</td>
 
         <td>
-            <a id='runTask' href="/task/">运行</a>
+            <a id='run' onclick="runTask('{{ task.id }}','{{task.name}}')">运行</a>
+            <a id='viewReport' href="/task/report/{{ task.id }}">报告</a>
             <a id='taskEdit' href="/task/editTask/{{task.id}}/">编辑</a>
             <a id='taskdel' onclick="deltask('{{ task.id }}','{{task.name}}')">删除</a>
         </td>

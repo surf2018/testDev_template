@@ -244,27 +244,13 @@ $('#updateTask').click(function () {
 })
 
 //执行任务
-$('#run').click(function () {
-    $('#request-process-patent').html("正在执行任务...")
+function runTask(taskid,taskname){
+    $('#request-process-patent').html("正在执行任务"+taskname+"...")
     // 获取当前需要保存页面信息
-    var task_id=window.location.pathname.split('/')[3]
-    $('#taskstat').val("执行中")
-    // 获取用例列表
-    var castlist = [];
-    $("#checkCaseList>input[name='casename']").each(function (i) {
-        if($(this).is(':checked')) {
-            let caseid = $(this).attr('id')
-            castlist.push(caseid)
-        }
-    })
-    console.log(castlist)
-    if(castlist.length==0){
-        alert("请选择用例，再执行")
-    }
+    $('tr#'+taskid+'>td#taskstatus').text("执行中")
     // 将用例列表传入后台去执行用例
     var datas = {
-        'taskid':task_id,
-        "caseList": castlist
+        'taskid':taskid,
     }
     console.log(datas)
     $.ajax({
@@ -298,4 +284,4 @@ $('#run').click(function () {
 
         }
     })
-})
+}

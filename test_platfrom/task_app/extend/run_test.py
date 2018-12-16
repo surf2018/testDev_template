@@ -24,7 +24,6 @@ class ccaSystem(unittest.TestCase):
     @file_data(TASK_PATH+"/task.json")
     @unpack
     def test_run(self,url,method,type,header,data,assertText):
-        print(url,method)
         header=json.loads(header)
         data=json.loads(data)
         message=""
@@ -45,6 +44,7 @@ class ccaSystem(unittest.TestCase):
                         else:
                             message = "Fail"
                     else:
+                        print("assertText:"+assertText)
                         if (assertText in response.text):
                             message = "OK"
                         else:
@@ -76,18 +76,20 @@ class ccaSystem(unittest.TestCase):
             # get 请求
             print("get 请求")
             if (type != 'json'):
+                print("type is not json")
                 try:
                     response = requests.get(url, params=data, headers=header)
                     print("get方法获取reponse:" +
                           response.text +
                           "status code:" +
                           str(response.status_code))
-                    if(assertText==''):
+                    if(assertText==""):
                         if(response.status_code==200):
                             message="OK"
                         else:
                             message='Fail'
                     else:
+                        print("assertText:"+str(assertText))
                         if(assertText in response.text):
                             message="OK"
                         else:
@@ -102,6 +104,7 @@ class ccaSystem(unittest.TestCase):
                     message = "Fail"
                     print("Fail:Fail to establish a new connection.")
             else:
+                print("type is json")
                 try:
                     data = json.dumps(data)
                     print(data)
@@ -116,19 +119,21 @@ class ccaSystem(unittest.TestCase):
                         else:
                             message = 'Fail'
                     else:
+                        print("assertText:"+str(assertText))
                         if (assertText in response.text):
                             message = "OK"
                         else:
                             message = "Fail"
                 except:
                     message = "Fail"
-                    print("Fail:请求失败")
+                    print("Fail")
             # return HttpResponse(response)
         else:
-            message="Fail:请求方法错误"
-            print(message)
-        self.assertEqual(message,'OK'),"测试失败"
-
+            message="Fail"
+            print(message+"method 不是post 或者get")
+        self.assertEqual(message,'OK')
+    def tearDown(self):
+        print("testcase end")
 def runTaskTestcase():
     filename = REPORT_PATH+'/taskResult.xml'
     print(filename)

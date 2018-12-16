@@ -15,6 +15,17 @@ class Task(models.Model):
     create_time=models.DateTimeField("创建时间",auto_now_add=True)
     def __str__(self):
         return self.name
-
+class TaskResult(models.Model):
+    name = models.CharField("名称", max_length=100, blank=False, default="")
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    error = models.IntegerField("错误用例个数",default=0)
+    failures = models.IntegerField("失败用例个数",default=0)
+    skipped = models.IntegerField("跳过用例个数",default=0)
+    tests = models.IntegerField("总用例数个数",default=0)
+    run_time = models.FloatField("运行时长",default=0)
+    result = models.TextField("详细结果", default="")
+    create_time = models.DateTimeField("创建时间", auto_now_add=True)
+    def __str__(self):
+        return self.name
 
 # Create your models here.
