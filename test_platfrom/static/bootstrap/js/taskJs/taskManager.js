@@ -3,6 +3,7 @@ function createTask() {
     window.location.href = "/task/task_manager/?type=create"
 }
 
+
 //返回到tasklist
 $('#return').click(function () {
     window.location.href = "/task/task_manager/?type=tasklist"

@@ -161,6 +161,56 @@ $('#save').click(function () {
         }
     })
 })
+$(function(){
+  getData();
+  setInterval(function(){
+   getData();
+  }, 10000);
+ });
+function getData(){
+    //查询中的taskid
+    var task_id=""
+    $.each($("#taskstatus"), function(i,value) {
+        v = $(this).text()
+        if (v == "执行中") {
+            task_id = $(this).attr('value')
+            alert(task_id)
+            return false;
+        }
+    })
+    if(task_id==""){
+         $('#request-process-patent').html("失败")
+    }
+    else {
+        var datas = {
+            'taskid': task_id
+        }
+        $.ajax({
+            type: "POST",
+            url: "/task/getStatus/",
+            data: datas,
+            traditional: true,
+            success: function (ret) {
+                console.log(ret)
+                if (ret.success == "false") {
+                    $('tr#' + task_id + '>td#taskstatus').text("执行结束")
+                    $('#request-process-patent').html("")
+                }
+                else {
+                    $('tr#' + task_id + '>td#taskresult').text(ret.data)
+                    $('tr#' + task_id + '>td#taskstatus').text("执行结束")
+                    $('#request-process-patent').html("")
+                }
+            },
+            error: function (ret) {
+                console.log("debug_ajax fail")
+                $('tr#' + task_id + '>td#taskstatus').text("执行结束")
+                $('#request-process-patent').html("失败")
+
+            }
+        })
+    }
+ };
 //更新任务
 $('#updateTask').click(function () {
     $('#request-process-patent').html("正在保存更新数据...")
@@ -248,6 +298,7 @@ function runTask(taskid,taskname){
     $('#request-process-patent').html("正在执行任务"+taskname+"...")
     // 获取当前需要保存页面信息
     $('tr#'+taskid+'>td#taskstatus').text("执行中")
+    $('tr#'+taskid+'>td#taskresult').text("")
     // 将用例列表传入后台去执行用例
     var datas = {
         'taskid':taskid,
@@ -260,26 +311,24 @@ function runTask(taskid,taskname){
         data: datas,
         success: function (ret) {
             console.log(ret)
-            if (ret.success == "false") {
-                alert(ret.message)
-                $('#taskstat').val("执行完")
-                $("#taskresult").val("测试NG")
-                $('#request-process-patent').html("")
-            }
-            else {
-                alert(ret.data)
-                //设置结果
-                if(ret.data=="任务运行成功") {
-                    $('#taskstat').val("执行完")
-                    $("#taskresult").val("测试OK")
-                }
-                $('#request-process-patent').html("")
-            }
+            // if (ret.success == "false") {
+            //     alert(ret.message)
+            //     $('tr#' + taskid + '>td#taskstatus').val("执行结束")
+            //     $('tr#' + taskid + '>td#taskresult').val("测试NG")
+            //     $('#request-process-patent').html("")
+            // }
+            // else {
+            //     // alert(ret.data)
+            //     //设置结果
+            //     $('tr#' + taskid + '>td#taskstatus').val("执行结束")
+            //     $('tr#' + taskid + '>td#taskresult').val(ret.data)
+            //     $('#request-process-patent').html("")
+            // }
         },
         error: function (ret) {
             console.log("debug_ajax fail")
-            $('#taskstat').val("执行完")
-            $("#taskresult").val("测试NG")
+            $('tr#'+taskid+'>td#taskstatus').val("执行结束")
+            $('tr#'+taskid+'>td#taskresult').val("测试NG")
             $('#request-process-patent').html("失败")
 
         }

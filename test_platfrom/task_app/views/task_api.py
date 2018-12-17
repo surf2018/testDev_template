@@ -164,8 +164,18 @@ def runTask(request):
     taskid = request.POST['taskid']
     print("receive taskid:" + str(taskid))
     th=TaskThread(taskid)
-    result=th.new_run()
-    print("task_api"+str(result))
+    th.new_run()
+    return response_succeess("")
+def getStatus(request):
+    taskid=request.POST['taskid']
+    print("taskid getStatus:"+str(taskid))
+    task=Task.objects.get(id=int(taskid))
+    task_status=task.status
+    if(task_status==0):
+        message="测试NG"
+    else:
+        message="测试OK"
+    return response_succeess(message)
     #返回结果到ajax
 #接续介乎
 # Create your views here.
