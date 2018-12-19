@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="ccaSystem-20181219100800" tests="3" time="0.802">
+	<testcase classname="ccaSystem" name="test_run_00001_1" time="0.665"/>
+	<testcase classname="ccaSystem" name="test_run_00002_2" time="0.084"/>
+	<testcase classname="ccaSystem" name="test_run_00003_3" time="0.053"/>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>
