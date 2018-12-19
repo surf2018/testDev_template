@@ -10,11 +10,11 @@ import xml.etree.cElementTree as ET
 
 class TaskThread():
     def __init__(self, taskid):
-        self.taskid = taskid
+        self.taskid = int(taskid)
     def readResult(self):
         # 读取文件所有内容
         resultPath = REPORT_PATH + "/taskResult.xml"
-        f = open(resultPath, 'r')
+        f = open(resultPath,'r')
         content = f.read()
         f.close()
         return content
@@ -81,17 +81,17 @@ class TaskThread():
             case_assert = caseInfo.response_assert
             case_dict[case] = {'url': case_url, 'method': case_method, 'type': case_type, 'header': case_header,
                                'data': case_data, 'assertText': case_assert}
-        print("runTask_json:")
+        # print("runTask_json:")
         print(case_dict)
         # 写入json文件
         taskJsonPath = TASK_PATH + "/task.json"
         with open(taskJsonPath, "w") as f:
             json.dump(case_dict, f)
-        print("加载入文件完成...")
+        # print("加载入文件完成...")
         # 调用程序执行脚本
-        print("运行:" + TASK_RUN_PATH + "用例")
+        # print("运行:" + TASK_RUN_PATH + "用例")
         command = "python " + TASK_RUN_PATH
-        print("命令:" + command)
+        # print("命令:" + command)
         os.system("python " + TASK_RUN_PATH)
 
     def run(self):
@@ -102,21 +102,22 @@ class TaskThread():
             i.start()
         for i in threads:
             i.join()
-        print("任务执行完毕，分析结果")
+        # print("任务执行完毕，分析结果")
         resultList = self.parseResultXml()
         # 写入数据库
         if (len(resultList) > 0):
-            print("写数据库")
+            # print("写数据库")
             self.wirtToDB(resultList)
         else:
-            print("结果文件没有生成")
+            print("")
+            # print("结果文件没有生成")
         # 更改task的数据的状态
         if (resultList['failures'] == '0' and resultList['errors'] == '0' and int(resultList['tests']) > 0):
-            Task.objects.filter(id=self.taskid).update(status=2, result=1)
-            message = "任务运行成功"
+            Task.objects.filter(id=self.taskid).update(status='2', result='1')
+            message = "任务成功"
         else:
-            Task.objects.filter(id=self.taskid).update(status=2, result=0)
-            message = "任务运行失败"
+            Task.objects.filter(id=self.taskid).update(status='2', result='0')
+            message = "任务失败"
         print(message)
         return message
     def new_run(self):

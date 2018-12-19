@@ -140,8 +140,8 @@ def update(request):
     taskid=request.POST['taskid']
     taskName = request.POST['taskName']
     taskDesp = request.POST['taskDesp']
-    taskResult = request.POST["taskResult"]
-    taskStat = request.POST['taskStat']
+    # taskResult = request.POST["taskResult"]
+    # taskStat = request.POST['taskStat']
     caseList = request.POST.getlist('caseList')
     print("caselist:" + str(caseList))
     # check taskname是否存在
@@ -153,25 +153,43 @@ def update(request):
         task = Task.objects.filter(id=taskid).update(
             name=taskName,
             description=taskDesp,
-            status=taskStat,
-            result=taskResult,
+            # status=taskStat,
+            # result=taskResult,
             create_user_id=userId,
             cases=caseList)
         return response_succeess(data="更新成功")
 #create take and edit task页面运行任务
 def runTask(request):
-    #将获取到的testcase的列表写入json文件
-    taskid = request.POST['taskid']
-    print("receive taskid:" + str(taskid))
-    th=TaskThread(taskid)
-    th.new_run()
-    return response_succeess("")
+    #判断有没有其他任务在执行
+    flag=0
+    tasks=Task.objects.all()
+    for task in tasks:
+        if(task.status=='1'):
+            flag=1
+            break
+    if(flag==1):
+        return response_failed("有任务在执行，请稍后执行")
+    else:
+        #将获取到的testcase的列表写入json文件
+        taskid = request.POST['taskid']
+        print("receive taskid:" + str(taskid))
+        #更新taske状态值
+        Task.objects.filter(id=taskid).update(status='1',result='-1')
+        #运行任务
+        th=TaskThread(taskid)
+        th.new_run()
+        #查看数据库的值
+        task=Task.objects.get(id=taskid)
+        re=task.result
+        if(re=='0'):
+            return response_succeess("测试NG")
+        else:
+            return response_succeess('测试OK')
 def getStatus(request):
     taskid=request.POST['taskid']
-    print("taskid getStatus:"+str(taskid))
     task=Task.objects.get(id=int(taskid))
-    task_status=task.status
-    if(task_status==0):
+    task_result=task.result
+    if(task_result=='0'):
         message="测试NG"
     else:
         message="测试OK"

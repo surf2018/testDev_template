@@ -31,34 +31,34 @@ class ccaSystem(unittest.TestCase):
             if (type != 'json'):
                 if ('file' in data.keys()):
                     response = requests.post(url, files=data)
-                    print(response)
+                    # print(response)
                 else:
                     response = requests.post(url, data=data, headers=header)
-                    print("post" +
-                          response.text +
-                          "status code:" +
-                          str(response.status_code))
+                    # print("post" +
+                    #       response.text +
+                    #       "status code:" +
+                    #       str(response.status_code))
                     if (assertText == ""):
                         if (response.status_code == '200'):
                             message = "OK"
                         else:
                             message = "Fail"
                     else:
-                        print("assertText:"+assertText)
+                        # print("assertText:"+assertText)
                         if (assertText in response.text):
                             message = "OK"
                         else:
                             message="Fail"
             else:
                 # json数据
-                print("post 请求json")
+                # print("post 请求json")
                 try:
                     data = json.dumps(data)
                     response = requests.post(url, data=data, headers=header)
-                    print("post" +
-                          response.text +
-                          "status code:" +
-                          str(response.status_code))
+                    # print("post" +
+                    #       response.text +
+                    #       "status code:" +
+                    #       str(response.status_code))
                     if(assertText==""):
                         if(response.status_code=='200'):
                             message="OK"
@@ -71,55 +71,55 @@ class ccaSystem(unittest.TestCase):
                             message="Fail"
                 except requests.exceptions.ConnectionError:
                     message = "Fail"
-                    print("Fail:Fail to establish a new connection.")
+                    # print("Fail:Fail to establish a new connection.")
         elif (method == 'get'):
             # get 请求
-            print("get 请求")
+            # print("get 请求")
             if (type != 'json'):
-                print("type is not json")
+                # print("type is not json")
                 try:
                     response = requests.get(url, params=data, headers=header)
-                    print("get方法获取reponse:" +
-                          response.text +
-                          "status code:" +
-                          str(response.status_code))
+                    # print("get方法获取reponse:" +
+                    #       response.text +
+                    #       "status code:" +
+                    #       str(response.status_code))
                     if(assertText==""):
                         if(response.status_code==200):
                             message="OK"
                         else:
                             message='Fail'
                     else:
-                        print("assertText:"+str(assertText))
+                        # print("assertText:"+str(assertText))
                         if(assertText in response.text):
                             message="OK"
                         else:
                             message="Fail"
                 except requests.exceptions.MissingSchema:
                     message = "Fail"
-                    print("Fail:URL输入错误,No schema supplied.")
+                    # print("Fail:URL输入错误,No schema supplied.")
                 except json.decoder.JSONDecodeError:
                     message = "Fail"
-                    print("Fail:hearder或data非json格式")
+                    # print("Fail:hearder或data非json格式")
                 except requests.exceptions.ConnectionError:
                     message = "Fail"
-                    print("Fail:Fail to establish a new connection.")
+                    # print("Fail:Fail to establish a new connection.")
             else:
-                print("type is json")
+                # print("type is json")
                 try:
                     data = json.dumps(data)
-                    print(data)
+                    # print(data)
                     response = requests.get(url, params=data, headers=header)
-                    print("get方法获取返回值:" +
-                          response.text +
-                          "statu code:" +
-                          str(response.status_code))
+                    # print("get方法获取返回值:" +
+                    #       response.text +
+                    #       "statu code:" +
+                    #       str(response.status_code))
                     if (assertText == ''):
                         if (response.status_code == 200):
                             message = "OK"
                         else:
                             message = 'Fail'
                     else:
-                        print("assertText:"+str(assertText))
+                        # print("assertText:"+str(assertText))
                         if (assertText in response.text):
                             message = "OK"
                         else:
@@ -130,13 +130,13 @@ class ccaSystem(unittest.TestCase):
             # return HttpResponse(response)
         else:
             message="Fail"
-            print(message+"method 不是post 或者get")
+            # print(message+"method 不是post 或者get")
         self.assertEqual(message,'OK')
     def tearDown(self):
         print("testcase end")
 def runTaskTestcase():
     filename = REPORT_PATH+'/taskResult.xml'
-    print(filename)
+    # print(filename)
     with open(filename, 'w',encoding='utf-8') as output:
         unittest.main(testRunner=xmlrunner.XMLTestRunner(output), failfast=False, buffer=False, catchbreak=False)
 

@@ -3,12 +3,8 @@ from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
-from ..models import Task
 from project_app.models.project_models import Project
-from project_app.models.module_models import Module
-from interface_app.models import Case
-from task_app.models import Task
-from django.db.models import Q
+from task_app.models import Task,TaskResult
 
 
 # 获取用例列表
@@ -56,6 +52,24 @@ def delTask(request, taskid):
     Task.objects.filter(id=taskid).delete()
     return HttpResponseRedirect("/task/task_manager/?type=tasklist")
 
+def viewReport(request,taskid):
+    username = request.session.get('username', '')
+    type='reportlist'
+    taskreports = TaskResult.objects.filter(task_id=taskid)
+    # 分页
+    paginator = Paginator(taskreports, 20)
+    page = request.GET.get('page', 1)
+    curpage = int(page)
+    try:
+        print(page)
+        taskreports = paginator.page(curpage)
+    except PageNotAnInteger:
+        taskreports = paginator.page(1)
+    except EmptyPage:
+        taskreports = paginator.page(paginator.num_pages)
+    context = {'username': username, 'type': type, 'taskreports': taskreports}
+    print(context)
+    return render(request, 'task/taskReport.html', context)
 
 # # 搜索任务
 # def searchTask(request):

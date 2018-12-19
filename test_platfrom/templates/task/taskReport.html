@@ -1,0 +1,95 @@
+{% extends "project/base.html" %}
+{% load staticfiles %}
+{% block content %}
+    {% if type == 'reportlist' %}
+        <h1 class="page-header">任务报告</h1>
+        <table class="table table-striped">
+            <thead>
+            <div id="request-process-patent"></div>
+            <tr>
+                <th>ID</th>
+                <th>名称</th>
+                <th>用例总数</th>
+                <th>错误用例个数</th>
+                <th>失败用例个数</th>
+                <th>跳过用例个数</th>
+                <th>运行时间(s)</th>
+                <!-- <th>创建时间</th>-->
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="taskReportList">
+            {% for report in taskreports %}
+                <tr id="{{ report.id }}">
+                    <td id="num">{{ forloop.counter }}</td>
+                    <td id="reportname">{{ report.name }}</td>
+                    <td id="caseSum">{{ report.tests }}</td>
+                    <td id="errorCount">{{ report.error }}</td>
+                    <td id="failCount">{{ report.failures }}</td>
+                    <td id="skippedCount">{{ report.skipped }}</td>
+                    <td id="runtime">{{ report.run_time }}</td>
+                    <td>
+                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
+                                onclick="dreport('{{ report.name }}','{{ report.name }}')">report
+                        </button>
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel"></h4>
+                                    </div>
+                                    <div class="modal-body" id="result"></div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <!--<button type="button" class="btn btn-primary">提交更改</button>-->
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal -->
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static '/bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static '/bootstrap/js/taskJs/report.js' %}"></script>
+{% endblock %}
+
+
+{% block pagination %}
+    {% if type == 'reportlist' %}
+        <ul class="pagination" id="pager">
+            {% if taskreports.has_previous %}
+                <li class="previous"><a
+                        href="?type=reportlist&search={{ search }}&page={{ taskreports.previous_page_number }}">上一页</a>
+                </li>
+            {% else %}
+                <li class="previous disabled"><a href="#">上一页</a></li>
+            {% endif %}
+            {#页码 #}
+            {% for num in taskreports.paginator.page_range %}
+                {% if num == taskreports.number %}
+                    <li class="item active"><a href="?type=reportlist&search={{ search }}&page={{ num }}">{{ num }}</a>
+                    </li>
+                {% else %}
+                    <li class="item"><a href="?type=reportlist&search={{ search }}&page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if taskreports.has_next %}
+                <li class="next"><a href="?type=reportlist&search={{ search }}&page={{ taskreports.next_page_number }}">下一页</a>
+                </li>
+            {% else %}
+                <li class="next disabled"><a href="#">下一页</a></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+{% endblock %}
+{# 下一页按钮结束#}
