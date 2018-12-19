@@ -90,33 +90,16 @@ $('#save').click(function () {
     var task_desp = $('#taskdesp').val()
     // 获取任务的状态和运行结果
     // task状态: 0未执行 、1 执行中，2 执行结束
-    var tstatus = $('#taskstat').val()
-    var task_status;
-    if (tstatus == "未执行") {
-        task_status = 0
-    }
-    else if (tstatus == "执行中") {
-        task_status = 1
-    }
-    else {
-        task_status = 2
-    }
-    // task result: 0: NG 不通过，1: OK通过
-    var result = $("#taskresult").val()
-    var task_result;
-    if (result == "测试OK") {
-        task_result = 1
-    }
-    else {
-        task_result = 0
-    }
+    var task_status = 0
+    // task result: 0: NG 不通过，1: OK通过 -1:显示空
+    var task_result = 1
     // 获取用例列表
     var castlist = [];
     $("#checkCaseList>input[name='casename']").each(function (i) {
         if ($(this).is(':checked')) {
             let caseid = $(this).attr('id')
             castlist.push(caseid)
-    }
+        }
     })
     console.log(castlist)
     // 验证任务名不能为空(判断重名在后台处理）
@@ -126,7 +109,7 @@ $('#save').click(function () {
         return false;
     }
     //判断如果没有勾选用例不保存
-    if(castlist.length==0){
+    if (castlist.length == 0) {
         alert("请勾选用例再保存")
         return false;
     }
@@ -165,7 +148,7 @@ $('#save').click(function () {
 $('#updateTask').click(function () {
     $('#request-process-patent').html("正在保存更新数据...")
     // 获取当前需要保存页面信息
-    var task_id=window.location.pathname.split('/')[3]
+    var task_id = window.location.pathname.split('/')[3]
     var task_name = $('#taskname').val()
     var task_desp = $('#taskdesp').val()
     // 获取任务的状态和运行结果
@@ -177,7 +160,7 @@ $('#updateTask').click(function () {
         if ($(this).is(':checked')) {
             let caseid = $(this).attr('id')
             castlist.push(caseid)
-    }
+        }
     })
     console.log(castlist)
     // 验证任务名不能为空(判断重名在后台处理）
@@ -187,12 +170,12 @@ $('#updateTask').click(function () {
         return false;
     }
     //判断如果没有勾选用例不保存
-    if(castlist.length==0){
+    if (castlist.length == 0) {
         alert("请勾选用例再保存")
         return false;
     }
     var datas = {
-        'taskid':task_id,
+        'taskid': task_id,
         "taskName": task_name,
         "taskDesp": task_desp,
         "caseList": castlist
@@ -223,12 +206,12 @@ $('#updateTask').click(function () {
 })
 
 //执行任务
-function runTask(taskid,taskname){
-    $('#request-process-patent').html(taskname+"正在执行中....")
-    $("#taskstatus[value='"+taskid+"']").text('执行中')
-    $("#taskresult[value='"+taskid+"']").text('')
+function runTask(taskid, taskname) {
+    $('#request-process-patent').html(taskname + "正在执行中....")
+    $("#taskstatus[value='" + taskid + "']").text('执行中')
+    $("#taskresult[value='" + taskid + "']").text('')
     var datas = {
-        'taskid':taskid,
+        'taskid': taskid,
     }
     console.log(datas)
     $.ajax({
@@ -240,22 +223,22 @@ function runTask(taskid,taskname){
             console.log(ret)
             if (ret.success == "false") {
                 alert(ret.message)
-                $("#taskstatus[value='"+taskid+"']").text('未执行')
-                $("#taskresult[value='"+taskid+"']").text('')
+                $("#taskstatus[value='" + taskid + "']").text('未执行')
+                $("#taskresult[value='" + taskid + "']").text('')
                 $('#request-process-patent').html("")
             }
             else {
                 alert(ret.data)
                 // console.log(ret.data)
-                $("#taskstatus[value='"+taskid+"']").text('执行结束')
-                $("#taskresult[value='"+taskid+"']").text(ret.data)
+                $("#taskstatus[value='" + taskid + "']").text('执行结束')
+                $("#taskresult[value='" + taskid + "']").text(ret.data)
                 $('#request-process-patent').html("")
             }
         },
         error: function (ret) {
             console.log("debug_ajax fail")
-                $('td#'+taskid+'_taskstatus').text("执行结束")
-                $('td#'+taskid+'_taskresult').text("NG")
+            $('td#' + taskid + '_taskstatus').text("执行结束")
+            $('td#' + taskid + '_taskresult').text("NG")
             $('#request-process-patent').html("失败")
 
         }

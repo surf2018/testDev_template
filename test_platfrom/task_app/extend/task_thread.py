@@ -11,10 +11,11 @@ import xml.etree.cElementTree as ET
 class TaskThread():
     def __init__(self, taskid):
         self.taskid = int(taskid)
+
     def readResult(self):
         # 读取文件所有内容
         resultPath = REPORT_PATH + "/taskResult.xml"
-        f = open(resultPath,'r')
+        f = open(resultPath, 'r')
         content = f.read()
         f.close()
         return content
@@ -120,6 +121,7 @@ class TaskThread():
             message = "任务失败"
         print(message)
         return message
+
     def new_run(self):
         threads = []
         t = threading.Thread(target=self.run)

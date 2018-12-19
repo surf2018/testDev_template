@@ -1,54 +1,57 @@
-
 import requests
 import json
-from ddt import ddt,data,unpack,file_data
+from ddt import ddt, data, unpack, file_data
 import unittest
 import csv
 import requests
 # from test_platfroms.common import response_succeess,response_failed
-from task_app.apps import TASK_PATH,TASK_RUN_PATH,REPORT_PATH
+from task_app.apps import TASK_PATH, TASK_RUN_PATH, REPORT_PATH
 import xmlrunner
 import sys
-#测试数据
-#取文件
+
+
+# 测试数据
+# 取文件
 def get_file():
-    taskid=sys.argv[1]
-    path = TASK_PATH + '/task_'+taskid+".json"
+    taskid = sys.argv[1]
+    path = TASK_PATH + '/task_' + taskid + ".json"
     return path
+
 
 @ddt
 class ccaSystem(unittest.TestCase):
-    def setUp(self):
-        print("running test task")
+    # def setUp(self):
+    #     print("")
     # @data(*get_data("test_data.csv"))
-    @file_data(TASK_PATH+"/task.json")
+    @file_data(TASK_PATH + "/task.json")
     @unpack
-    def test_run(self,url,method,type,header,data,assertText):
-        header=json.loads(header)
-        data=json.loads(data)
-        message=""
+    def test_run(self, url, method, type, header, data, assertText):
+        header = json.loads(header)
+        data = json.loads(data)
         if (method == 'post'):
             if (type != 'json'):
+                # 非json数据
                 if ('file' in data.keys()):
                     response = requests.post(url, files=data)
                     # print(response)
                 else:
+                    # data=json.loads(data)
                     response = requests.post(url, data=data, headers=header)
                     # print("post" +
                     #       response.text +
                     #       "status code:" +
                     #       str(response.status_code))
                     if (assertText == ""):
-                        if (response.status_code == '200'):
+                        if (response.status_code == 200):
                             message = "OK"
                         else:
                             message = "Fail"
                     else:
                         # print("assertText:"+assertText)
-                        if (assertText in response.text):
+                        if (response.status_code == 200 and assertText in response.text):
                             message = "OK"
                         else:
-                            message="Fail"
+                            message = "Fail"
             else:
                 # json数据
                 # print("post 请求json")
@@ -59,16 +62,16 @@ class ccaSystem(unittest.TestCase):
                     #       response.text +
                     #       "status code:" +
                     #       str(response.status_code))
-                    if(assertText==""):
-                        if(response.status_code=='200'):
-                            message="OK"
+                    if (assertText == ""):
+                        if (response.status_code == 200):
+                            message = "OK"
                         else:
-                            message="Fail"
+                            message = "Fail"
                     else:
-                        if(assertText in response.text):
-                            message="OK"
+                        if (assertText in response.text):
+                            message = "OK"
                         else:
-                            message="Fail"
+                            message = "Fail"
                 except requests.exceptions.ConnectionError:
                     message = "Fail"
                     # print("Fail:Fail to establish a new connection.")
@@ -79,21 +82,21 @@ class ccaSystem(unittest.TestCase):
                 # print("type is not json")
                 try:
                     response = requests.get(url, params=data, headers=header)
-                    # print("get方法获取reponse:" +
-                    #       response.text +
-                    #       "status code:" +
-                    #       str(response.status_code))
-                    if(assertText==""):
-                        if(response.status_code==200):
-                            message="OK"
+                    print("get方法获取reponse:" +
+                          response.text +
+                          "status code:" +
+                          str(response.status_code))
+                    if (assertText == ""):
+                        if (response.status_code == 200):
+                            message = "OK"
                         else:
-                            message='Fail'
+                            message = 'Fail'
                     else:
                         # print("assertText:"+str(assertText))
-                        if(assertText in response.text):
-                            message="OK"
+                        if (assertText in response.text):
+                            message = "OK"
                         else:
-                            message="Fail"
+                            message = "Fail"
                 except requests.exceptions.MissingSchema:
                     message = "Fail"
                     # print("Fail:URL输入错误,No schema supplied.")
@@ -129,18 +132,21 @@ class ccaSystem(unittest.TestCase):
                     print("Fail")
             # return HttpResponse(response)
         else:
-            message="Fail"
+            message = "Fail"
             # print(message+"method 不是post 或者get")
-        self.assertEqual(message,'OK')
-    def tearDown(self):
-        print("testcase end")
+        self.assertEqual(message, 'OK')
+    # def tearDown(self):
+    #     print("")
+
+
 def runTaskTestcase():
-    filename = REPORT_PATH+'/taskResult.xml'
+    filename = REPORT_PATH + '/taskResult.xml'
     # print(filename)
-    with open(filename, 'w',encoding='utf-8') as output:
+    with open(filename, 'w', encoding='utf-8') as output:
         unittest.main(testRunner=xmlrunner.XMLTestRunner(output), failfast=False, buffer=False, catchbreak=False)
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     # print("cmmd parameter:"+str(sys.argv[1]))
     # files=get_file()
     # print(files)
