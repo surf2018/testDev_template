@@ -228,17 +228,19 @@ function runTask(taskid, taskname) {
                 $('#request-process-patent').html("")
             }
             else {
-                alert(ret.data)
-                // console.log(ret.data)
+                // alert(ret.data)
+                console.log(ret.data)
                 $("#taskstatus[value='" + taskid + "']").text('执行结束')
                 $("#taskresult[value='" + taskid + "']").text(ret.data)
+                //刷新
+                window.location.reload()//刷新当前页面
                 $('#request-process-patent').html("")
             }
         },
         error: function (ret) {
             console.log("debug_ajax fail")
-            $('td#' + taskid + '_taskstatus').text("执行结束")
-            $('td#' + taskid + '_taskresult').text("NG")
+            //刷新
+            window.location.reload()//刷新当前页面
             $('#request-process-patent').html("失败")
 
         }

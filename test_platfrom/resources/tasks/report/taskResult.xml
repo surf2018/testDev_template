@@ -1,10 +1,44 @@
 <?xml version="1.0" ?>
-<testsuite errors="0" failures="0" name="ccaSystem-20181219100800" tests="3" time="0.802">
-	<testcase classname="ccaSystem" name="test_run_00001_1" time="0.665"/>
-	<testcase classname="ccaSystem" name="test_run_00002_2" time="0.084"/>
-	<testcase classname="ccaSystem" name="test_run_00003_3" time="0.053"/>
+<testsuite errors="1" failures="0" name="ccaSystem-20181220143605" tests="4" time="22.541">
+	<testcase classname="ccaSystem" name="test_run_00001_1" time="0.498"/>
+	<testcase classname="ccaSystem" name="test_run_00002_11" time="0.355"/>
+	<testcase classname="ccaSystem" name="test_run_00003_5" time="0.680"/>
+	<testcase classname="ccaSystem" name="test_run_00004_4" time="21.008">
+		<error message="'Fail' != 'OK'
+- Fail
++ OK
+" type="AssertionError">
+<![CDATA[Traceback (most recent call last):
+  File "D:/pycharmProjects/testDev_template/test_platfrom/task_app/extend/run_test.py", line 142, in test_run
+    self.assertEqual(message, 'OK')
+  File "D:\Python36\lib\unittest\case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+AssertionError: 'Fail' != 'OK'
+- Fail
++ OK
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\ddt.py", line 145, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:/pycharmProjects/testDev_template/test_platfrom/task_app/extend/run_test.py", line 147, in test_run
+    self.assertEqual(message,"OK")
+AssertionError: 'Fail' != 'OK'
+- Fail
++ OK
+
+]]>		</error>
+	</testcase>
 	<system-out>
-<![CDATA[]]>	</system-out>
+<![CDATA[HTTPConnectionPool(host='10.12.128.228', port=80): Max retries exceeded with url: /getTAllInfo.action (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002277B232DA0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+'Fail' != 'OK'
+- Fail
++ OK
+
+json解析失败
+]]>	</system-out>
 	<system-err>
 <![CDATA[]]>	</system-err>
 </testsuite>

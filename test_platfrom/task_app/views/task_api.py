@@ -13,12 +13,12 @@ from django.contrib.auth.models import User
 from task_app.models import Task, TaskResult
 from django.http import HttpResponse
 from task_app.extend.task_thread import TaskThread
+import time
 
 import os
 import xml.etree.cElementTree as ET
 
 from django.db.models import Q
-
 
 # Create your views here.
 #
@@ -44,8 +44,6 @@ def selectAjax(request):
     results = json.dumps(datas)
     print(results)
     return response_succeess(results)
-
-
 # 保存新数据
 def save(request):
     name = request.session.get('username', '')
@@ -73,8 +71,6 @@ def save(request):
             cases=caseList)
         task.save()
         return response_succeess(data="保存成功")
-
-
 # 根据ajax传的taskid来查询caseid
 def queryTask(request):
     taskid = request.POST['taskid']
@@ -92,8 +88,6 @@ def queryTask(request):
     # print(caseNames)
     data = {"taskname": taskname, "taskDesp": taskDesp, "cases": caseNames}
     return response_succeess(data)
-
-
 def getZtreeList(request):
     zNodesArray = []
     # 获取已经有的testcase
@@ -138,7 +132,6 @@ def getZtreeList(request):
     print(zNodesArray)
     return HttpResponse(json.dumps(zNodesArray))
 
-
 # 更新数数据
 def update(request):
     name = request.session.get('username', '')
@@ -164,22 +157,23 @@ def update(request):
             create_user_id=userId,
             cases=caseList)
         return response_succeess(data="更新成功")
-
-
 # create take and edit task页面运行任务
 def runTask(request):
     # 判断有没有其他任务在执行
+    taskid=request.POST['taskid']
     flag = 0
+    #查数据库，看当前是否有任务在运行
     tasks = Task.objects.all()
     for task in tasks:
         if (task.status == '1'):
             flag = 1
             break
     if (flag == 1):
+        #修改数据库的值，状态改为未执行状态
+        Task.objects.filter(id=taskid).update(status='0', result='-1')
         return response_failed("有任务在执行，请稍后执行")
     else:
         # 将获取到的testcase的列表写入json文件
-        taskid = request.POST['taskid']
         print("receive taskid:" + str(taskid))
         # 更新taske状态值
         Task.objects.filter(id=taskid).update(status='1', result='-1')
@@ -187,14 +181,22 @@ def runTask(request):
         th = TaskThread(taskid)
         th.new_run()
         # 查看数据库的值
-        task = Task.objects.get(id=taskid)
-        re = task.result
-        if (re == '0'):
+        while True:
+            task = Task.objects.get(id=taskid)
+            re = task.result
+            status=task.status
+            if (re == '0' and status =='2'):
+                last=0
+                print("执行结束，结果失败")
+                break
+            elif(re =='1' and status =='2'):
+                last=1
+                print("执行结束，结果成功")
+                break
+        if(last==0):
             return response_succeess("测试NG")
-        else:
-            return response_succeess('测试OK')
-
-
+        elif(last==1):
+            return response_succeess("测试OK")
 def queryReportResult(request):
     reportid = request.POST['report']
     print('reportid:' + reportid)
@@ -212,16 +214,6 @@ def queryReportResult(request):
     else:
         return response_failed(re)
 
-
-def getStatus(request):
-    taskid = request.POST['taskid']
-    task = Task.objects.get(id=int(taskid))
-    task_result = task.result
-    if (task_result == '0'):
-        message = "测试NG"
-    else:
-        message = "测试OK"
-    return response_succeess(message)
     # 返回结果到ajax
 # 接续介乎
 # Create your views here.

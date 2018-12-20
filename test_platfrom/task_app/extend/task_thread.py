@@ -15,7 +15,7 @@ class TaskThread():
     def readResult(self):
         # 读取文件所有内容
         resultPath = REPORT_PATH + "/taskResult.xml"
-        f = open(resultPath, 'r')
+        f = open(resultPath, 'r',encoding='UTF-8')
         content = f.read()
         f.close()
         return content
@@ -64,7 +64,6 @@ class TaskThread():
         return result
 
     def runing_task(self):
-        # 查询taskid
         result = 0
         # 查询数据库
         caseListStr = Task.objects.get(id=self.taskid).cases
@@ -88,7 +87,7 @@ class TaskThread():
         taskJsonPath = TASK_PATH + "/task.json"
         with open(taskJsonPath, "w") as f:
             json.dump(case_dict, f)
-        # print("加载入文件完成...")
+        print("Load file ok...")
         # 调用程序执行脚本
         # print("运行:" + TASK_RUN_PATH + "用例")
         command = "python " + TASK_RUN_PATH
@@ -120,8 +119,6 @@ class TaskThread():
             Task.objects.filter(id=self.taskid).update(status='2', result='0')
             message = "任务失败"
         print(message)
-        return message
-
     def new_run(self):
         threads = []
         t = threading.Thread(target=self.run)

@@ -28,7 +28,6 @@ urlpatterns = [
     path('getZtreeList/',task_api.getZtreeList),
     path('update/',task_api.update),
     path('runTask/',task_api.runTask),
-    path('getStatus/',task_api.getStatus),
     path('report/<int:taskid>/',task_views.viewReport),
     path('queryReportResult/',task_api.queryReportResult),
 
